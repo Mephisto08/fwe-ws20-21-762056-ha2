@@ -1,0 +1,20 @@
+entity: Task
+items:
+  Task1:
+    name: Task Test 1
+    description: Beschreibung Test 1
+    labels:
+      - '@Label1'
+  Task2:
+    name: Task Test 2
+    description: Beschreibung Test 2
+    labels:
+      - '@Label2'
+      - '@Label3'
+  Task3:
+    name: Task Test 3
+    description: Beschreibung Test 3
+    labels:
+      - '@Label1'
+      - '@Label2'
+      - '@Label3'

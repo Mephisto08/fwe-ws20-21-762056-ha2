@@ -1,0 +1,44 @@
+{
+  "name": "fwe-2021-762056-ha1",
+  "version": "1.0.0",
+  "description": "FWE",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon --legacy-watch",
+    "test": "jest --verbose --coverage --forceExit --runInBand --detectOpenHandles"
+  },
+  "keywords": [
+    "FWE",
+    "HA_1"
+  ],
+  "author": {
+    "name": "Niklas Werner",
+    "email": "niklas.a.j.werner@stud.h-da.de"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "axios": "^0.21.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.13.0",
+    "eslint-config-google": "^0.14.0",
+    "express": "^4.17.0",
+    "mysql": "2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typeorm": "^0.2.26",
+    "typeorm-fixtures-cli": "1.8.0",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/jest": "^26.0.15",
+    "@types/supertest": "^2.0.10",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.4",
+    "supertest": "^6.0.1"
+  }
+}

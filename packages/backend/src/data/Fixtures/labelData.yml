@@ -1,0 +1,9 @@
+entity: Label
+items:
+  Label1:
+    name: Label Test 1
+  Label2:
+    name: Label Test 2
+  Label3:
+    name: Label Test 3
+

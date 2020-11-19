@@ -1,0 +1,11 @@
+docker-compose exec  mariadb mysql -uniklas -pniklaspwd niklasdb
+docker-compose exec mariadb mysql -uexampleuser -pexamplepwd exampledb
+
+docker exec -it fwe-ws20-21-762056-ha1_backend_1 /bin/sh
+
+
+
+npx eslint . --ext .js,.jsx,.ts,.tsx
+
+
+docker-compose exec backend npm run test 
