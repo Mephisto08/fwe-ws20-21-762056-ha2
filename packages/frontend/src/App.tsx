@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {ThemeProvider} from "styled-components";
 import {GlobalStyle} from "./components/GlobalStyle";
 import {Layout} from "./components/Layout";
+import { TaskPage } from "./pages/Dashboard/TaskPage";
 import {theme} from "./theme";
 
 export interface TaskResponse {
@@ -34,15 +35,9 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Layout>
-      <div className="container">{task!== null? task.data.length : ""}</div>
-      <button 
-        onClick={() => {
-          fetchTasks()
-      }}> 
-      Fetch Tasks
-      </button>
-      </Layout>
+        <Layout>
+          <TaskPage/>
+        </Layout>
     </ThemeProvider>
   );
 };

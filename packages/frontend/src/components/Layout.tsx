@@ -5,7 +5,7 @@ const headerHeight = "85px";
 const footerHeight = "50px";
 
 export const MaxWidthCSS = css`
-  max-width: 860px;
+  max-width: 90%;
   margin: auto;
 `;
 const Header = styled.header`
@@ -41,8 +41,8 @@ export const Layout: React.FC = ({ children }) => {
       <Header>
         <div
           css={`
-            font-size: 25px;
-            letter-spacing: 2.3px;
+            font-size: 27px;
+            letter-spacing: 3px;
             flex: 1;
           `}
         >
@@ -51,12 +51,25 @@ export const Layout: React.FC = ({ children }) => {
               text-decoration: underline overline;
             `}
           >
-            Timetracker
+            TimeTracker
+            
+
           </span>
+          <br></br>
+          <span
+           css={`
+           font-size: 14px;
+           letter-spacing: 2px;
+           flex: 1;
+         `}
+          >
+            DoNotWasteYourTime!
+          </span>
+
         </div>
       </Header>
       <Main>{children}</Main>
-      <Footer>© 2020 Niklas Werner</Footer>
+      <Footer>© 2020 Mephisto_08</Footer>
     </>
   );
 };
