@@ -1,0 +1,13 @@
+/*
+* In dieser Datei werden die Konfigurationen für den eslint festgelegt
+*/
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": ["google"],
+    "rules":{
+      "linebreak-style": 0
+    }
+  }
+  

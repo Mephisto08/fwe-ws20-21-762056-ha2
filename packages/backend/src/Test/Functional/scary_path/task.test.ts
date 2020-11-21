@@ -36,7 +36,7 @@ describe('Tests for the Task class', () => {
   /**
   * Es wird eine Task Id mitgeschickt, welche nicht existiert
   */
-  it('addLabelsByTaskId Test wrong infos', async (done) => {
+  it('addLabelsByTaskId Test wrong taskId', async (done) => {
     await helper.resetDatabase();
     await helper.loadFixtures();
     const taskId = 55;
@@ -57,7 +57,7 @@ describe('Tests for the Task class', () => {
   /**
   * Es wird eine Label Id mitgeschickt, welche nicht existiert
   */
-  it('addLabelsByTaskId Test wrong infos', async (done) => {
+  it('addLabelsByTaskId Test wrong labelId', async (done) => {
     await helper.resetDatabase();
     await helper.loadFixtures();
     const taskId = 1;

@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
@@ -22,6 +24,7 @@
     "@types/styled-components": "^5.1.0",
     "typescript": "^3.9.7"
   },
+  "proxy": "http://backend:3000",
   "browserslist": {
     "production": [
       ">0.2%",
