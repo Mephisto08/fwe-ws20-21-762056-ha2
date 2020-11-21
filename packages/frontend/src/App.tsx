@@ -1,34 +1,48 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
+import {ThemeProvider} from "styled-components";
+import {GlobalStyle} from "./components/GlobalStyle";
+import {Layout} from "./components/Layout";
+import {theme} from "./theme";
 
-/*
-enum MessageType {
-  INFO = "info",
-  ERROR = "error",
-  NONE = "",
+export interface TaskResponse {
+  data: Data[];
 }
 
-const Message: React.FC<{
-  type?: MessageType;
-}> = ({ children, type = MessageType.NONE }) => {
-  return <div className={`message ${type}`}>{children}</div>;
-};
+export interface Data {
+  id:            number;
+  name:          string;
+  description:   string;
+  created:       Date;
+  updated:       Date;
+  __trackings__: any[];
+  __labels__:    any[];
+}
 
-export const App = () => (
-  <div className="container">
-    <Message type={MessageType.INFO}>Hallo RAMONIUS ich GRÜßE DICH</Message>
-  </div>
-);*/
 
 export const App = () => {
   
-  useEffect(() => {
-    (
-    async function (){
+  const [task, setTask] = useState<TaskResponse | null>(null);
+  const fetchTasks = async () => { 
     const tasksRequest = await fetch("http://localhost:3000/api/task");
-    const tasks = await tasksRequest.json();
+    const tasks = await tasksRequest.json() as TaskResponse;
     console.log(tasks);
-    })();
-  });
-  
-  return <div className="container">Hello World!</div>
-}
+    setTask(tasks)
+  };
+  useEffect(() =>{
+    fetchTasks();
+  }, []);
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Layout>
+      <div className="container">{task!== null? task.data.length : ""}</div>
+      <button 
+        onClick={() => {
+          fetchTasks()
+      }}> 
+      Fetch Tasks
+      </button>
+      </Layout>
+    </ThemeProvider>
+  );
+};
