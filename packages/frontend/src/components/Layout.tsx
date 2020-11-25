@@ -25,15 +25,10 @@ const Main = styled.main`
 const Footer = styled.footer`
   height: ${footerHeight};
   padding: 0 25px;
+  margin-bottom: 0.5rem;
   ${MaxWidthCSS};
 `;
 
-const NavigationList = styled.ul`
-  list-style: none;
-`;
-const NavigationItem = styled.li`
-  color: ${(props) => props.theme.colors.primary};
-`;
 
 export const Layout: React.FC = ({ children }) => {
   return (
@@ -51,7 +46,7 @@ export const Layout: React.FC = ({ children }) => {
               text-decoration: underline overline;
             `}
           >
-            TimeTracker
+            TaskMaster
             
 
           </span>

@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "start": "nodemon --legacy-watch",
-    "test": "jest --verbose --coverage --forceExit --runInBand --detectOpenHandles"
+    "test": "jest --verbose --coverage --forceExit --runInBand --detectOpenHandles",
+    "fixtures": "npx fixtures ./data/Fixtures --config ormconfig.js --sync --require=ts-node/register"
   },
   "keywords": [
     "FWE",

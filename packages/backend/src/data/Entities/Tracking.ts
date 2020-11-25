@@ -32,11 +32,11 @@ export class Tracking {
     updatet: string;
 
     // eslint-disable-next-line new-cap
-    @Column({type: 'time', default: 0})
+    @Column({default: new Date('2020-11-01').toString()})
     timeStart: string;
 
     // eslint-disable-next-line new-cap
-    @Column({type: 'time', default: 0})
+    @Column({default: new Date('2020-11-02').toString()})
     timeEnd: string;
 
     // eslint-disable-next-line new-cap

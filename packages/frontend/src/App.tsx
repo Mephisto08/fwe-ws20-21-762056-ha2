@@ -1,9 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {ThemeProvider} from "styled-components";
 import {GlobalStyle} from "./components/GlobalStyle";
-import {Layout} from "./components/Layout";
-import { TaskPage } from "./pages/Dashboard/TaskPage";
 import {theme} from "./theme";
+import {
+  BrowserRouter,
+  Route,
+} from "react-router-dom";
+import {TaskPage} from "./pages/Dashboard/TaskOverviewPage";
+import {TaskPageID} from "./pages/TaskPage/taskPage";
+
+
 
 export interface TaskResponse {
   data: Data[];
@@ -33,11 +39,13 @@ export const App = () => {
     fetchTasks();
   }, []);
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-        <Layout>
-          <TaskPage/>
-        </Layout>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Route exact path="/" component={TaskPage}/>
+        <Route exact path="/task/:taskId" component={TaskPageID}/>
+      </ThemeProvider>
+    </BrowserRouter>
+
   );
 };
