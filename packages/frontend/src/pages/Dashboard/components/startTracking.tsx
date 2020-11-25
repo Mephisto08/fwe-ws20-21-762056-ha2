@@ -11,6 +11,19 @@ export const Time = styled.div`
 `;
 
 
+export const Title = styled.div`
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+`;
+
+export const StartTracking = styled.div`
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-top: 0.1rem solid #202020;
+`;
+
+
 
 
 export const StartTrackingForm: React.FC<{ afterSubmit: () => void }> = ({
@@ -38,10 +51,13 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void }> = ({
     };
     let taskName= useContext(testContext);
 
+    let time = "0";
+
     return (
       <>
-            <h2>Starte ein Tracking für {taskName} </h2>
-            <Time>Zeit:</Time>
+        <StartTracking>
+            <Title>Starte ein Tracking für {taskName} </Title>
+            <Time>Zeit:  {time} Minuten</Time>
     
             <form onSubmit={onSubmitForm}>
             <Input
@@ -52,8 +68,9 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void }> = ({
                 required
             />
             <Button8rem type="submit">Start</Button8rem>
-            <StopButton type="button">Start</StopButton>
+            <StopButton type="button"></StopButton>
             </form>
+        </StartTracking>
       </>
     );
   };

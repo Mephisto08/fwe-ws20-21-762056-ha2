@@ -121,10 +121,10 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
       };
 
       var oneDay = 60*1000; // hours*minutes*seconds*milliseconds 
-      var firstDate = new Date(timeStart); 
-      var secondDate = new Date(timeEnd); 
+      var timeStartDate = new Date(timeStart); 
+      var timeEndDate = new Date(timeEnd); 
 
-      var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))); 
+      var diffDays = Math.round(Math.abs((timeStartDate.getTime() - timeEndDate.getTime())/(oneDay))); 
 
   
   return ( 
@@ -139,8 +139,8 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
       }}>
           <div>
             <TrackingTitle>{description}</TrackingTitle>
-            <div>Start: {timeStart}</div>
-            <div>Ende: {timeEnd}</div>
+            <TrackedTime>Start: {timeStartDate.toLocaleString()}</TrackedTime>
+            <TrackedTime>Ende: {timeEndDate.toLocaleString()}</TrackedTime>
             <TrackedTime>Dauer: {diffDays} Minuten
             </TrackedTime>
           </div>

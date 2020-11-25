@@ -106,7 +106,7 @@ export const StopButton = (
   `;
   return (
     <StyledButton {...props}>
-      <svg width="24" height="24"><rect width="100%" height="100%"/></svg>  
+      <svg width="24" height="24"><rect width="100%" height="100%" fill="rgb(45, 45, 45)"/></svg>  
     </StyledButton>
   );
 };
@@ -173,6 +173,7 @@ export const Button8rem = styled.button`
 
 export const Button20rem = styled.button`
   background-color: ${(props) => props.theme.colors.primary};
+  margin-bottom: 1rem;
   color: #000;
   border: 0px;
   border-radius: 5px;

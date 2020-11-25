@@ -204,15 +204,13 @@ export const TaskItem: React.FC<TaskItemProps> = ({
                 })}
             </LabelList>
           </LabelItem>
-              <TrackedTime>Gesamte Zeit: {getDateDifference()}</TrackedTime>
+              <TrackedTime>Gesamt Zeit: {getDateDifference()}</TrackedTime>
           </div>
       </TaskFlex>
       <div>
         <Button8rem onClick={() =>{
           setStartTracking(!startTracking)
         }}>Start Track</Button8rem>
-
-        <Button8rem>Edit. Task</Button8rem>
       </div>
 
       {startTracking && (
