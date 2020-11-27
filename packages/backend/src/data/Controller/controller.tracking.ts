@@ -13,6 +13,8 @@ import {Tracking} from '../Entities/Tracking';
 export const createTracking = async (req, res) => {
   const {description} = req.body;
   const {task} = req.body;
+  let {timeStart} = req.body;
+  let {timeEnd} = req.body;
 
   const tracking = new Tracking();
   const taskRepo = getRepository(Task);
@@ -23,11 +25,20 @@ export const createTracking = async (req, res) => {
     });
     return;
   };
+  if (!timeStart) {
+    timeStart = new Date();
+  }
+  if (!timeEnd) {
+    timeEnd = new Date();
+  }
+
   const taske =
       await taskRepo.findOneOrFail(task, {relations: ['trackings']});
 
   tracking.description = description;
   tracking.task = taske;
+  tracking.timeStart = timeStart;
+  tracking.timeEnd = timeEnd;
 
   const trackingRepository = getRepository(Tracking);
   const createdTracking = await trackingRepository.save(tracking);

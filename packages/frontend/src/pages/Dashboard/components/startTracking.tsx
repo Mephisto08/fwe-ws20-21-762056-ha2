@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useContext } from "react";
-import {useState} from "react";
+import React, { ChangeEvent, useContext, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import {Button8rem, StopButton } from "../../../components/Button";
-import {Input} from "../../../components/Input";
-import { testContext } from "./taskList";
+import { Button8rem, StopButton } from "../../../components/Button";
+import { Input } from "../../../components/Input";
+import { msToHMS, taskIdContext, taskNameContext } from "./taskList";
 
 export const Time = styled.div`
     font-size: 1.2rem;
@@ -20,57 +20,84 @@ export const Title = styled.div`
 export const StartTracking = styled.div`
     margin-bottom: 1rem;
     margin-top: 1rem;
-    border-top: 0.1rem solid #202020;
+    border-top: 0.15rem solid #202020;
 `;
 
+export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: any; fetchTask: () => void; }> = ({
+  afterSubmit,
+  startTime,
+  fetchTask,
+}) => {
 
 
+  const creationTime = startTime;
+  const taskName = useContext(taskNameContext);
+  const taskId = useContext(taskIdContext);
+  const [tracking, setTracking] = useState({
+    description: "",
+    task: `${taskId}`,
+  });
 
-export const StartTrackingForm: React.FC<{ afterSubmit: () => void }> = ({
-    afterSubmit,
-  }) => {
-    const [values, setValues] = useState({
-      name: "",
-      description: "",
-    });
-    const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [e.target.name]: e.target.value });
-    };
-    const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+  let currentTime: Date;
+  const actualTrackingTime = function (): string {
+    currentTime = new Date();
+    const diff = (currentTime.getTime() - creationTime.getTime());
+    return msToHMS(diff - diff % 1000);
+  };
+
+  const [trackingTime, setTrackingTime] = useState(actualTrackingTime());
+
+  const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTracking({ ...tracking, [e.target.name]: e.target.value });
+  };
+
+  const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      console.log(values);
-  
-      await fetch("/api/task", {
+      await fetch("/api/tracking", {
         method: "POST",
-        headers: { "Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...values,
+          "description": `${tracking.description}`,
+          "task": `${tracking.task}`,
+          "timeStart": `${creationTime}`,
+          "timeEnd": `${currentTime}`,
+
         }),
       });
+      fetchTask();
       afterSubmit();
-    };
-    let taskName= useContext(testContext);
-
-    let time = "0";
-
-    return (
-      <>
-        <StartTracking>
-            <Title>Starte ein Tracking für {taskName} </Title>
-            <Time>Zeit:  {time} Minuten</Time>
     
-            <form onSubmit={onSubmitForm}>
-            <Input
-                name="description"
-                label="Beschreibung"
-                type="text"
-                onChange={fieldDidChange}
-                required
-            />
-            <Button8rem type="submit">Start</Button8rem>
-            <StopButton type="button"></StopButton>
-            </form>
-        </StartTracking>
-      </>
-    );
+
   };
+
+  useEffect(() => {
+      const actualTime = setTimeout(() => {
+        setTrackingTime(actualTrackingTime());
+      }, 1000);
+  });
+
+
+  return (
+    <>
+      <StartTracking>
+        {console.log(trackingTime + "return")}
+        <Title>Starte ein Tracking für {taskName} </Title>
+        <Time>Zeit:  {trackingTime}</Time>
+
+        <form onSubmit={onSubmitForm}>
+          <Input
+            name="description"
+            label="Beschreibung"
+            onChange={fieldDidChange}
+            type="text"
+            required
+          />
+          <Button8rem type="submit">
+            {true ? "Pause" : "Start Track."}
+          </Button8rem>
+          <StopButton type="button"></StopButton>
+        </form>
+      </StartTracking>
+    </>
+  );
+};

@@ -3,15 +3,21 @@ import { useParams } from "react-router-dom";
 import { Task, LabelItem, TrackedTime, LabelList, Label, TaskDescription, msToHMS } from "../Dashboard/components/taskList";
 import { Layout } from "../../components/Layout";
 import { Tracking, TrackingItem, TrackingList } from "./components/trackingList";
-import { AddButton, EditButton } from "../../components/Button";
+import { AddButton, AddLabelButton, DeleteLabelButton, EditButton, ShowLabelButton } from "../../components/Button";
 import { EditTaskForm } from "./components/editTask";
 import { AddTrackingForm } from "./components/addTracking";
+import { AddLabelToTaskForm } from "./components/addLabelToTask";
+import { DeleteLabelToTaskForm } from "./components/deleteLabelFromTask";
+import { ShowLabelForm } from "./components/showLabel";
 
 
 export const TaskPageID = () => {
   const { taskId }: any = useParams();
   const [task, setTask] = useState<Task>();
   const [editTask, setEditTask] = useState(false);
+  const [addLabelToTask, setAddLabelToTask] = useState(false);
+  const [deleteLabelToTask, setDeleteLabelToTask] = useState(false);
+  const [showLabel, setShowLabel] = useState(false);
   const [addTracking, setAddTracking] = useState(false);
 
   const getDateDifference = function (): string {
@@ -51,6 +57,21 @@ export const TaskPageID = () => {
             setAddTracking(!addTracking);
           }}
         ></AddButton>
+        <DeleteLabelButton
+         onClick={() => {
+          setDeleteLabelToTask(!deleteLabelToTask);
+        }}
+        ></DeleteLabelButton>
+        <AddLabelButton
+         onClick={() => {
+          setAddLabelToTask(!addLabelToTask);
+        }}
+        ></AddLabelButton>
+        <ShowLabelButton
+         onClick={() => {
+          setShowLabel(!showLabel);
+        }}
+        ></ShowLabelButton>
         <EditButton
           onClick={() => {
             setEditTask(!editTask);
@@ -99,6 +120,32 @@ export const TaskPageID = () => {
             taskObject={task!}
           />
         )}
+        {showLabel && (
+          <ShowLabelForm
+            afterSubmit={() => {
+              setShowLabel(false);
+              fetchTask();
+            }}
+          />
+        )}
+        {addLabelToTask && (
+          <AddLabelToTaskForm
+            afterSubmit={() => {
+              setAddLabelToTask(false);
+              fetchTask();
+            }}
+            taskObject={task!}
+          />
+        )}
+        {deleteLabelToTask && (
+          <DeleteLabelToTaskForm
+            afterSubmit={() => {
+              setDeleteLabelToTask(false);
+              fetchTask();
+            }}
+            taskObject={task!}
+          />
+        )}
         {addTracking && (
           <AddTrackingForm
             afterSubmit={() => {
@@ -110,7 +157,7 @@ export const TaskPageID = () => {
         )}
         <TrackingList>
           {task?.__trackings__.map((tracking: Tracking) => (
-            <TrackingItem tracking={tracking}></TrackingItem>
+            <TrackingItem tracking={tracking} fetchTask={fetchTask}></TrackingItem>
           ))}
         </TrackingList>
     </Layout>

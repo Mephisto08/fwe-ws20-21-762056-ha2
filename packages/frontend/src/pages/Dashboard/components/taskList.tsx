@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {Button8rem, DeleteButton} from "../../../components/Button";
+import { Button8rem, DeleteButton } from "../../../components/Button";
 import { StartTrackingForm } from "./startTracking";
 
-const defaultValue = "";
-export const testContext = React.createContext(defaultValue);
+const defaultValue: any = "";
+export const taskNameContext = React.createContext(defaultValue);
+export const taskIdContext = React.createContext(defaultValue);
+export const trackingStartDate = React.createContext(new Date());
 
 
 export enum TaskType {
@@ -137,6 +139,7 @@ export const TaskValue = styled.div`
 export type TaskItemProps = {
   task: Task;
   onClick?: (task: Task) => void;
+  fetchTask: () => void;
 };
 
 export function msToHMS(ms: any) {
@@ -153,20 +156,22 @@ export function msToHMS(ms: any) {
 
 export const TaskItem: React.FC<TaskItemProps> = ({
   task,
-  onClick = () => {},
+  onClick = () => { },
+  fetchTask,
 
 }) => {
-  const {id, name, description, __labels__} = task;
+  const { id, name, description, __labels__ } = task;
   const [startTracking, setStartTracking] = useState(false);
 
   const deleteTask = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     await fetch(`/api/task/${id}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
     });
+    fetchTask();
   };
-  
+
   const getDateDifference = function (): string {
     const ms = task?.__trackings__.reduce((prev: any, cur: any) => {
       const timeStart = new Date(cur.timeStart);
@@ -180,48 +185,54 @@ export const TaskItem: React.FC<TaskItemProps> = ({
     return msToHMS(ms);
   }
 
+  const setTimer = function (): any {
+    const creationDate = new Date();
+    console.log(creationDate);
+    return creationDate;
+  }
+
   return (
     <TaskItemStyle>
       <TaskHighlight />
-      <testContext.Provider value={name}>
-      <div> 
-        <DeleteButton onClick={deleteTask}/>
-      </div>
-      <TaskFlex onClick={() => {
-        console.log(task);
-        onClick(task);
-      }}
->
+      <taskNameContext.Provider value={name}>
+        <taskIdContext.Provider value={id}>
           <div>
-            <TaskTitle>{name}</TaskTitle>
-            <TaskDescription>{description}</TaskDescription>
-            <LabelItem>
-              Label:
-              <LabelList>
-                {__labels__ &&
-                  __labels__.map((label: Label) => {
-                  return <li key={label.id}>{label.id} {label.name}</li>;
-                })}
-            </LabelList>
-          </LabelItem>
-              <TrackedTime>Gesamt Zeit: {getDateDifference()}</TrackedTime>
+            <DeleteButton onClick={deleteTask}></DeleteButton>
           </div>
-      </TaskFlex>
-      <div>
-        <Button8rem onClick={() =>{
-          setStartTracking(!startTracking)
-        }}>Start Track</Button8rem>
-      </div>
-
-      {startTracking && (
-        <StartTrackingForm 
-        afterSubmit={() => {
-          setStartTracking(false);
-        }}
-        />
-      )}
-
-    </testContext.Provider>   
+          <TaskFlex onClick={() => {
+            console.log(task);
+            onClick(task);
+          }}
+          >
+            <div>
+              <TaskTitle>{name}</TaskTitle>
+              <TaskDescription>{description}</TaskDescription>
+              <LabelItem>
+                Label:
+              <LabelList>
+                  {__labels__ &&
+                    __labels__.map((label: Label) => {
+                      return <li key={label.id}>{label.id} {label.name}</li>;
+                    })}
+                </LabelList>
+              </LabelItem>
+              <TrackedTime>Gesamt Zeit: {getDateDifference()}</TrackedTime>
+            </div>
+          </TaskFlex>
+          <div>
+            <Button8rem onClick={() => {
+              setStartTracking(!startTracking)
+            }}>{!startTracking ? "Start Track." : "Abbrechen"}</Button8rem>
+          </div>
+          {startTracking && (
+            <StartTrackingForm
+              fetchTask= {fetchTask}
+              startTime={setTimer()}
+              afterSubmit={() => { }}
+            />
+          )}
+        </taskIdContext.Provider>
+      </taskNameContext.Provider>
     </TaskItemStyle>
   );
 };

@@ -101,12 +101,14 @@ export const TaskValue = styled.div`
 export type TrackingItemProps = {
   tracking: Tracking;
   onClick?: (tracking: Tracking) => void;
+  fetchTask: () => void;
 };
 
 
 export const TrackingItem: React.FC<TrackingItemProps> = ({
   tracking,
   onClick = () => {},
+  fetchTask,
 
 }) => {
     const {id, description, timeStart, timeEnd} = tracking;
@@ -118,15 +120,22 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
           method: "DELETE",
           headers: { "Content-Type": "application/json"},
         });
+        fetchTask();
       };
 
       var oneDay = 60*1000; // hours*minutes*seconds*milliseconds 
       var timeStartDate = new Date(timeStart); 
       var timeEndDate = new Date(timeEnd); 
 
-      var diffDays = Math.round(Math.abs((timeStartDate.getTime() - timeEndDate.getTime())/(oneDay))); 
+      let currentTime: Date;
+    const actualTrackingTime = function(): string{
+      currentTime = new Date();
+      const diff = (timeEndDate.getTime() - timeStartDate.getTime());
+      console.log(msToHMS(diff-diff%1000))
+      return msToHMS(diff-diff%1000);
+    };
 
-  
+
   return ( 
     <TrackingItemStyle>
       <TrackingHighlight />
@@ -141,7 +150,7 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
             <TrackingTitle>{description}</TrackingTitle>
             <TrackedTime>Start: {timeStartDate.toLocaleString()}</TrackedTime>
             <TrackedTime>Ende: {timeEndDate.toLocaleString()}</TrackedTime>
-            <TrackedTime>Dauer: {diffDays} Minuten
+            <TrackedTime>Dauer: {actualTrackingTime()}
             </TrackedTime>
           </div>
       </TrackingFlex>
@@ -158,10 +167,11 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
                 setEditTracking(false);
             }}>
             <EditTrackingForm
-            afterSubmit={() => {
+              afterSubmit={() => {
               setEditTracking(false);
             }}
             trackingObject={tracking!} 
+            fetchTask={fetchTask}
           />
 
         </Modal>

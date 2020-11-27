@@ -5,15 +5,17 @@ import {
   TaskList,
   TaskItem,
 } from "./components/taskList";
-import {AddButton} from "../../components/Button";
+import {AddButton, AddLabelButton} from "../../components/Button";
 import {AddTaskForm} from "./components/addTask";
 import {Layout} from "../../components/Layout";
-import {BottomTaskBar} from "./components/bottomTaskBar";
 import {useHistory} from "react-router-dom";
+import { Modal } from "../../components/Modal";
+import { AddLabelForm } from "./components/addLabel";
 
 export const TaskPage = () => {
   const [allTask, setTask] = useState<Task[]>([]);
   const [addTask, setAddTask] = useState(false);
+  const [addLabel, setAddLabel] = useState(false);
   let history = useHistory();
 
   const fetchTask = async function () {
@@ -53,11 +55,13 @@ export const TaskPage = () => {
               align-items: top;
             `}
           >
+
+            <AddLabelButton onClick={() => {
+              setAddLabel(!addLabel);
+            }}/>
             <AddButton  onClick= {() => {
-              setAddTask(!addTask)
-            }}
-            
-          />
+              setAddTask(!addTask);
+            }}/>
           </div>
         </div>
         {addTask && (
@@ -68,9 +72,25 @@ export const TaskPage = () => {
             }}
           />
         )}
+         {addLabel && (<Modal
+            title="Erstelle ein Label!"
+            onCancel={() => {
+                setAddLabel(false);
+            }}>
+            <AddLabelForm
+              afterSubmit={() => {
+              setAddLabel(false);
+              fetchTask();
+            }}
+          />
+
+        </Modal>
+         )}
         <TaskList>
           {allTask.map((allTask) => (
-            <TaskItem onClick={() => (history.push(`/task/${allTask.id}`))} key={allTask.id} task={allTask}></TaskItem>
+            <TaskItem onClick={() => (history.push(`/task/${allTask.id}`))} 
+              key={allTask.id} task={allTask} fetchTask={fetchTask}>
+            </TaskItem>
           ))}
         </TaskList>
     </Layout>

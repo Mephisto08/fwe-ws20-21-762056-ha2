@@ -30,6 +30,69 @@ export const AddButton = (
     </StyledButton>
   );
 };
+export const AddLabelButton = (
+  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+) => {
+  const StyledButton = styled.button`
+    margin-left: 0.5rem;
+    width: 48px;
+    border: 0px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.colors.primary};
+  `;
+  return (
+    <StyledButton {...props}>
+     Add Label
+    </StyledButton>
+  );
+};
+
+export const DeleteLabelButton = (
+  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+) => {
+  const StyledButton = styled.button`
+    margin-left: 0.5rem;
+    width: 48px;
+    border: 0px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    float: right;
+    background-color: ${(props) => props.theme.colors.primary};
+  `;
+  return (
+    <StyledButton {...props}>
+    Delete Label 
+    </StyledButton>
+  );
+};
+
+export const ShowLabelButton = (
+  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+) => {
+  const StyledButton = styled.button`
+    margin-left: 0.5rem;
+    width: 48px;
+    border: 0px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    float: right;
+    background-color: ${(props) => props.theme.colors.primary};
+  `;
+  return (
+    <StyledButton {...props}>
+    Show Label 
+    </StyledButton>
+  );
+};
 export const StartButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -149,6 +212,7 @@ export const DeleteButton = (
     </StyledButton>
   );
 };
+
 
 export const Button8rem = styled.button`
   background-color: ${(props) => props.theme.colors.primary};
