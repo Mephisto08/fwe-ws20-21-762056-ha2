@@ -1,11 +1,14 @@
 # **Fortgeschrittene Webentwicklung**
 Dies ist das Backend für die erste Hausaufgabe in dem Fach Fortgeschrittene Webentwicklung. Sie beinhaltet einen Docker, in dem alles selbstständig. Dieser installiert alles selbstständig. In ihm wird ein Server sowie eine Datenbank zur Verfügung gestellt.
-- Wie der Docker gestartet wird, kann man in dem Unterpunkt **Setup** nachlesen.
-- Welche Routen zur Verfügung stehen, um Task, Labels und Trackings bearbeiten zu können, kann man in dem Unterpunkt **Routen** nachlesen.
-- In dem Unterpunkt **Datenbank**, wird beschrieben, wie man in die Datenbankanwendung gelangen kann und Datensätze abfragen kann.
-- Der Unterpunkt **Test**, beschreibt, wie man die Test ausführen kann.
-- Mit welchen Mitteln der Code analysiert wird, kann man in dem Unterpunkt **Statische Code Analyse** nachvollziehen.
-- Im letzten Unterpunkt **Zusatzaufgabe**, ist der Aufbau und die Funktionalität der Zusatzaufgabe beschrieben.
+- Wie der Docker gestartet wird, kann man in dem Unterpunkt **[Setup](#setup)** nachlesen.
+- Welche Routen zur Verfügung stehen, um Task, Labels und Trackings bearbeiten zu können, kann man in dem Unterpunkt **[Routen](#routen)** nachlesen.
+
+	Es gibt Routen für [Task](#task), [Label](#label), [Tracking](#tracking).
+- Um Beispieldaten zu gnerieren kann das Kapitel **[Beispieldaten generieren](#beispieldaten-generieren)** eingesehen werden.
+- In dem Unterpunkt **[Datenbank](#datenbank)**, wird beschrieben, wie man in die Datenbankanwendung gelangen kann und Datensätze abfragen kann.
+- Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Test ausführen kann.
+- Mit welchen Mitteln der Code analysiert wird, kann man in dem Unterpunkt **[Statische Code Analyse](#statische-code-analyse)** nachvollziehen.
+- Im letzten Unterpunkt **[Zusatzaufgabe](#zusatzaufgabe)**, ist der Aufbau und die Funktionalität der Zusatzaufgabe beschrieben.
 
 
 ## Setup
@@ -218,6 +221,11 @@ Dies ist das Backend für die erste Hausaufgabe in dem Fach Fortgeschrittene Web
 		- Erwartet im Body mindesten einen der drei Parameter: description, timeStart, timeEnd
 		- 
 				{"description":  "Tracking Test 1 Update" }
+
+## Beispieldaten generieren
+Um Beispieldaten generieren zulassen kann folgender Befehl im Docker ausgefhrt werden.
+			
+			docker-compose exec backend npm run fixtures
 
 ## Datenbank
 Die Daten werden in einer Datenbank gespeichert. Es wird eine mariaDB verwendet. Die Daten, die die Datenbank beinhaltet, können über die Konsole eingesehen werden.
