@@ -80,6 +80,7 @@ export const deleteTrackingById = async (req, res) => {
 export const getAllTrackings = async (req, res) => {
   const trackingRepository = getRepository(Tracking);
   const tracking = await trackingRepository.find({relations: ['task']});
+  tracking.sort((a, b) => (a.description < b.description ? -1 : 1));
   res.status(200).send({
     data: tracking,
   });

@@ -223,6 +223,7 @@ export const getAllTasks = async (req, res) => {
   if (filterDescription) {
     result = result.filter((d) => d.description === filterDescription);
   }
+  result.sort((a, b) => (a.name < b.name ? -1 : 1));
   res.status(200).send({data: result});
 };
 

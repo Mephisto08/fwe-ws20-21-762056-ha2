@@ -5,7 +5,7 @@ import {
   TaskList,
   TaskItem,
 } from "./components/taskList";
-import { AddButton, AddLabelButton, FilterButton } from "../../components/Button";
+import { AddButton, AddLabelButton, CreateLabelButton, FilterButton } from "../../components/Button";
 import { AddTaskForm } from "./components/addTask";
 import { Layout } from "../../components/Layout";
 import { useHistory } from "react-router-dom";
@@ -63,7 +63,7 @@ export const TaskPage = () => {
           <FilterButton onClick={() => {
             setFilter(!filter);
           }} />
-          <AddLabelButton onClick={() => {
+          <CreateLabelButton onClick={() => {
             setAddLabel(!addLabel);
           }} />
           <AddButton onClick={() => {
@@ -108,7 +108,6 @@ export const TaskPage = () => {
             setFilter(false);
             fetchTask();
           }}
-          taskFilter={taskFilter}
           setTaskFilter={setTaskFilter}
         />
 

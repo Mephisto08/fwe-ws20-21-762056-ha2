@@ -60,6 +60,7 @@ export const deleteLabelById = async (req, res) => {
 export const getAllLabels = async (req, res) => {
   const labelRepository = getRepository(Label);
   const labels = await labelRepository.find();
+  labels.sort((a, b) => (a.id < b.id ? -1 : 1));
   res.send({data: labels});
 };
 

@@ -2,10 +2,9 @@ import React, {useState, ChangeEvent } from "react";
 import { Input } from "../../../components/Input";
 import { Button20rem} from "../../../components/Button";
 
-export const FilterForm: React.FC<{ afterSubmit: () => void; taskFilter: any;setTaskFilter: any;}> = ({
+export const FilterForm: React.FC<{ afterSubmit: () => void;setTaskFilter: any;}> = ({
   afterSubmit,
   setTaskFilter,
-  taskFilter,
 }) => {
   const [values, setValues] = useState({
     taskName: "",
