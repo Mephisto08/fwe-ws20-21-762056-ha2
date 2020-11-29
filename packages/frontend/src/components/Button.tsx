@@ -213,6 +213,27 @@ export const DeleteButton = (
   );
 };
 
+export const FilterButton = (
+  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+) => {
+  const StyledButton = styled.button`
+    margin-left: 0.5rem;
+    width: 48px;
+    border: 0px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.colors.primary};
+  `;
+  return (
+    <StyledButton {...props}>
+     Filter
+    </StyledButton>
+  );
+};
 
 export const Button8rem = styled.button`
   background-color: ${(props) => props.theme.colors.primary};

@@ -21,7 +21,7 @@ export const TaskPageID = () => {
   const [addTracking, setAddTracking] = useState(false);
 
   const getDateDifference = function (): string {
-    const ms = task?.__trackings__.reduce((prev: any, cur: any) => {
+    const ms = task?.trackings.reduce((prev: any, cur: any) => {
       const timeStart = new Date(cur.timeStart);
       const timeEnd = new Date(cur.timeEnd);
       const diff = (timeEnd.getTime() - timeStart.getTime());
@@ -92,8 +92,8 @@ export const TaskPageID = () => {
             <LabelItem>
               Label:
                     <LabelList>
-                {task?.__labels__ &&
-                  task?.__labels__.map((label: Label) => {
+                {task?.labels &&
+                  task?.labels.map((label: Label) => {
                     return <li key={label.id}>{label.id} {label.name}</li>;
                   })}
               </LabelList>
@@ -156,7 +156,7 @@ export const TaskPageID = () => {
           />
         )}
         <TrackingList>
-          {task?.__trackings__.map((tracking: Tracking) => (
+          {task?.trackings.map((tracking: Tracking) => (
             <TrackingItem tracking={tracking} fetchTask={fetchTask}></TrackingItem>
           ))}
         </TrackingList>

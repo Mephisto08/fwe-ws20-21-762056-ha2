@@ -43,10 +43,9 @@ export class Task {
     @ManyToMany(() => Label, (label) => label.tasks)
     // eslint-disable-next-line new-cap
     @JoinTable()
-    labels: Promise<Label[]>;
+    labels: Label[];
 
     // eslint-disable-next-line new-cap
     @OneToMany(() => Tracking, (tracking) => tracking.task, {nullable: true})
-
-    trackings: Promise<Tracking[]>;
+    trackings: Tracking[];
 }

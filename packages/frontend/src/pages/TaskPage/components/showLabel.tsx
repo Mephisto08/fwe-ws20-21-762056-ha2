@@ -1,7 +1,21 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
-import { Label, LabelItem, LabelList } from "../../Dashboard/components/taskList";
+import styled from "styled-components";
+import { Label, LabelItem} from "../../Dashboard/components/taskList";
 
-
+export const LabelList = styled.ul`
+  flex-grow: 1;
+  font-size: 0.8rem;
+  align-self: flex-end;
+  float: left;
+  & > li {
+    margin-right: 0.5rem;
+    padding: 0.125rem;
+    border-radius: 0.25rem;
+    background-color: ${(props) => props.theme.colors.primary};
+    display: block;
+    color: #000;
+  }
+`;
 
 export const ShowLabelForm: React.FC<{ afterSubmit: () => void; }> = ({
     afterSubmit,
@@ -39,17 +53,13 @@ export const ShowLabelForm: React.FC<{ afterSubmit: () => void; }> = ({
     };
     return (
         <>
-        <div>
             <h3>Alle Labels</h3>
-            <LabelItem>
               <LabelList>
                 {allLabel &&
                   allLabel.map((label: Label) => {
-                  return <li key={label.id}>{label.id} {label.name}</li>;
+                  return <li css={"margin-top: 0.2rem;"} key={label.id}>{label.id} {label.name}</li>;
                 })}
             </LabelList>
-          </LabelItem>
-          </div>
         </>
     );
 };

@@ -2,6 +2,7 @@ import {getRepository} from 'typeorm';
 import {Label} from '../Entities/Label';
 import {Task} from '../Entities/Task';
 import Axios from 'axios';
+
 /**
  * Fügt ein Task eine Label zu.
  * Erwartet als Parameter eine taskId.
@@ -34,8 +35,9 @@ async function addLabels(taskId, labelList, res) {
   type NewType = number;
   const taskRepo = getRepository(Task);
   try {
-    const task = await taskRepo.findOneOrFail(taskId);
-    const taskLabelsList = await task.labels;
+    const task =
+    await taskRepo.findOneOrFail(taskId, {relations: ['labels']});
+    const taskLabelsList = task.labels;
     const labelRepo = getRepository(Label);
 
     for (let i = 0; i < Object.keys(labelList).length; ++i) {
@@ -108,12 +110,12 @@ export const deleteLabelsByTaskId = async (req, res) =>{
 
   try {
     const taskRepo = getRepository(Task);
-    const task = await taskRepo.findOneOrFail(taskId);
-    let taskLabelsList = await task.labels;
+    const task = await taskRepo.findOneOrFail(taskId, {relations: ['labels']});
+    let taskLabelsList = task.labels;
 
     taskLabelsList = deletsLabelsFromLabelList(taskLabelsList, labelList);
 
-    task.labels = Promise.resolve(taskLabelsList);
+    task.labels = taskLabelsList;
 
     await taskRepo.save(task);
     res.status(200).send({
@@ -185,8 +187,8 @@ export const getAllLabesByTaskId = async (req, res) => {
   const taskId = req.params.taskId;
   const taskRepo = getRepository(Task);
   try {
-    const task = await taskRepo.findOneOrFail(taskId);
-    const taskLabelsList = await task.labels;
+    const task = await taskRepo.findOneOrFail(taskId, {relations: ['labels']});
+    const taskLabelsList = task.labels;
     res.status(200).send({data: taskLabelsList});
   } catch (error) {
     res.status(404).send({
@@ -206,7 +208,22 @@ export const getAllTasks = async (req, res) => {
   const taskRepository = getRepository(Task);
   const tasks = await taskRepository.find(
       {relations: ['trackings', 'labels']});
-  res.status(200).send({data: tasks});
+
+  const {filterTask, filterDescription, filterLabel} = req.query;
+  let result = [...tasks];
+
+  if (filterTask) {
+    result = result.filter((r) => r.name === filterTask);
+  }
+  if (filterLabel) {
+    console.log(filterLabel, 'dsddd' );
+    result = result.filter((t) => t.labels.some((l) => l.name === filterLabel));
+    console.log(result, 'sdgvsd');
+  }
+  if (filterDescription) {
+    result = result.filter((d) => d.description === filterDescription);
+  }
+  res.status(200).send({data: result});
 };
 
 /**

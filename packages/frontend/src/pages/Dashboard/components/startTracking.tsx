@@ -28,59 +28,94 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
   startTime,
   fetchTask,
 }) => {
-
-
-  const creationTime = startTime;
+  let creationTime = startTime;
   const taskName = useContext(taskNameContext);
   const taskId = useContext(taskIdContext);
   const [tracking, setTracking] = useState({
     description: "",
     task: `${taskId}`,
   });
-
+  const [buttonText, setButtonText] = useState("Pause");
+  const [paused, setPaused] = useState(false);
+  const [stop, setStop] = useState(false);
+  let changeText: any;
   let currentTime: Date;
+
+
   const actualTrackingTime = function (): string {
     currentTime = new Date();
     const diff = (currentTime.getTime() - creationTime.getTime());
     return msToHMS(diff - diff % 1000);
   };
-
   const [trackingTime, setTrackingTime] = useState(actualTrackingTime());
 
   const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTracking({ ...tracking, [e.target.name]: e.target.value });
   };
 
-  const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      await fetch("/api/tracking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          "description": `${tracking.description}`,
-          "task": `${tracking.task}`,
-          "timeStart": `${creationTime}`,
-          "timeEnd": `${currentTime}`,
 
-        }),
-      });
-      fetchTask();
-      afterSubmit();
-    
+
+
+  changeText = (text: React.SetStateAction<string>) => setButtonText(text);
+  const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    setPaused(!paused);
+
+    e.preventDefault();
+    if (stop) {
+      if (paused) {
+        console.log("clicked paused")
+        afterSubmit();
+      }else if (!paused) {
+        console.log("clicked")
+        await fetch("/api/tracking", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            "description": `${tracking.description}`,
+            "task": `${tracking.task}`,
+            "timeStart": `${creationTime}`,
+            "timeEnd": `${currentTime}`,
+          }),
+        });
+        afterSubmit();
+      }
+    } else if (!stop) {
+      if (!paused) {
+        await fetch("/api/tracking", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            "description": `${tracking.description}`,
+            "task": `${tracking.task}`,
+            "timeStart": `${creationTime}`,
+            "timeEnd": `${currentTime}`,
+
+          }),
+        });
+      }
+    }
+
+
+    if (paused == false) {
+      creationTime = new Date();
+    }
+    fetchTask();
 
   };
 
   useEffect(() => {
+    if (!paused) {
       const actualTime = setTimeout(() => {
         setTrackingTime(actualTrackingTime());
       }, 1000);
+    }
   });
+
 
 
   return (
     <>
       <StartTracking>
-        {console.log(trackingTime + "return")}
         <Title>Starte ein Tracking für {taskName} </Title>
         <Time>Zeit:  {trackingTime}</Time>
 
@@ -92,10 +127,8 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
             type="text"
             required
           />
-          <Button8rem type="submit">
-            {true ? "Pause" : "Start Track."}
-          </Button8rem>
-          <StopButton type="button"></StopButton>
+          <Button8rem type="submit" onClick={() => changeText(paused ? "Pause" : "Weiter")}>{buttonText}</Button8rem>
+          <StopButton type="submit" onClick={() => setStop(true)}></StopButton>
         </form>
       </StartTracking>
     </>

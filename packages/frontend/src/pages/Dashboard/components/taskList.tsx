@@ -36,8 +36,8 @@ export type Task = {
   description: string;
   created: string;
   updated: string;
-  __labels__: Label[];
-  __trackings__: Tracking[];
+  labels: Label[];
+  trackings: Tracking[];
 };
 
 export const LabelList = styled.div`
@@ -160,7 +160,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   fetchTask,
 
 }) => {
-  const { id, name, description, __labels__ } = task;
+  const { id, name, description, labels } = task;
   const [startTracking, setStartTracking] = useState(false);
 
   const deleteTask = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -173,11 +173,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   };
 
   const getDateDifference = function (): string {
-    const ms = task?.__trackings__.reduce((prev: any, cur: any) => {
+    const ms = task?.trackings.reduce((prev: any, cur: any) => {
       const timeStart = new Date(cur.timeStart);
       const timeEnd = new Date(cur.timeEnd);
       const diff = (timeEnd.getTime() - timeStart.getTime());
-      console.log(diff, timeEnd.getTime(), diff);
 
       return diff + prev;
     }, 0);
@@ -187,7 +186,6 @@ export const TaskItem: React.FC<TaskItemProps> = ({
 
   const setTimer = function (): any {
     const creationDate = new Date();
-    console.log(creationDate);
     return creationDate;
   }
 
@@ -210,8 +208,8 @@ export const TaskItem: React.FC<TaskItemProps> = ({
               <LabelItem>
                 Label:
               <LabelList>
-                  {__labels__ &&
-                    __labels__.map((label: Label) => {
+                  {labels &&
+                    labels.map((label: Label) => {
                       return <li key={label.id}>{label.id} {label.name}</li>;
                     })}
                 </LabelList>
@@ -228,7 +226,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
             <StartTrackingForm
               fetchTask= {fetchTask}
               startTime={setTimer()}
-              afterSubmit={() => { }}
+              afterSubmit={() => {setStartTracking(false)}}
             />
           )}
         </taskIdContext.Provider>
