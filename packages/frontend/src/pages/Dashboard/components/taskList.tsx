@@ -140,6 +140,8 @@ export type TaskItemProps = {
   task: Task;
   onClick?: (task: Task) => void;
   fetchTask: () => void;
+  setTaskId: any;
+  taskId: Number;
 };
 
 export function msToHMS(ms: any) {
@@ -158,10 +160,16 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   task,
   onClick = () => { },
   fetchTask,
+  taskId,
+  setTaskId,
 
 }) => {
   const { id, name, description, labels } = task;
   const [startTracking, setStartTracking] = useState(false);
+
+  
+
+
 
   const deleteTask = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -183,6 +191,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
 
     return msToHMS(ms);
   }
+  const totalTimeOfTask = getDateDifference();
 
   const setTimer = function (): any {
     const creationDate = new Date();
@@ -194,41 +203,47 @@ export const TaskItem: React.FC<TaskItemProps> = ({
       <TaskHighlight />
       <taskNameContext.Provider value={name}>
         <taskIdContext.Provider value={id}>
-          <div>
-            <DeleteButton onClick={deleteTask}></DeleteButton>
-          </div>
-          <TaskFlex onClick={() => {
-            console.log(task);
-            onClick(task);
-          }}
-          >
             <div>
-              <TaskTitle>{name}</TaskTitle>
-              <TaskDescription>{description}</TaskDescription>
-              <LabelItem>
-                Label:
-              <LabelList>
-                  {labels &&
-                    labels.map((label: Label) => {
-                      return <li key={label.id}>{label.id} {label.name}</li>;
-                    })}
-                </LabelList>
-              </LabelItem>
-              <TrackedTime>Gesamt Zeit: {getDateDifference()}</TrackedTime>
+              <DeleteButton onClick={deleteTask}></DeleteButton>
             </div>
-          </TaskFlex>
-          <div>
-            <Button8rem onClick={() => {
-              setStartTracking(!startTracking)
-            }}>{!startTracking ? "Start Track." : "Abbrechen"}</Button8rem>
-          </div>
-          {startTracking && (
-            <StartTrackingForm
-              fetchTask= {fetchTask}
-              startTime={setTimer()}
-              afterSubmit={() => {setStartTracking(false)}}
-            />
-          )}
+            <TaskFlex onClick={() => {
+              onClick(task);
+            }}
+            >
+              <div>
+                <TaskTitle>{name}</TaskTitle>
+                <TaskDescription>{description}</TaskDescription>
+                <LabelItem>
+                  Label:
+              <LabelList>
+                    {labels &&
+                      labels.map((label: Label) => {
+                        return <li key={label.id}>{label.id} {label.name}</li>;
+                      })}
+                  </LabelList>
+                </LabelItem>
+                <TrackedTime>Gesamt Zeit: {totalTimeOfTask}</TrackedTime>
+              </div>
+            </TaskFlex>
+            <div>
+              <Button8rem 
+                onClick={() => {
+                console.log(id, taskId);
+                setTaskId(id);
+                console.log(id, taskId);
+                setStartTracking(!startTracking);
+              }}
+              disabled={taskId == id || taskId == -1 ? false : true} 
+              >{!startTracking ? "Start Track." : "Abbrechen"}
+              </Button8rem>
+            </div>
+            {startTracking && (
+              <StartTrackingForm
+                fetchTask={fetchTask}
+                startTime={setTimer()}
+                afterSubmit={() => { setStartTracking(false); setTaskId(-1);}}
+              />
+            )}
         </taskIdContext.Provider>
       </taskNameContext.Provider>
     </TaskItemStyle>

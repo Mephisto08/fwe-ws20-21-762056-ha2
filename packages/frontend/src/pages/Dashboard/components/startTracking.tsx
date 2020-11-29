@@ -48,26 +48,28 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
     return msToHMS(diff - diff % 1000);
   };
   const [trackingTime, setTrackingTime] = useState(actualTrackingTime());
-  const [allTrackingTime, setAllTrackingTime] = useState(actualTrackingTime());
 
   const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTracking({ ...tracking, [e.target.name]: e.target.value });
   };
 
-
-
-
   changeText = (text: React.SetStateAction<string>) => setButtonText(text);
+
+
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
-    setPaused(!paused);
-    e.preventDefault();
     
+    console.log(paused, '+paused+stop+', stop);
+    setPaused(!paused);
+    console.log(paused, '+paused+stop+', stop);
+
+    e.preventDefault();
+
+
+
     if (stop) {
       if (paused) {
-        console.log("clicked paused")
         afterSubmit();
-      }else if (!paused) {
-        console.log("clicked")
+      } else if (!paused) {
         await fetch("/api/tracking", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -125,8 +127,8 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
             type="text"
             required
           />
-          <Button8rem type="submit" onClick={() => changeText(paused ? "Pause" : "Weiter")}>{buttonText}</Button8rem>
-          <StopButton type="submit" onClick={() => setStop(true)}></StopButton>
+          <Button8rem type='submit' onClick={() => changeText(paused ? "Pause" : "Weiter")}>{buttonText}</Button8rem>
+          <StopButton type='submit' onClick={() => setStop(true)}></StopButton>
         </form>
       </StartTracking>
     </>

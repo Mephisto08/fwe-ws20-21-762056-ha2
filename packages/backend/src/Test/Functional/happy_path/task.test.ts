@@ -36,9 +36,9 @@ describe('Tests for the Task class', () => {
         .expect(200)
         .end(async (err, res) => {
           if (err) throw err;
-          expect(res.body.data.__labels__.length).toBe(3);
-          expect(res.body.data.__labels__[1].name).toBe('Label Test 3');
-          expect(res.body.data.__labels__[2].id).toBe(1);
+          expect(res.body.data.labels.length).toBe(3);
+          expect(res.body.data.labels[1].name).toBe('Label Test 3');
+          expect(res.body.data.labels[2].id).toBe(1);
           done();
         });
   });
@@ -84,8 +84,8 @@ describe('Tests for the Task class', () => {
         .expect(200)
         .end(async (err, res) => {
           if (err) throw err;
-          expect(res.body.data.__labels__.length).toBe(1);
-          expect(res.body.data.__labels__[0].id).toBe(3);
+          expect(res.body.data.labels.length).toBe(1);
+          expect(res.body.data.labels[0].id).toBe(3);
           done();
         });
   });

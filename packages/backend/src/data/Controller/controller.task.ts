@@ -238,7 +238,8 @@ export const getAllTrackingsByTaskId = async (req, res) =>{
   const taskId = req.params.taskId;
   const taskRepo = getRepository(Task);
   try {
-    const task = await taskRepo.findOneOrFail(taskId);
+    const task = await taskRepo.findOneOrFail(taskId, {
+      relations: ['trackings']});
     const taskTrackingsList = await task.trackings;
     res.status(200).send({data: taskTrackingsList});
   } catch (error) {

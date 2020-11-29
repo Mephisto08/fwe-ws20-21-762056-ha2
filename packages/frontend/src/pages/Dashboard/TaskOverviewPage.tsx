@@ -13,12 +13,14 @@ import { Modal } from "../../components/Modal";
 import { AddLabelForm } from "./components/addLabel";
 import { FilterForm } from "./components/filter";
 
+
 export const TaskPage = () => {
   const [allTask, setTask] = useState<Task[]>([]);
   const [addTask, setAddTask] = useState(false);
   const [addLabel, setAddLabel] = useState(false);
   const [taskFilter, setTaskFilter] = useState({ taskName: "", taskDescription: "", taskLabel: ""});
   const [filter, setFilter] = useState(false);
+  const [taskId, setTaskId] = useState(-1);
   let history = useHistory();
 
   const fetchTask = async function () {
@@ -116,7 +118,7 @@ export const TaskPage = () => {
       <TaskList>
         {allTask.map((allTask) => (
           <TaskItem onClick={() => (history.push(`/task/${allTask.id}`))}
-            key={allTask.id} task={allTask} fetchTask={fetchTask}>
+            key={allTask.id} task={allTask} fetchTask={fetchTask} taskId={taskId} setTaskId={setTaskId}>
           </TaskItem>
         ))}
       </TaskList>
