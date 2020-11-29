@@ -7,7 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import {TaskPage} from "./pages/Dashboard/TaskOverviewPage";
-import {TaskPageID} from "./pages/TaskPage/taskPage";
+import {TaskPageID} from "./pages/TaskDetailPage/taskPage";
 
 
 
@@ -21,8 +21,8 @@ export interface Data {
   description:   string;
   created:       Date;
   updated:       Date;
-  __trackings__: any[];
-  __labels__:    any[];
+  trackings: any[];
+  labels:    any[];
 }
 
 

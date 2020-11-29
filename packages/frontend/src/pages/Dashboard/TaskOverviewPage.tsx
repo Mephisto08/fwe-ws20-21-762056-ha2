@@ -20,7 +20,7 @@ export const TaskPage = () => {
   const [addLabel, setAddLabel] = useState(false);
   const [taskFilter, setTaskFilter] = useState({ taskName: "", taskDescription: "", taskLabel: ""});
   const [filter, setFilter] = useState(false);
-  const [taskId, setTaskId] = useState(-1);
+  const [taskTrackingId, setTaskTrackingId] = useState(-1);
   let history = useHistory();
 
   const fetchTask = async function () {
@@ -118,7 +118,7 @@ export const TaskPage = () => {
       <TaskList>
         {allTask.map((allTask) => (
           <TaskItem onClick={() => (history.push(`/task/${allTask.id}`))}
-            key={allTask.id} task={allTask} fetchTask={fetchTask} taskId={taskId} setTaskId={setTaskId}>
+            key={allTask.id} task={allTask} fetchTask={fetchTask} taskTrackingId={taskTrackingId} setTaskTrackingId={setTaskTrackingId}>
           </TaskItem>
         ))}
       </TaskList>

@@ -64,8 +64,6 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
 
     e.preventDefault();
 
-
-
     if (stop) {
       if (paused) {
         afterSubmit();

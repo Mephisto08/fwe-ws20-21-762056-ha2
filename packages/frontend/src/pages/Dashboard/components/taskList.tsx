@@ -140,8 +140,8 @@ export type TaskItemProps = {
   task: Task;
   onClick?: (task: Task) => void;
   fetchTask: () => void;
-  setTaskId: any;
-  taskId: Number;
+  setTaskTrackingId: any;
+  taskTrackingId: Number;
 };
 
 export function msToHMS(ms: any) {
@@ -160,8 +160,8 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   task,
   onClick = () => { },
   fetchTask,
-  taskId,
-  setTaskId,
+  taskTrackingId,
+  setTaskTrackingId,
 
 }) => {
   const { id, name, description, labels } = task;
@@ -180,7 +180,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
     fetchTask();
   };
 
-  const getDateDifference = function (): string {
+  const getTimeDifference = function (): string {
     const ms = task?.trackings.reduce((prev: any, cur: any) => {
       const timeStart = new Date(cur.timeStart);
       const timeEnd = new Date(cur.timeEnd);
@@ -191,7 +191,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
 
     return msToHMS(ms);
   }
-  const totalTimeOfTask = getDateDifference();
+  const totalTimeOfTask = getTimeDifference();
 
   const setTimer = function (): any {
     const creationDate = new Date();
@@ -228,12 +228,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({
             <div>
               <Button8rem 
                 onClick={() => {
-                console.log(id, taskId);
-                setTaskId(id);
-                console.log(id, taskId);
+                setTaskTrackingId(id);
                 setStartTracking(!startTracking);
               }}
-              disabled={taskId == id || taskId == -1 ? false : true} 
+              disabled={taskTrackingId == id || taskTrackingId == -1 ? false : true} 
               >{!startTracking ? "Start Track." : "Abbrechen"}
               </Button8rem>
             </div>
@@ -241,7 +239,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
               <StartTrackingForm
                 fetchTask={fetchTask}
                 startTime={setTimer()}
-                afterSubmit={() => { setStartTracking(false); setTaskId(-1);}}
+                afterSubmit={() => { setStartTracking(false); setTaskTrackingId(-1);}}
               />
             )}
         </taskIdContext.Provider>
