@@ -111,10 +111,15 @@ export const deleteLabelsByTaskId = async (req, res) =>{
   try {
     const taskRepo = getRepository(Task);
     const task = await taskRepo.findOneOrFail(taskId, {relations: ['labels']});
-    let taskLabelsList = task.labels;
+    const taskLabelsList = task.labels;
 
-    taskLabelsList = deletsLabelsFromLabelList(taskLabelsList, labelList);
-
+    for (let i = 0; i < Object.keys(labelList).length; ++i) {
+      for (let j = 0; j < taskLabelsList.length; ++j) {
+        if (labelList[i] == taskLabelsList[j].id) {
+          taskLabelsList.splice(j, 1);
+        }
+      }
+    }
     task.labels = taskLabelsList;
 
     await taskRepo.save(task);
@@ -127,21 +132,6 @@ export const deleteLabelsByTaskId = async (req, res) =>{
     });
   }
 };
-
-/**
- * Filtert alle Labels aus der taskLabelList heraus,
- * die in der labelList angegeben sind
- * @param {label[]}taskLabelsList Liste mit Labels eines bestimmten Tasks
- * @param {any}labelList Liste mit Label-Id,
- * die aus der oberen Liste gelöscht werden
- * @return {label[]} Liste mit Labels.
- * Beinhaltet nur noch die Labels die gelöscht werden sollten.
- */
-function deletsLabelsFromLabelList(taskLabelsList: Label[], labelList: any) {
-  taskLabelsList = taskLabelsList.filter((label) =>
-    !labelList.includes(label.id));
-  return taskLabelsList;
-}
 
 /**
  * Prüft, ob alle Parameter gesetzt werden für deleteLabelsByTaskId

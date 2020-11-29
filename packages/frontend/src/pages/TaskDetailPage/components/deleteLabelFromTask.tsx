@@ -1,11 +1,11 @@
-import React, {useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Input } from "../../../components/Input";
-import { Button20rem} from "../../../components/Button";
+import { Button20rem } from "../../../components/Button";
 import { Task } from "../../Dashboard/components/taskList";
 
 interface EditTrackingFormState {
-    id: number;
-  }
+  id: number;
+}
 
 export const DeleteLabelToTaskForm: React.FC<{ afterSubmit: () => void; taskObject: Task; }> = ({
   afterSubmit,
@@ -13,20 +13,19 @@ export const DeleteLabelToTaskForm: React.FC<{ afterSubmit: () => void; taskObje
 }) => {
   const [values, setValues] = useState<EditTrackingFormState>(taskObject);
   const [label, setLabel] = useState({
-    labelList: [],
+    labelList: "",
   });
   const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLabel({ ...label, [e.target.name]: e.target.value });
   };
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(label);
 
     await fetch(`/api/task/label/${values.id}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        ...label,
+        "labelList": label.labelList.split(","),
       }),
     });
     afterSubmit();

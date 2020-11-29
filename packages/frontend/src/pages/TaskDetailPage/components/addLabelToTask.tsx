@@ -1,11 +1,11 @@
-import React, {useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Input } from "../../../components/Input";
-import { Button20rem} from "../../../components/Button";
+import { Button20rem } from "../../../components/Button";
 import { Task } from "../../Dashboard/components/taskList";
 
 interface EditTrackingFormState {
-    id: number;
-  }
+  id: number;
+}
 
 export const AddLabelToTaskForm: React.FC<{ afterSubmit: () => void; taskObject: Task; }> = ({
   afterSubmit,
@@ -21,13 +21,13 @@ export const AddLabelToTaskForm: React.FC<{ afterSubmit: () => void; taskObject:
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-      await fetch(`/api/task/label/${values.id}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify({
-          "labelList": label.labelList.split(","),
-        })
-      });
+    await fetch(`/api/task/label/${values.id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        "labelList": label.labelList.split(","),
+      }),
+    });
     afterSubmit();
   };
   return (

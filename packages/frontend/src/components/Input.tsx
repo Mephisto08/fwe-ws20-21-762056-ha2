@@ -1,4 +1,4 @@
-import React, { useState, HTMLProps, useRef } from "react";
+import React, {useRef} from "react";
 import styled from "styled-components";
 
 const InputLabel = styled.label`
@@ -62,7 +62,7 @@ export const Input = ({
 
   return (
     <InputContainer>
-      <InputField {...props} id={id.current} placeholder=" " />
+      <InputField {...props} id={id.current} placeholder=" "/>
       <InputLabel htmlFor={id.current}>{label}</InputLabel>
     </InputContainer>
   );

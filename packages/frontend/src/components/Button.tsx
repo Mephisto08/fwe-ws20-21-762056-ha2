@@ -1,3 +1,8 @@
+/**
+ * In dieser Datei werden alle Buttons definiert,
+ * die in der gesamten Anwednung verwendet werden.
+ * Grundlegendes Design der Buttons.
+ */
 import React from "react";
 import styled from "styled-components";
 
@@ -30,6 +35,7 @@ export const AddButton = (
     </StyledButton>
   );
 };
+
 export const AddLabelButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -51,6 +57,7 @@ export const AddLabelButton = (
     </StyledButton>
   );
 };
+
 export const CreateLabelButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -114,6 +121,7 @@ export const ShowLabelButton = (
     </StyledButton>
   );
 };
+
 export const StartButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -135,6 +143,7 @@ export const StartButton = (
     </StyledButton>
   );
 };
+
 export const PauseButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -173,6 +182,7 @@ export const PauseButton = (
     </StyledButton>
   );
 };
+
 export const StopButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -194,6 +204,7 @@ export const StopButton = (
     </StyledButton>
   );
 };
+
 export const EditButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -213,6 +224,7 @@ export const EditButton = (
     </StyledButton>
   );
 };
+
 export const DeleteButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -232,6 +244,7 @@ export const DeleteButton = (
     </StyledButton>
   );
 };
+
 export const FilterButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
