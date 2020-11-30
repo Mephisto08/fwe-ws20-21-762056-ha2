@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Task, LabelItem, TrackedTime, LabelList, Label, TaskDescription, msToHMS } from "../Dashboard/components/taskList";
+import { Task, LabelItem, TrackedTime, LabelList, Label, TaskDescription, formatTime } from "../Dashboard/components/taskList";
 import { Layout } from "../../components/Layout";
 import { Tracking, TrackingItem, TrackingList } from "./components/trackingList";
 import { AddButton, AddLabelButton, DeleteLabelButton, EditButton, ShowLabelButton } from "../../components/Button";
@@ -30,7 +30,7 @@ export const TaskPageID = () => {
       return diff + prev;
     }, 0);
 
-    return msToHMS(ms);
+    return formatTime(ms);
   }
 
 

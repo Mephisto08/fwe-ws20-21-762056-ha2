@@ -1,3 +1,7 @@
+/**
+ * In dieser Datei, wird das InputLayout festgelegt,
+ * dass in der gesamten Anwendung genutzt wird.
+ */
 import React, {useRef} from "react";
 import styled from "styled-components";
 

@@ -1,28 +1,37 @@
-import React, { ChangeEvent, useContext, useEffect } from "react";
-import { useState } from "react";
+/**
+ * In dieser Datei, wird das Form erstellt um Trackings für Task starten zukönnen.
+ */
+import React, {ChangeEvent, useContext, useEffect} from "react";
+import {useState} from "react";
 import styled from "styled-components";
-import { Button8rem, StopButton } from "../../../components/Button";
-import { Input } from "../../../components/Input";
-import { msToHMS, taskIdContext, taskNameContext } from "./taskList";
+import {Button8rem, StopButton} from "../../../components/Button";
+import {Input} from "../../../components/Input";
+import {formatTime, taskIdContext, taskNameContext} from "./taskList";
 
 export const Time = styled.div`
     font-size: 1.2rem;
     margin-bottom: 1rem;
 `;
-
-
 export const Title = styled.div`
     font-size: 1.4rem;
     margin-bottom: 1rem;
     margin-top: 1rem;
 `;
-
 export const StartTracking = styled.div`
     margin-bottom: 1rem;
     margin-top: 1rem;
     border-top: 0.15rem solid #202020;
 `;
 
+/**
+ * Es wird afterSubmit bereitgestellt. 
+ * In dieser Funktion kann man als Aufrufender der Form alles angeben,
+ * was nach dem submiten gemacht werden soll.
+ * Die startTime wird vom Aufrufenden bereitgestellt.
+ * Sie ist die Zeit, die als Start des Tracking angenommen wird.
+ * fetchTask wird benötigt, damit die Task neu geladen werden,
+ * nachdem ein Tracking pasuiert oder gestoppt wurde.
+ */
 export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: any; fetchTask: () => void; }> = ({
   afterSubmit,
   startTime,
@@ -45,7 +54,7 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
   const actualTrackingTime = function (): string {
     currentTime = new Date();
     const diff = (currentTime.getTime() - creationTime.getTime());
-    return msToHMS(diff - diff % 1000);
+    return formatTime(diff - diff % 1000);
   };
   const [trackingTime, setTrackingTime] = useState(actualTrackingTime());
 
@@ -57,7 +66,15 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
 
 
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
-    
+
+    /** 
+     * Dieses Phänomen kann ich mir nicht erklären. paused nimmt den gleichen Wert an in beiden logs.
+     * Erst beim nächsten Button klick switcht der bool.
+     * Ebenso, wenn der StopBuutton geklickt wird, passiert kein Submit erst bei einem zweiten klicken
+     * eines beliebigen Buttons. 
+     * Wenn ich bei einem Button ein onDoubleClick einbaue, reagiert dieser Button jedoch auch mit einem Klick.
+     * Bei einem Klick wird Pause und Weiter ausgeführt.
+    */
     console.log(paused, '+paused+stop+', stop);
     setPaused(!paused);
     console.log(paused, '+paused+stop+', stop);
@@ -95,7 +112,7 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
         });
       }
     }
-    if (paused == false) {
+    if (paused === false) {
       creationTime = new Date();
     }
     fetchTask();
@@ -108,8 +125,6 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
       }, 1000);
     }
   });
-
-
 
   return (
     <>

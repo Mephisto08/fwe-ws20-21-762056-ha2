@@ -1,35 +1,50 @@
-import React, { useEffect, useState } from "react";
+/**
+ * Dies ist die Startseite der Anwendung. Auf dieser Seite werden alle Task angezeigt.
+ * Ebenso können auf dieser Seite Task erstellt werden auf dem + Button.
+ * Es können Labels erstellt weden und es kann ein Filter auf die Task angewendet werden.
+ * Man kann nach Task Description, Label von Task und Task Namen filtern.
+ */
+import React, {useEffect, useState} from "react";
+// Dieser Import wird zwar nicht angezeigt als nicht benötigt,
+// jedoch verändert sich das Layout, wenn der Import entfernt wird.
+// Deswegen bleubt er erhalten.
 import styled from "styled-components/macro";
 import {
   Task,
   TaskList,
   TaskItem,
 } from "./components/taskList";
-import { AddButton, AddLabelButton, CreateLabelButton, FilterButton } from "../../components/Button";
-import { AddTaskForm } from "./components/addTask";
-import { Layout } from "../../components/Layout";
-import { useHistory } from "react-router-dom";
-import { Modal } from "../../components/Modal";
-import { AddLabelForm } from "./components/addLabel";
-import { FilterForm } from "./components/filter";
+import {
+  AddButton,
+  CreateLabelButton,
+  FilterButton,
+} from "../../components/Button";
+import {CreateTaskForm} from "./components/createTask";
+import {Layout} from "../../components/Layout";
+import {useHistory} from "react-router-dom";
+import {Modal} from "../../components/Modal";
+import {CreateLabelForm} from "./components/createLabel";
+import {FilterForm} from "./components/filter";
 
 
 export const TaskPage = () => {
   const [allTask, setTask] = useState<Task[]>([]);
   const [addTask, setAddTask] = useState(false);
   const [addLabel, setAddLabel] = useState(false);
-  const [taskFilter, setTaskFilter] = useState({ taskName: "", taskDescription: "", taskLabel: ""});
+  const [taskFilter, setTaskFilter] = useState({ taskName: "", taskDescription: "", taskLabel: "" });
   const [filter, setFilter] = useState(false);
   const [taskTrackingId, setTaskTrackingId] = useState(-1);
   let history = useHistory();
 
+  /**
+   * Es werden alle Task gefecht.
+   */
   const fetchTask = async function () {
     const taskRequest = await fetch(
       `/api/task?filterTask=${taskFilter.taskName}&filterDescription=${taskFilter.taskDescription}&filterLabel=${taskFilter.taskLabel}`, {
       method: "GET",
       headers: { "content-type": "application/json" },
     });
-    console.log(taskRequest);
     if (taskRequest.status === 200) {
       const transactionJSON = await taskRequest.json();
       setTask(transactionJSON.data);
@@ -51,7 +66,7 @@ export const TaskPage = () => {
           `}
       >
         <div>
-          <h2>Tasks</h2>
+          <h1>Tasks</h1>
         </div>
         <div
           css={`
@@ -73,35 +88,10 @@ export const TaskPage = () => {
           }} />
         </div>
       </div>
-      {addTask && (<Modal
-        title="Erstelle einen Task!"
-        onCancel={() => {
-          setAddTask(false);
-        }}>
-        <AddTaskForm
-          afterSubmit={() => {
-            setAddTask(false);
-            fetchTask();
-          }}
-        />
-      </Modal>
-      )}
-      {addLabel && (<Modal
-        title="Erstelle ein Label!"
-        onCancel={() => {
-          setAddLabel(false);
-        }}>
-        <AddLabelForm
-          afterSubmit={() => {
-            setAddLabel(false);
-            fetchTask();
-          }}
-        />
 
-      </Modal>
-      )}
+
       {filter && (<Modal
-        title="Filter"
+        title="Filtern"
         onCancel={() => {
           setFilter(false);
         }}>
@@ -115,6 +105,33 @@ export const TaskPage = () => {
 
       </Modal>
       )}
+      {addLabel && (<Modal
+        title="Label erstellen"
+        onCancel={() => {
+          setAddLabel(false);
+        }}>
+        <CreateLabelForm
+          afterSubmit={() => {
+            setAddLabel(false);
+            fetchTask();
+          }}
+        />
+      </Modal>
+      )}
+      {addTask && (<Modal
+        title="Task erstellen"
+        onCancel={() => {
+          setAddTask(false);
+        }}>
+        <CreateTaskForm
+          afterSubmit={() => {
+            setAddTask(false);
+            fetchTask();
+          }}
+        />
+      </Modal>
+      )}
+
       <TaskList>
         {allTask.map((allTask) => (
           <TaskItem onClick={() => (history.push(`/task/${allTask.id}`))}

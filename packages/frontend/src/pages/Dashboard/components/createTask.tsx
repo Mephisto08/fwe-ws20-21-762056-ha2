@@ -1,34 +1,44 @@
-import React, { useContext, useState, ChangeEvent } from "react";
-import { Input } from "../../../components/Input";
-import { Button20rem} from "../../../components/Button";
+/**
+ * In dieer Datei wird das Layout un die Funktionalität bereitgestellt
+ * um Task erstellen zu können.
+ */
+import React, {useState, ChangeEvent} from "react";
+import {Input} from "../../../components/Input";
+import {Button20rem} from "../../../components/Button";
 
-export const AddTaskForm: React.FC<{ afterSubmit: () => void }> = ({
+/**
+ * Es wird das Layout und die Funktionaltät bereitgestellt, Task zu erstellen.
+ * 
+ * @param param0 afterSubmit wird wird bereitgestellt.
+ * Diese Funktion wird ausgeführt, nachdem das Formular abgeschicht wurde
+ */
+export const CreateTaskForm: React.FC<{ afterSubmit: () => void }> = ({
   afterSubmit,
 }) => {
   const [values, setValues] = useState({
     name: "",
     description: "",
   });
+
   const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(values);
 
     await fetch("/api/task", {
       method: "POST",
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...values,
       }),
     });
     afterSubmit();
   };
+
   return (
     <>
-      <h3>Füge einen Task hinzu!</h3>
-
       <form onSubmit={onSubmitForm}>
         <Input
           name="name"
@@ -44,7 +54,7 @@ export const AddTaskForm: React.FC<{ afterSubmit: () => void }> = ({
           onChange={fieldDidChange}
           required
         />
-        <Button20rem type="submit">Füge einen Task hinzu!</Button20rem>
+        <Button20rem type="submit">Erstelle einen Task!</Button20rem>
       </form>
     </>
   );

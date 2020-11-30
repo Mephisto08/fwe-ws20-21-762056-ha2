@@ -1,9 +1,11 @@
+/**
+ * In dieser Datei wird das Grundlegende Design festgelegt
+ */
 import {DefaultTheme} from 'styled-components';
 
 export const theme: DefaultTheme = {
   colors: {
     backgroundColor: '#202020',
-    danger: '#d01c1f',
     fontColor: '#e3b448',
     listBackgroundColor: 'rgb(45, 45, 45)',
     primary: '#cbd18f',

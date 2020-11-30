@@ -1,3 +1,6 @@
+/**
+ * In dieser Datei, wird ein Modal errzeut.
+ */
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
@@ -47,7 +50,11 @@ const ModalCloseButton = styled.button`
   color: #000;
   cursor: pointer;
 `;
-
+/**
+ * In dieser Funktion, wird ein Modal erzeugt.
+ * Es wird der Titel übergeben ebenso wird die Funktion onCancel definiert.
+ * @param title Es wird der Titel den das MOdal erhalten soll übergeben. 
+ */
 export const Modal: React.FC<{
   title: string;
   onCancel: () => void;

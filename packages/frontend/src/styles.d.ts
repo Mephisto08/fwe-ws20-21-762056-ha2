@@ -10,7 +10,6 @@ declare module 'styled-components' {
             shadowColor: string;
             listBackgroundColor: string;
             primary: string;
-            danger: string;
           };
         }
       

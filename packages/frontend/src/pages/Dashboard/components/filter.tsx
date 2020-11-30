@@ -1,8 +1,19 @@
-import React, {useState, ChangeEvent } from "react";
-import { Input } from "../../../components/Input";
-import { Button20rem} from "../../../components/Button";
+/**
+ * In dieser Datei, wird das Form erstellt in dem man nach Task Name,
+ * Task Beschreibung und Labels von Tasks filter kann. 
+ */
+import React, {useState, ChangeEvent} from "react";
+import {Input} from "../../../components/Input";
+import {Button20rem} from "../../../components/Button";
 
-export const FilterForm: React.FC<{ afterSubmit: () => void;setTaskFilter: any;}> = ({
+/**
+ * Es wird afterSubmit bereitgestellt. 
+ * In dieser Funktion kann man als Aufrufender der Form alles angeben,
+ * was nach dem submiten gemacht werden soll.
+ * setTAskFilter wird übergeben und nach dem eingeben der Daten in das Form werden die eingeben Formulardaten,
+ * in setTaskFilter gesetzt.
+ */
+export const FilterForm: React.FC<{ afterSubmit: () => void; setTaskFilter: any; }> = ({
   afterSubmit,
   setTaskFilter,
 }) => {
@@ -11,12 +22,13 @@ export const FilterForm: React.FC<{ afterSubmit: () => void;setTaskFilter: any;}
     taskDescription: "",
     taskLabel: "",
   });
+
   const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(values);
     setTaskFilter(values);
     afterSubmit();
   };

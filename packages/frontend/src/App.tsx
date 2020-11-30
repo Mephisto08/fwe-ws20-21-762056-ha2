@@ -1,3 +1,7 @@
+/**
+ * Root Seite der Website
+ * Vin hier aus werden die Routen ausgeführt.
+ */
 import React, {useEffect, useState} from "react";
 import {ThemeProvider} from "styled-components";
 import {GlobalStyle} from "./components/GlobalStyle";

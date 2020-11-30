@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {Button8rem, DeleteButton} from "../../../components/Button";
 import { Modal } from "../../../components/Modal";
-import { msToHMS } from "../../Dashboard/components/taskList";
+import { formatTime } from "../../Dashboard/components/taskList";
 import { EditTrackingForm } from "./editTracking";
 
 export enum TrackingType {
@@ -132,8 +132,8 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
     const actualTrackingTime = function(): string{
       currentTime = new Date();
       const diff = (timeEndDate.getTime() - timeStartDate.getTime());
-      console.log(msToHMS(diff-diff%1000))
-      return msToHMS(diff-diff%1000);
+      console.log(formatTime(diff-diff%1000))
+      return formatTime(diff-diff%1000);
     };
 
 

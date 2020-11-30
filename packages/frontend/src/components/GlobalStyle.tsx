@@ -1,7 +1,7 @@
 /**
- * In dieser Datei wird das grundlegende Layout definiert.
+ * In dieser Datei wird das GlobalStyle Element definiert.
  */
-import {createGlobalStyle} from "styled-components"
+import {createGlobalStyle} from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     *{

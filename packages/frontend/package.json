@@ -1,14 +1,20 @@
 {
   "name": "fwe-2021-762056-ha2",
   "version": "1.0.0",
-  "description": "",
+  "description": "FWE",
   "scripts": {
     "start": "PORT=2000 react-scripts start",
     "test": "react-scripts test",
     "build": "react-scripts build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "FWE",
+    "HA_1"
+  ],
+  "author": {
+    "name": "Niklas Werner",
+    "email": "niklas.a.j.werner@stud.h-da.de"
+  },
   "license": "ISC",
   "dependencies": {
     "@types/react-router-dom": "^5.1.6",

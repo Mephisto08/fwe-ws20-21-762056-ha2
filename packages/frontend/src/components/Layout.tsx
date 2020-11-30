@@ -1,5 +1,9 @@
+/**
+ * In dieser Datei, wird der Header Footer definiert.
+ * Ebnenso wird das Children in Main eingebaut.
+ */
 import React from "react";
-import styled, { css } from "styled-components/macro";
+import styled, {css} from "styled-components/macro";
 
 const headerHeight = "85px";
 const footerHeight = "50px";
@@ -8,6 +12,7 @@ export const MaxWidthCSS = css`
   max-width: 90%;
   margin: auto;
 `;
+
 const Header = styled.header`
   height: ${headerHeight};
   width: 100%;
@@ -48,7 +53,6 @@ export const Layout: React.FC = ({ children }) => {
           >
             TaskMaster
             
-
           </span>
           <br></br>
           <span
@@ -60,7 +64,6 @@ export const Layout: React.FC = ({ children }) => {
           >
             DoNotWasteYourTime!
           </span>
-
         </div>
       </Header>
       <Main>{children}</Main>
