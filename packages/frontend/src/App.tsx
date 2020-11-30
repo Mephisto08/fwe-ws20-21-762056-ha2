@@ -10,7 +10,7 @@ import {
   BrowserRouter,
   Route,
 } from "react-router-dom";
-import {TaskPage} from "./pages/Dashboard/TaskOverviewPage";
+import {TaskOverviewPage} from "./pages/Dashboard/TaskOverviewPage";
 import {TaskPageID} from "./pages/TaskDetailPage/taskPage";
 
 
@@ -36,7 +36,6 @@ export const App = () => {
   const fetchTasks = async () => { 
     const tasksRequest = await fetch("http://localhost:3000/api/task");
     const tasks = await tasksRequest.json() as TaskResponse;
-    console.log(tasks);
     setTask(tasks)
   };
   useEffect(() =>{
@@ -46,7 +45,7 @@ export const App = () => {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Route exact path="/" component={TaskPage}/>
+        <Route exact path="/" component={TaskOverviewPage}/>
         <Route exact path="/task/:taskId" component={TaskPageID}/>
       </ThemeProvider>
     </BrowserRouter>

@@ -21,7 +21,6 @@ export const EditTaskForm: React.FC<{afterSubmit: () => void; taskObject: Task;}
 
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(values);
 
     await fetch(`/api/task/${values.id}`, {
       method: "PATCH",

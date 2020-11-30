@@ -27,7 +27,6 @@ export const ShowLabelForm: React.FC<{ afterSubmit: () => void; }> = ({
           method: "GET",
           headers: { "content-type": "application/json"},
         });
-        console.log(labelRequest);
         if (labelRequest.status === 200) {
           const labelJSON = await labelRequest.json();
           setLabel(labelJSON.data);
@@ -40,7 +39,6 @@ export const ShowLabelForm: React.FC<{ afterSubmit: () => void; }> = ({
 
     const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(allLabel);
 
         await fetch(`/api/task/label`, {
             method: "POST",

@@ -132,7 +132,6 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
     const actualTrackingTime = function(): string{
       currentTime = new Date();
       const diff = (timeEndDate.getTime() - timeStartDate.getTime());
-      console.log(formatTime(diff-diff%1000))
       return formatTime(diff-diff%1000);
     };
 
@@ -144,7 +143,6 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
         <DeleteButton onClick={deleteTracking}/>
       </div>
       <TrackingFlex onClick={() => {
-        console.log(tracking);
         onClick(tracking);
       }}>
           <div>

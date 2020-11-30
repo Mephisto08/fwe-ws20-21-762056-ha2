@@ -22,11 +22,9 @@ export const EditTrackingForm: React.FC<{afterSubmit: () => void; trackingObject
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  console.log(values);
 
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(values);
 
     await fetch(`/api/tracking/${values.id}`, {
       method: "PATCH",

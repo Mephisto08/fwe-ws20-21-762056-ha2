@@ -27,7 +27,7 @@ import {CreateLabelForm} from "./components/createLabel";
 import {FilterForm} from "./components/filter";
 
 
-export const TaskPage = () => {
+export const TaskOverviewPage = () => {
   const [allTask, setTask] = useState<Task[]>([]);
   const [addTask, setAddTask] = useState(false);
   const [addLabel, setAddLabel] = useState(false);
@@ -37,7 +37,7 @@ export const TaskPage = () => {
   let history = useHistory();
 
   /**
-   * Es werden alle Task gefecht.
+   * Es werden alle Task gefetcht.
    */
   const fetchTask = async function () {
     const taskRequest = await fetch(
@@ -54,7 +54,6 @@ export const TaskPage = () => {
   useEffect(() => {
     fetchTask();
   }, [taskFilter]);
-
 
   return (
     <Layout>
@@ -76,7 +75,6 @@ export const TaskPage = () => {
               align-items: top;
             `}
         >
-
           <FilterButton onClick={() => {
             setFilter(!filter);
           }} />
@@ -88,8 +86,6 @@ export const TaskPage = () => {
           }} />
         </div>
       </div>
-
-
       {filter && (<Modal
         title="Filtern"
         onCancel={() => {
@@ -102,7 +98,6 @@ export const TaskPage = () => {
           }}
           setTaskFilter={setTaskFilter}
         />
-
       </Modal>
       )}
       {addLabel && (<Modal
@@ -131,7 +126,6 @@ export const TaskPage = () => {
         />
       </Modal>
       )}
-
       <TaskList>
         {allTask.map((allTask) => (
           <TaskItem onClick={() => (history.push(`/task/${allTask.id}`))}

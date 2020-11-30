@@ -51,6 +51,9 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
   let currentTime: Date;
 
 
+  /**
+   * Berechnet die aktuelle Zeit, wie lange ein Tracking läuft
+   */
   const actualTrackingTime = function (): string {
     currentTime = new Date();
     const diff = (currentTime.getTime() - creationTime.getTime());

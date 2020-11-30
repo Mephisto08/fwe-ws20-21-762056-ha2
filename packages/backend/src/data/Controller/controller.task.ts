@@ -206,9 +206,7 @@ export const getAllTasks = async (req, res) => {
     result = result.filter((r) => r.name === filterTask);
   }
   if (filterLabel) {
-    console.log(filterLabel, 'dsddd' );
     result = result.filter((t) => t.labels.some((l) => l.name === filterLabel));
-    console.log(result, 'sdgvsd');
   }
   if (filterDescription) {
     result = result.filter((d) => d.description === filterDescription);

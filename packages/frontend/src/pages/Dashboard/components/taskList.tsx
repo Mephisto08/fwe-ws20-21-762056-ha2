@@ -2,7 +2,6 @@
  * In dieser Datei, wird ein Task Item erstellt.
  * Ebenso wird das Layout erstellt für das aussehen der Liste der Task.
  */
-
 import React, {useState} from "react";
 import styled from "styled-components";
 import {Button8rem, DeleteButton} from "../../../components/Button";
@@ -216,7 +215,6 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   }
 
   const totalTimeOfTask = getTotalTime();
-
 
   /**
    * Erstellt die Startzeit, wenn ein Tracking gestartet wird.
