@@ -1,7 +1,11 @@
-import React, { useState, ChangeEvent } from "react";
-import { Input } from "../../../components/Input";
-import { Button20rem } from "../../../components/Button";
-import { Task } from "../../Dashboard/components/taskList";
+/**
+ * In dieser Datei, wird alles bereitgestellt,
+ * damit ein Label zu einem Task hinzgefügt werden kann
+ */
+import React, {useState, ChangeEvent} from "react";
+import {Input} from "../../../components/Input";
+import {Button20rem} from "../../../components/Button";
+import {Task} from "../../Dashboard/components/taskList";
 
 interface EditTrackingFormState {
   id: number;
@@ -30,6 +34,7 @@ export const AddLabelToTaskForm: React.FC<{ afterSubmit: () => void; taskObject:
     });
     afterSubmit();
   };
+
   return (
     <>
       <h3>Füge ein Label zu einem Task hinzu!</h3>

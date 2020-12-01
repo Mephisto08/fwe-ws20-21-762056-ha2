@@ -1,20 +1,24 @@
-import React, {useState, ChangeEvent } from "react";
-import { Input } from "../../../components/Input";
-import { Button20rem} from "../../../components/Button";
-import { Task } from "../../Dashboard/components/taskList";
+/**
+ * In dieser Datei, wird alles bereitgestellt,
+ * um ein Tracking zu erstellen.
+ */
+import React, {useState, ChangeEvent} from "react";
+import {Input} from "../../../components/Input";
+import {Button20rem} from "../../../components/Button";
+import {Task} from "../../Dashboard/components/taskList";
 
 interface EditTrackingFormState {
-    id: number;
-  }
+  id: number;
+}
 
-export const AddTrackingForm: React.FC<{ afterSubmit: () => void; taskObject: Task; }> = ({
+export const CreateTrackingForm: React.FC<{ afterSubmit: () => void; taskObject: Task; }> = ({
   afterSubmit,
   taskObject,
 }) => {
   const [values, setValues] = useState<EditTrackingFormState>(taskObject);
   const [tracking, setTracking] = useState({
     description: "",
-    task:`${values.id}`,
+    task: `${values.id}`,
   });
   const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTracking({ ...tracking, [e.target.name]: e.target.value });
@@ -24,7 +28,7 @@ export const AddTrackingForm: React.FC<{ afterSubmit: () => void; taskObject: Ta
 
     await fetch("/api/tracking", {
       method: "POST",
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...tracking,
       }),
@@ -33,7 +37,7 @@ export const AddTrackingForm: React.FC<{ afterSubmit: () => void; taskObject: Ta
   };
   return (
     <>
-      <h3>Füge ein Tracking hinzu!</h3>
+      <h3>Erstelle ein Tracking</h3>
 
       <form onSubmit={onSubmitForm}>
         <Input
@@ -52,7 +56,7 @@ export const AddTrackingForm: React.FC<{ afterSubmit: () => void; taskObject: Ta
           required
           disabled
         />
-        <Button20rem type="submit">Füge ein Tracking zum Task hinzu!</Button20rem>
+        <Button20rem type="submit">Erstelle ein Tracking für diesen Task!</Button20rem>
       </form>
     </>
   );

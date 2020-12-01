@@ -1,3 +1,7 @@
+/**
+ * In dieser Datei, wird alles bereitgestellt,
+ * um ein oder mehrere Labels von einem Task zulöschen.
+ */
 import React, { useState, ChangeEvent } from "react";
 import { Input } from "../../../components/Input";
 import { Button20rem } from "../../../components/Button";
@@ -32,7 +36,7 @@ export const DeleteLabelFromTaskForm: React.FC<{ afterSubmit: () => void; taskOb
   };
   return (
     <>
-      <h3>Lösche ein Label von dem Task!</h3>
+      <h3>Lösche Label/s</h3>
 
       <form onSubmit={onSubmitForm}>
         <Input
@@ -51,7 +55,7 @@ export const DeleteLabelFromTaskForm: React.FC<{ afterSubmit: () => void; taskOb
           required
           disabled
         />
-        <Button20rem type="submit">Lösche das Label</Button20rem>
+        <Button20rem type="submit">Lösche Label/s von diesem Task!</Button20rem>
       </form>
     </>
   );

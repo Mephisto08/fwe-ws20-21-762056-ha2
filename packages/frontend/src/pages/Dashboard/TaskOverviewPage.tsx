@@ -37,7 +37,9 @@ export const TaskOverviewPage = () => {
   let history = useHistory();
 
   /**
-   * Es werden alle Task gefetcht.
+   * Es werden alle Task geladen. Dabei werden auch die Filter mitgesendet.
+   * Wenn diese nicht gesetzt wurden durch den Anwender, werden sie als leere Strings mitgeschickt.
+   * Dies hat somit keine Ausiwrkunng auff den fetch.
    */
   const fetchTask = async function () {
     const taskRequest = await fetch(

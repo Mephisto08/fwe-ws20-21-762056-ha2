@@ -1,3 +1,8 @@
+/**
+ * In dieser Datei, wird alles bereitgestellt,
+ * um eine Task zueditieren. Hierbei kann der Name
+ * und/oder die Beschreibung verändert werden.
+ */
 import React, {useState, ChangeEvent} from "react";
 import {Button20rem} from "../../../components/Button";
 import {Input} from "../../../components/Input";

@@ -1,7 +1,12 @@
-import React, { useContext, useState, ChangeEvent } from "react";
-import { Input } from "../../../components/Input";
+/**
+ * In dieser Datei, wird alles bereitgestellt,
+ * um eine Tracking zu editieren. Hierbei kann die Beschreibung
+ * und/oder Der Start und Endzeitpunkt geupdatet werden.
+ */
+import React, {useState, ChangeEvent} from "react";
+import {Input} from "../../../components/Input";
 import {ButtonModal} from "../../../components/Button";
-import { Tracking } from "../../Dashboard/components/taskList";
+import {Tracking} from "../../Dashboard/components/taskList";
 
 interface EditTrackingFormState {
   id: number;
@@ -10,7 +15,7 @@ interface EditTrackingFormState {
   timeEnd: Date;
 }
 
-export const EditTrackingForm: React.FC<{afterSubmit: () => void; trackingObject: Tracking;fetchTask:() => void;}> = ({
+export const EditTrackingForm: React.FC<{ afterSubmit: () => void; trackingObject: Tracking; fetchTask: () => void; }> = ({
   afterSubmit,
   trackingObject,
   fetchTask,
@@ -28,7 +33,7 @@ export const EditTrackingForm: React.FC<{afterSubmit: () => void; trackingObject
 
     await fetch(`/api/tracking/${values.id}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...values,
       }),
@@ -36,7 +41,7 @@ export const EditTrackingForm: React.FC<{afterSubmit: () => void; trackingObject
     afterSubmit();
     fetchTask();
   };
-  
+
   return (
     <>
       <form onSubmit={onSubmitForm}>

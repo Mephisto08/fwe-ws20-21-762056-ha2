@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from "react";
+/**
+ * In dieser Datei wird alles bereitgestellt,
+ * um alle Trackingd eines Task anzuzeigen. 
+ * Es wird für jedes Tracking ei Item erstellt.
+ */
+import React, { useState } from "react";
 import styled from "styled-components";
-import {Button8rem, DeleteButton} from "../../../components/Button";
+import { Button8rem, DeleteButton } from "../../../components/Button";
 import { Modal } from "../../../components/Modal";
 import { formatTime } from "../../Dashboard/components/taskList";
 import { EditTrackingForm } from "./editTracking";
@@ -113,71 +118,67 @@ export type TrackingItemProps = {
 
 export const TrackingItem: React.FC<TrackingItemProps> = ({
   tracking,
-  onClick = () => {},
+  onClick = () => { },
   fetchTask,
 
 }) => {
-    const {id, description, timeStart, timeEnd} = tracking;
-    const [editTracking, setEditTracking] = useState(false);
+  const { id, description, timeStart, timeEnd } = tracking;
+  const [editTracking, setEditTracking] = useState(false);
 
-    /**
-     * Löscht 
-     */
-    const deleteTracking = async (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        await fetch(`/api/tracking/${id}`, {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json"},
-        });
-        fetchTask();
-      };
+  const deleteTracking = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    await fetch(`/api/tracking/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    fetchTask();
+  };
 
-      var oneDay = 60*1000; // hours*minutes*seconds*milliseconds 
-      var timeStartDate = new Date(timeStart); 
-      var timeEndDate = new Date(timeEnd); 
+  var timeStartDate = new Date(timeStart);
+  var timeEndDate = new Date(timeEnd);
 
-      let currentTime: Date;
-    const actualTrackingTime = function(): string{
-      currentTime = new Date();
-      const diff = (timeEndDate.getTime() - timeStartDate.getTime());
-      return formatTime(diff-diff%1000);
-    };
+  let currentTime: Date;
+  const actualTrackingTime = function (): string {
+    currentTime = new Date();
+    const diff = (timeEndDate.getTime() - timeStartDate.getTime());
+    return formatTime(diff - diff % 1000);
+  };
 
 
-  return ( 
+  return (
     <TrackingItemStyle>
       <TrackingHighlight />
-      <div> 
-        <DeleteButton onClick={deleteTracking}/>
+      <div>
+        <DeleteButton onClick={deleteTracking} />
       </div>
       <TrackingFlex onClick={() => {
         onClick(tracking);
       }}>
-          <div>
-            <TrackingTitle>{description}</TrackingTitle>
-            <TrackedTime>Start: {timeStartDate.toLocaleString()}</TrackedTime>
-            <TrackedTime>Ende: {timeEndDate.toLocaleString()}</TrackedTime>
-            <TrackedTime>Dauer: {actualTrackingTime()}
-            </TrackedTime>
-          </div>
+        <div>
+          <TrackingTitle>{description}</TrackingTitle>
+          <TrackedTime>Start: {timeStartDate.toLocaleString()}</TrackedTime>
+          <TrackedTime>Ende: {timeEndDate.toLocaleString()}</TrackedTime>
+          <TrackedTime>Dauer: {actualTrackingTime()}
+          </TrackedTime>
+        </div>
       </TrackingFlex>
       <div>
         <Button8rem
-        onClick= {() => {
+          onClick={() => {
             setEditTracking(!editTracking)
           }}
         >Editiere Tracking</Button8rem>
 
         {editTracking && (<Modal
-            title="Editiere Tracking"
-            onCancel={() => {
-                setEditTracking(false);
-            }}>
-            <EditTrackingForm
-              afterSubmit={() => {
+          title="Editiere Tracking"
+          onCancel={() => {
+            setEditTracking(false);
+          }}>
+          <EditTrackingForm
+            afterSubmit={() => {
               setEditTracking(false);
             }}
-            trackingObject={tracking!} 
+            trackingObject={tracking!}
             fetchTask={fetchTask}
           />
 

@@ -14,10 +14,10 @@ import {Layout} from "../../components/Layout";
 import {Tracking, TrackingItem, TrackingList} from "./components/trackingList";
 import {AddButton, AddLabelButton, DeleteLabelButton, EditButton, ShowLabelButton} from "../../components/Button";
 import {EditTaskForm} from "./components/editTask";
-import {AddTrackingForm} from "./components/addTracking";
+import {CreateTrackingForm} from "./components/createTracking";
 import {AddLabelToTaskForm} from "./components/addLabelToTask";
 import {DeleteLabelFromTaskForm as DeleteLabelFromTaskForm} from "./components/deleteLabelFromTask";
-import {ShowLabelForm} from "./components/showLabel";
+import {ShowAllLabelForm} from "./components/showAllLabel";
 
 
 export const TaskPageID = () => {
@@ -45,6 +45,9 @@ export const TaskPageID = () => {
   }
 
 
+  /**
+   * Es werden alle Task geladen.
+   */
   const fetchTask = async function () {
     const taskRequest = await fetch(`/api/task/${taskId}`, {
       method: "GET",
@@ -149,7 +152,7 @@ export const TaskPageID = () => {
         />
       )}
       {createTracking && (
-        <AddTrackingForm
+        <CreateTrackingForm
           afterSubmit={() => {
             setCreateTracking(false);
             fetchTask();
@@ -158,7 +161,7 @@ export const TaskPageID = () => {
         />
       )}
       {showLabel && (
-        <ShowLabelForm
+        <ShowAllLabelForm
           afterSubmit={() => {
             setShowLabel(false);
             fetchTask();
