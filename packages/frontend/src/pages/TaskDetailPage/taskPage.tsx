@@ -7,17 +7,17 @@
  * Editieren eines Tasks, anzeigen aller existierden Labels, Labels zu einem Task hinzufügen,
  * löschen von Labels eines Tasks und ein Tracking erstellen.  
  */
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Task, LabelItem, TrackedTime, LabelList, Label, TaskDescription, formatTime } from "../Dashboard/components/taskList";
-import { Layout } from "../../components/Layout";
-import { Tracking, TrackingItem, TrackingList } from "./components/trackingList";
-import { AddButton, AddLabelButton, DeleteLabelButton, EditButton, ShowLabelButton } from "../../components/Button";
-import { EditTaskForm } from "./components/editTask";
-import { AddTrackingForm } from "./components/addTracking";
-import { AddLabelToTaskForm } from "./components/addLabelToTask";
-import { DeleteLabelToTaskForm as DeleteLabelFromTaskForm } from "./components/deleteLabelFromTask";
-import { ShowLabelForm } from "./components/showLabel";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {Task, LabelItem, TrackedTime, LabelList, Label, TaskDescription, formatTime} from "../Dashboard/components/taskList";
+import {Layout} from "../../components/Layout";
+import {Tracking, TrackingItem, TrackingList} from "./components/trackingList";
+import {AddButton, AddLabelButton, DeleteLabelButton, EditButton, ShowLabelButton} from "../../components/Button";
+import {EditTaskForm} from "./components/editTask";
+import {AddTrackingForm} from "./components/addTracking";
+import {AddLabelToTaskForm} from "./components/addLabelToTask";
+import {DeleteLabelFromTaskForm as DeleteLabelFromTaskForm} from "./components/deleteLabelFromTask";
+import {ShowLabelForm} from "./components/showLabel";
 
 
 export const TaskPageID = () => {
@@ -121,19 +121,10 @@ export const TaskPageID = () => {
         >
         </div>
       </div>
-      {createTracking && (
-        <AddTrackingForm
+      {editTask && (
+        <EditTaskForm
           afterSubmit={() => {
-            setCreateTracking(false);
-            fetchTask();
-          }}
-          taskObject={task!}
-        />
-      )}
-      {deleteLabelToTask && (
-        <DeleteLabelFromTaskForm
-          afterSubmit={() => {
-            setDeleteLabelToTask(false);
+            setEditTask(false);
             fetchTask();
           }}
           taskObject={task!}
@@ -148,6 +139,24 @@ export const TaskPageID = () => {
           taskObject={task!}
         />
       )}
+      {deleteLabelToTask && (
+        <DeleteLabelFromTaskForm
+          afterSubmit={() => {
+            setDeleteLabelToTask(false);
+            fetchTask();
+          }}
+          taskObject={task!}
+        />
+      )}
+      {createTracking && (
+        <AddTrackingForm
+          afterSubmit={() => {
+            setCreateTracking(false);
+            fetchTask();
+          }}
+          taskObject={task!}
+        />
+      )}
       {showLabel && (
         <ShowLabelForm
           afterSubmit={() => {
@@ -156,20 +165,10 @@ export const TaskPageID = () => {
           }}
         />
       )}
-      {editTask && (
-        <EditTaskForm
-          afterSubmit={() => {
-            setEditTask(false);
-            fetchTask();
-          }}
-          taskObject={task!}
-        />
-      )}
-
 
       <TrackingList>
         {task?.trackings.map((tracking: Tracking) => (
-          <TrackingItem tracking={tracking} fetchTask={fetchTask}></TrackingItem>
+          <TrackingItem key={tracking.id} tracking={tracking} fetchTask={fetchTask}></TrackingItem>
         ))}
       </TrackingList>
     </Layout>

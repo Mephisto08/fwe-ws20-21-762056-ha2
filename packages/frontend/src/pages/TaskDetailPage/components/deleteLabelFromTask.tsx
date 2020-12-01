@@ -7,7 +7,7 @@ interface EditTrackingFormState {
   id: number;
 }
 
-export const DeleteLabelToTaskForm: React.FC<{ afterSubmit: () => void; taskObject: Task; }> = ({
+export const DeleteLabelFromTaskForm: React.FC<{ afterSubmit: () => void; taskObject: Task; }> = ({
   afterSubmit,
   taskObject,
 }) => {

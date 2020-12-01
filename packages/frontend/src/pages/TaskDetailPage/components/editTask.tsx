@@ -1,7 +1,7 @@
-import React, {useState, ChangeEvent } from "react";
+import React, {useState, ChangeEvent} from "react";
 import {Button20rem} from "../../../components/Button";
-import { Input } from "../../../components/Input";
-import { Task } from "../../Dashboard/components/taskList";
+import {Input} from "../../../components/Input";
+import {Task} from "../../Dashboard/components/taskList";
 
 interface EditTaskFormState {
   id: number;
@@ -9,7 +9,7 @@ interface EditTaskFormState {
   description: string;
 }
 
-export const EditTaskForm: React.FC<{afterSubmit: () => void; taskObject: Task;}> = ({
+export const EditTaskForm: React.FC<{ afterSubmit: () => void; taskObject: Task; }> = ({
   afterSubmit,
   taskObject,
 }) => {
@@ -24,7 +24,7 @@ export const EditTaskForm: React.FC<{afterSubmit: () => void; taskObject: Task;}
 
     await fetch(`/api/task/${values.id}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...values,
       }),

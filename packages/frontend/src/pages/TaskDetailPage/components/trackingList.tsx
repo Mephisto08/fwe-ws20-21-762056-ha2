@@ -5,11 +5,6 @@ import { Modal } from "../../../components/Modal";
 import { formatTime } from "../../Dashboard/components/taskList";
 import { EditTrackingForm } from "./editTracking";
 
-export enum TrackingType {
-  INCOME = "income",
-  EXPENSE = "expense",
-}
-
 
 export type Tracking = {
   id: number;
@@ -83,10 +78,20 @@ export const TrackingList = styled.div`
   }
 `;
 
+/**
+ * Damit die der Titel nicht über sein Feld hinaus geht, wird mit text-overflow gearbeitet.
+ * Jedoch konnte nicht auf die Größe des parents des Elementes zugreifen.
+ * Deßhalb wurde für die maximale Größe eine Pixel angabe gemacht, die den Browser geeigenet sind.
+ * Für Responsives Design ist dies nicht sinnvoll. Un muss abgeändert werden zu relativen Angaben
+ */
 export const TrackingTitle = styled.div`
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0;
+  max-width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
 `;
 
 export const TrackedTime = styled.div`
@@ -115,6 +120,9 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
     const {id, description, timeStart, timeEnd} = tracking;
     const [editTracking, setEditTracking] = useState(false);
 
+    /**
+     * Löscht 
+     */
     const deleteTracking = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         await fetch(`/api/tracking/${id}`, {
