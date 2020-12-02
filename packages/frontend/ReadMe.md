@@ -21,7 +21,7 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 
 #### 1. URL
 Webadresse unter der man die Anwendung finden kann.
-#### Buttons
+#### 2. Buttons
 
 ##### a ) Filter
 <img  src="/packages/frontend/readMe_pictures/overviewPage/Filter.png"  alt="Alt-Text"  title="Filter"  />
