@@ -77,7 +77,7 @@ Beschreibung eines Trackings. Diese Feld muss ausgefüllt sein, damit ein Tracki
 ######  3.5.4 Pause/ Weiter
 Bei Klick auf den Button, wird das Tracking pausiert. Es wird in der Datenbank gespeichert und die [Zeit](#zeit) wird auf 0 zurückgesetzt. Wenn der Button wieder betätigt wurde, läuft das Tracking weiter. Es kann nun wieder pausiert werden.  
 ######  3.5.5 Stopp
-Bei Klick auf den Button, wird das Tracking gespeichert und das Modal-Fenster wird geschlossen.
+Bei Doppel-Klick auf den Button, wird das Tracking gespeichert und das Modal-Fenster wird geschlossen.
 
 ##### 3.6 Lösche eines Labels
 Bei einem Klick auf den **Mülleimer** wird ein Task aus der Task-Liste und somit aus der Datenbank gelöscht. Mit ihm werden alle Trackings die ein Task besitzt gelöscht. Die Labels die einem Task zugeordnet sind, bleiben bestehen.
