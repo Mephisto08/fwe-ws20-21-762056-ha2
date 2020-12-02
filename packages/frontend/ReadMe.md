@@ -41,34 +41,51 @@ Bei einem Klick auf die obere Hälfte eines Task, gelangt man auf die **[Task De
 
 <img src="/packages/frontend/readMe_pictures/overviewPage/TaskElement.png" alt="Alt-Text"  title="Task Element"/>
 
-##### 1. Task Namen
+##### 5.1 Task Namen
 Gibt den Namen eines Task an.
-##### 2. Task Beschreibung
+##### 5.2 Task Beschreibung
 Gibt die Beschreibung eines Task an.
-##### 3. Labels eines Task
+##### 5.3 Labels eines Task
 Gibt alle Labels an , die einem Task zugeordnet sind.
-##### 4. Gesamte Zeitdauer eines Task
+##### 5.4 Gesamte Zeitdauer eines Task
 Es wird die gesamte Dauer eines Task angegeben, die  ein Task bisher gebraucht hat mit all seinen existierenden Trackings.
-##### 5. Start Tracking
+##### 5.5 Start Tracking
 Bei Klick auf den Button **"Start Track."** wird ein Modal-Fenster geöffnet.
 
 <img src="/packages/frontend/readMe_pictures/overviewPage/TaskElement.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
-######  1.  Abbrechen
+######  5.5.1  Abbrechen
 Tracking wird mit einem Klick auf den Button abgebrochen
-######  2. Zeit
+######  5.5.2 Zeit
 Zeit die das Tracking bisher gebraucht hat.
-######  3. Beschreibung
+######  5.5.3 Beschreibung
 Beschreibung eines Trackings. Diese Feld muss ausgefüllt sein, damit ein Tracking pausiert oder gestoppt werden soll. Da es bei diesen Operationen in der Datenbank gespeichert wird.
-######  4. Pause/ Weiter
+######  5.5.4 Pause/ Weiter
 Bei Klick auf den Button, wird das Tracking pausiert. Es wird in der Datenbank gespeichert und die [Zeit](#zeit) wird auf 0 zurückgesetzt. Wenn der Button wieder betätigt wurde, läuft das Tracking weiter. Es kann nun wieder pausiert werden.  
-######  5. Stopp
+######  5..5.5 Stopp
 Bei Klick auf den Button, wird das Tracking gespeichert und das Modal-Fenster wird geschlossen.
 
 ##### 6. Lösche eines Labels
 Bei einem Klick auf den **Mülleimer** wird ein Task aus der Task-Liste und somit aus der Datenbank gelöscht. Mit ihm werden alle Trackings die ein Task besitzt gelöscht. Die Labels die einem Task zugeordnet sind, bleiben bestehen.
   
 ### Task Detail Seite
+
+<img src="/packages/frontend/readMe_pictures/detailPage/TaskDetailPage.png" alt="Alt-Text"  title="Starten eines Trackings"/>
+
+#### 1. Name
+#### 2. Beschreibung
+#### 3. Labels eines Task
+#### 4. Gesamte Zeitdauer eines Task
+#### 5. Trackings
+
+#### 6. Buttons
+##### a
+##### b
+##### c
+##### d
+##### e
+
+
 
 ## Beispieldaten generieren  
   
