@@ -8,7 +8,9 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 - Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Test ausführen kann.  
   
 ## Anwendung
-  
+- Unter **localhost:2000** ist das Frontend erreichbar.
+<img src="/readMe_pictures/TaskOverviewPage.png" alt="Alt-Text" title="" />
+
 ## Beispieldaten generieren  
   
 
