@@ -47,7 +47,7 @@ Gibt alle Labels an , die einem Task zugeordnet sind.
 Es wird die gesamte Dauer eines Task angegeben, die  ein Task bisher gebraucht hat mit all seinen existierenden Trackings.
 ##### 5. Start Tracking
 Bei Klick auf den Button **"Start Track."** wird ein Modal-Fenster geöffnet.
-<img src="/packages/frontend/readMe_pictures/TaskElement.png" alt="Alt-Text"  title="Starten eines Trackings"/>
+<img src="/packages/frontend/readMe_pictures/startTracking.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 ##### 6. Lösche eines Labels
 Bei einem Klick auf den **Mülleimer** wird ein Task aus der Task-Liste und somit aus der Datenbank gelöscht. Mit ihm werden alle Trackings die ein Task besitzt gelöscht. Die Labels die einem Task zugeordnet sind, bleiben bestehen.
   
