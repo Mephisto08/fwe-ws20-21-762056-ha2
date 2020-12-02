@@ -11,7 +11,8 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 ## Setup
 
 - Docker muss auf der Hardware die genutzt wird installiert sein.
-- Es muss im Backend. das .env_example File zu .env umbenannt werden oder es muss ein neues File mit dem Namen .env angelegt werden und der Inhalt muss dem gleichen Schema folgen wie das .env_example File.
+- Es muss im Backend eine .env - Datei erstellt werden. In dieser kann das Passwort, der Benutzername, sowie der Namen der Datenbank festgelegt werden.
+**Hinweis:**  Es kann die .env_example zu .env umbenannt werden. Dies reicht aus, damit die Datenbank korrekt starten kann.
 - Der Docker-Container wird mit folgendem Befehl gestartet:
 
 		docker-compose up
