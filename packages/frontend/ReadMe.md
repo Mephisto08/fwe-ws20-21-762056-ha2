@@ -29,13 +29,27 @@ Bei einem Klick auf den Button mit dem Namen **"Erstelle Label"**, wird ein Moda
  
 #### 4. Erstellen eines Tasks
 
-<img src="/packages/frontend/readMe_pictures/CreateTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
+<img src="/packages/frontend/readMe_pictures/createTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
 
 Bei einem Klick auf den Button mit dem Namen **"+"**, wird ein Modal-Fenster geöffnet. In diesem ist es möglich einen neuen Task zu kreieren. In dem Modal-Fenster kann man den Namen und die Beschreibung des Tasks angeben.  Mit Klick auf den Button **"Erstelle ein Task!"** wird das Modalfenster geschlossen und es wird ein neuer Task in der Datenbank angelegt.
 
 #### 5. Task-Liste
 
-<img src="/packages/frontend/readMe_pictures/TaskElement.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
+<img src="/packages/frontend/readMe_pictures/TaskElement.png" alt="Alt-Text"  title="Task Element"/>
+
+##### 1. Task Namen
+Gibt den Namen eines Task an.
+##### 2. Task Beschreibung
+Gibt die Beschreibung eines Task an.
+##### 3. Labels eines Task
+Gibt alle Labels an , die einem Task zugeordnet sind.
+##### 4. Gesamte Zeitdauer eines Task
+Es wird die gesamte Dauer eines Task angegeben, die  ein Task bisher gebraucht hat mit all seinen existierenden Trackings.
+##### 5. Start Tracking
+Bei Klick auf den Button **"Start Track."** wird ein Modal-Fenster geöffnet.
+<img src="/packages/frontend/readMe_pictures/TaskElement.png" alt="Alt-Text"  title="Starten eines Trackings"/>
+##### 6. Lösche eines Labels
+Bei einem Klick auf den **Mülleimer** wird ein Task aus der Task-Liste und somit aus der Datenbank gelöscht. Mit ihm werden alle Trackings die ein Task besitzt gelöscht. Die Labels die einem Task zugeordnet sind, bleiben bestehen.
   
 ## Beispieldaten generieren  
   
