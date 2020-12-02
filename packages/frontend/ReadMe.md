@@ -10,12 +10,12 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 - Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Test ausführen kann.  
   
 ## Anwendung
-### Allgemein
+### <ins>Allgemein</ins>
 - Unter **localhost:2000** ist das Frontend erreichbar.
 -  Alle Modal Fenster können durch ein Klick auf das sich in der oberen rechten Ecke befindenden Kreuzes geschlossen werden.
 - Alle Zeit angaben sind im Format **"Stunde:Minute:Sekunde"** angeben. 
 
-### Task Übersichts Seite
+###  <ins>Task Übersichts Seite</ins>
 
 <img  src="/packages/frontend/readMe_pictures/overviewPage/TaskOverviewPage.png"  alt="Alt-Text"  title="Übersichts Seite"  />
 
@@ -71,7 +71,7 @@ Bei Klick auf den Button, wird das Tracking gespeichert und das Modal-Fenster wi
 ##### 5.6 Lösche eines Labels
 Bei einem Klick auf den **Mülleimer** wird ein Task aus der Task-Liste und somit aus der Datenbank gelöscht. Mit ihm werden alle Trackings die ein Task besitzt gelöscht. Die Labels die einem Task zugeordnet sind, bleiben bestehen.
   
-### Task Detail Seite
+###  <ins>Task Detail Seite</ins>
 
 <img src="/packages/frontend/readMe_pictures/detailPage/TaskDetailPage.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
@@ -83,7 +83,7 @@ Beschreibung des Tasks.
 Gibt alle Labels an , die einem Task zugeordnet sind.
 #### 4. Gesamte Zeitdauer eines Task
 Es wird die gesamte Dauer eines Task angegeben, die  ein Task bisher gebraucht hat mit all seinen existierenden Trackings.
-#### 5. Trackings
+#### 5. Tracking Liste
 Liste mit allen existierenden Trackings die einem Task zugeordnet sind. Sie werden in alphabetischer Reihenfolge untereinander aufgelistet.
 
 <img src="/packages/frontend/readMe_pictures/detailPage/tracking.png" alt="Alt-Text"  title="Starten eines Trackings"/>
@@ -104,23 +104,35 @@ Bei einem Klick auf den **Mülleimer** wird ein das Tracking aus der Tracking-Li
 
 
 #### 6. Buttons
-##### a
+##### a)
 <img src="/packages/frontend/readMe_pictures/detailPage/editTask.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
-##### b
+Bei einem Klick auf den Button **"Edit. Task"** öffnet sich ein Modal-Fenster. In diesem kann man den Namen des Tasks und dessen Beschreibung verändern.
+##### b)
 <img src="/packages/frontend/readMe_pictures/detailPage/showLabels.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
-##### c
+Bei einem Klick auf den Button **"Zeige Labels"** werden alle existierenden Labels untereinander angezeigt.
+##### c)
 <img src="/packages/frontend/readMe_pictures/detailPage/addLabel.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
-##### d
+Bei einem Klick auf den Button **"Add. Labels"** öffnet sich ein Modal-Fenster. In diesem kann man dem aktuellen Task ein oder mehrere Labels hinzufügen. Hierbei ist das Feld "Task" nicht editierbar. 
+
+In das Feld "Labels" müssen alle Labels die einem Task hinzugefügt werden sollen in der Form:
+		 **labeld, labelId, ...**
+eingetragen werden.
+##### d) 
 <img src="/packages/frontend/readMe_pictures/detailPage/deleteLabel.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
-##### e
+Bei einem Klick auf den Button **"Lösche Labels"** öffnet sich ein Modal-Fenster. In diesem kann man vom aktuellen Task ein oder mehrere Labels entfernen. Hierbei ist das Feld "Task" nicht editierbar. 
+
+In das Feld "Labels" müssen alle Labels eingetragen werden die von diesem Task entfernt werden sollen, in der Form:
+		 **labeld, labelId, ...**
+##### e)
 <img src="/packages/frontend/readMe_pictures/detailPage/createTracking.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
-
-
+Bei einem Klick auf den Button **"+"** öffnet sich ein Modal-Fenster. In diesem kann man den Namen des Trackings angeben. Mit Bestätigung von diesem, wird das Tracking in der Datenbank gespeichert und es wird dem Task hinzugefügt. Ist ist danach in der **[Tracking Liste](#tracking-liste)** wiederzufinden.
+**Hinweis:** Das Tracking wird mit dem aktuellen Datum als Start- und Endzeitpunkt angelegt(Somit ist die Dauer 00:00:00). Wird es jedoch automatisiert durch Fixtures angelegt ist der "1.1.2020, 01:00:00" der Start- und Endzeitpunkt.
+		
 ## Beispieldaten generieren  
   
 
