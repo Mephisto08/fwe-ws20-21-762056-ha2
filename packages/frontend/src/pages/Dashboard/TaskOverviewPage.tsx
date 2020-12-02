@@ -54,8 +54,8 @@ export const TaskOverviewPage = () => {
       headers: { "content-type": "application/json" },
     });
     if (taskRequest.status === 200) {
-      const transactionJSON = await taskRequest.json();
-      setTask(transactionJSON.data);
+      const taskJSON = await taskRequest.json();
+      setTask(taskJSON.data);
     }
   };
 
