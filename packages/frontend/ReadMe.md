@@ -37,6 +37,7 @@ Bei einem Klick auf den Button mit dem Namen **"Erstelle Label"**, wird ein Moda
 Bei einem Klick auf den Button mit dem Namen **"+"**, wird ein Modal-Fenster geöffnet. In diesem ist es möglich einen neuen Task zu kreieren. In dem Modal-Fenster kann man den Namen und die Beschreibung des Tasks angeben.  Mit Klick auf den Button **"Erstelle ein Task!"** wird das Modalfenster geschlossen und es wird ein neuer Task in der Datenbank angelegt.
 
 #### 5. Task-Liste
+Bei einem Klick auf die obere Hälfte eines Task, gelangt man auf die **[Task Detail Seite](#task-detail-seite)** dieses Tasks.
 
 <img src="/packages/frontend/readMe_pictures/TaskElement.png" alt="Alt-Text"  title="Task Element"/>
 
