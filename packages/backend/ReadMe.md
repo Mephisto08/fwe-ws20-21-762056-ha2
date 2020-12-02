@@ -4,7 +4,7 @@ Dies ist das Backend für die erste Hausaufgabe in dem Fach Fortgeschrittene Web
 - Welche Routen zur Verfügung stehen, um Task, Labels und Trackings bearbeiten zu können, kann man in dem Unterpunkt **[Routen](#routen)** nachlesen.
 
 	Es gibt Routen für [Task](#task), [Label](#label), [Tracking](#tracking).
-- Um Beispieldaten zu gnerieren kann das Kapitel **[Beispieldaten generieren](#beispieldaten-generieren)** eingesehen werden.
+- Um Beispieldaten zu generieren kann das Kapitel **[Beispieldaten generieren](#beispieldaten-generieren)** eingesehen werden.
 - In dem Unterpunkt **[Datenbank](#datenbank)**, wird beschrieben, wie man in die Datenbankanwendung gelangen kann und Datensätze abfragen kann.
 - Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Test ausführen kann.
 - Mit welchen Mitteln der Code analysiert wird, kann man in dem Unterpunkt **[Statische Code Analyse](#statische-code-analyse)** nachvollziehen.
