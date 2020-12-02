@@ -16,30 +16,30 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 
 ### Task Übersichts Seite
 
-<img  src="/packages/frontend/readMe_pictures/TaskOverviewPage.png"  alt="Alt-Text"  title="Übersichts Seite"  />
+<img  src="/packages/frontend/readMe_pictures/overviewPage/TaskOverviewPage.png"  alt="Alt-Text"  title="Übersichts Seite"  />
 
 #### 1. URL
 Webadresse unter der man die Anwendung finden kann.
 #### 2. Filter Button
-<img  src="/packages/frontend/readMe_pictures/Filter.png"  alt="Alt-Text"  title="Filter"  />
+<img  src="/packages/frontend/readMe_pictures/overviewPage/Filter.png"  alt="Alt-Text"  title="Filter"  />
 
 Bei einem Klick auf den Button mit dem Namen **"Filter"**, wird ein Modal-Fenster geöffnet. In diesem kann der Filter eingestellt werden, nachdem die **[Task-Liste](#task_liste)** gefiltert werden soll. Es kann nach dem Task Namen, der Task Beschreibung und nach den Labels sortiert werden. Es kann immer nur nach einem Namen, Beschreibung und einem Label gefiltert werden. Es ist jedoch möglich, eine Kombination aus den drei Filtern anzuwenden.
 
 #### 3. Erstellen eines Labels
-<img src="/packages/frontend/readMe_pictures/createLabel.png" alt="Alt-Text"  title="Erstellen eines Labels"/>
+<img src="/packages/frontend/readMe_pictures/overviewPage/createLabel.png" alt="Alt-Text"  title="Erstellen eines Labels"/>
 
 Bei einem Klick auf den Button mit dem Namen **"Erstelle Label"**, wird ein Modal-Fenster geöffnet. In diesem kann der Namen angegeben werden für das Label das erstellt werden soll. Mit Klick auf den Button **"Erstelle ein Label!"** wird das Modalfenster geschlossen und es wird ein neues Label in der Datenbank angelegt.
  
 #### 4. Erstellen eines Tasks
 
-<img src="/packages/frontend/readMe_pictures/createTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
+<img src="/packages/frontend/readMe_pictures/overviewPage/createTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
 
 Bei einem Klick auf den Button mit dem Namen **"+"**, wird ein Modal-Fenster geöffnet. In diesem ist es möglich einen neuen Task zu kreieren. In dem Modal-Fenster kann man den Namen und die Beschreibung des Tasks angeben.  Mit Klick auf den Button **"Erstelle ein Task!"** wird das Modalfenster geschlossen und es wird ein neuer Task in der Datenbank angelegt.
 
 #### 5. Task-Liste
 Bei einem Klick auf die obere Hälfte eines Task, gelangt man auf die **[Task Detail Seite](#task-detail-seite)** dieses Tasks.
 
-<img src="/packages/frontend/readMe_pictures/TaskElement.png" alt="Alt-Text"  title="Task Element"/>
+<img src="/packages/frontend/readMe_pictures/overviewPage/TaskElement.png" alt="Alt-Text"  title="Task Element"/>
 
 ##### 1. Task Namen
 Gibt den Namen eines Task an.
@@ -52,7 +52,7 @@ Es wird die gesamte Dauer eines Task angegeben, die  ein Task bisher gebraucht h
 ##### 5. Start Tracking
 Bei Klick auf den Button **"Start Track."** wird ein Modal-Fenster geöffnet.
 
-<img src="/packages/frontend/readMe_pictures/TaskElement.png" alt="Alt-Text"  title="Starten eines Trackings"/>
+<img src="/packages/frontend/readMe_pictures/overviewPage/TaskElement.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
 ######  1.  Abbrechen
 Tracking wird mit einem Klick auf den Button abgebrochen
