@@ -1,4 +1,4 @@
-# **Fortgeschrittene Webentwicklung**
+# **Fortgeschrittene Webentwicklung Hausaufgabe 2**
 Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene Webentwicklung. Es beinhaltet einen Docker. Dieser stellt das Backend, die Datenbank und das Frontend zur Verfügung.
 
 - Wie der Docker gestartet wird, kann man in dem Unterpunkt **[Setup](#setup)** nachlesen.
