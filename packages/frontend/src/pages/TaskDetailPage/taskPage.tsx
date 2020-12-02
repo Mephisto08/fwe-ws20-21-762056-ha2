@@ -12,7 +12,7 @@ import {useParams} from "react-router-dom";
 import {Task, LabelItem, TrackedTime, LabelList, Label, TaskDescription, formatTime} from "../Dashboard/components/taskList";
 import {Layout} from "../../components/Layout";
 import {Tracking, TrackingItem, TrackingList} from "./components/trackingList";
-import {AddButton, AddLabelButton, DeleteLabelButton, EditButton, ShowLabelButton} from "../../components/Button";
+import {AddButton, AddLabelButton, DeleteLabelsButton, EditButton, ShowLabelButton} from "../../components/Button";
 import {EditTaskForm} from "./components/editTask";
 import {CreateTrackingForm} from "./components/createTracking";
 import {AddLabelToTaskForm} from "./components/addLabelToTask";
@@ -25,7 +25,7 @@ export const TaskPageID = () => {
   const [task, setTask] = useState<Task>();
   const [editTask, setEditTask] = useState(false);
   const [addLabelToTask, setAddLabelToTask] = useState(false);
-  const [deleteLabelToTask, setDeleteLabelToTask] = useState(false);
+  const [deleteLabelFromTask, setDeleteLabelToTask] = useState(false);
   const [showLabel, setShowLabel] = useState(false);
   const [createTracking, setCreateTracking] = useState(false);
 
@@ -67,26 +67,46 @@ export const TaskPageID = () => {
     <Layout>
       <AddButton
         onClick={() => {
+          setDeleteLabelToTask(false);
+          setAddLabelToTask(false);
+          setShowLabel(false);
+          setEditTask(false);
           setCreateTracking(!createTracking);
         }}
       ></AddButton>
-      <DeleteLabelButton
+      <DeleteLabelsButton
         onClick={() => {
-          setDeleteLabelToTask(!deleteLabelToTask);
+          setCreateTracking(false);
+          setAddLabelToTask(false);
+          setShowLabel(false);
+          setEditTask(false);
+          setDeleteLabelToTask(!deleteLabelFromTask);
         }}
-      ></DeleteLabelButton>
+      ></DeleteLabelsButton>
       <AddLabelButton
         onClick={() => {
+          setDeleteLabelToTask(false);
+          setCreateTracking(false);
+          setShowLabel(false);
+          setEditTask(false);
           setAddLabelToTask(!addLabelToTask);
         }}
       ></AddLabelButton>
       <ShowLabelButton
         onClick={() => {
+          setDeleteLabelToTask(false);
+          setAddLabelToTask(false);
+          setCreateTracking(false);
+          setEditTask(false);
           setShowLabel(!showLabel);
         }}
       ></ShowLabelButton>
       <EditButton
         onClick={() => {
+          setDeleteLabelToTask(false);
+          setAddLabelToTask(false);
+          setShowLabel(false);
+          setCreateTracking(false);
           setEditTask(!editTask);
         }}
       ></EditButton>
@@ -142,7 +162,7 @@ export const TaskPageID = () => {
           taskObject={task!}
         />
       )}
-      {deleteLabelToTask && (
+      {deleteLabelFromTask && (
         <DeleteLabelFromTaskForm
           afterSubmit={() => {
             setDeleteLabelToTask(false);

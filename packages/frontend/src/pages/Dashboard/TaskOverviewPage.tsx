@@ -17,7 +17,9 @@ import {
 import {
   AddButton,
   CreateLabelButton,
+  DeleteLabelsButton,
   FilterButton,
+  ShowLabelButton,
 } from "../../components/Button";
 import {CreateTaskForm} from "./components/createTask";
 import {Layout} from "../../components/Layout";
@@ -25,15 +27,19 @@ import {useHistory} from "react-router-dom";
 import {Modal} from "../../components/Modal";
 import {CreateLabelForm} from "./components/createLabel";
 import {FilterForm} from "./components/filter";
+import { ShowAllLabelForm } from "../TaskDetailPage/components/showAllLabel";
+import { DeleteLabelForm } from "./components/deleteLabel";
 
 
 export const TaskOverviewPage = () => {
   const [allTask, setTask] = useState<Task[]>([]);
-  const [addTask, setAddTask] = useState(false);
-  const [addLabel, setAddLabel] = useState(false);
+  const [createTask, setCreateTask] = useState(false);
+  const [createLabel, setCreateLabel] = useState(false);
   const [taskFilter, setTaskFilter] = useState({ taskName: "", taskDescription: "", taskLabel: "" });
   const [filter, setFilter] = useState(false);
   const [taskTrackingId, setTaskTrackingId] = useState(-1);
+  const [showLabel, setShowLabel] = useState(false);
+  const [deleteLabel, setDeleteLabel] = useState(false);
   let history = useHistory();
 
   /**
@@ -78,13 +84,24 @@ export const TaskOverviewPage = () => {
             `}
         >
           <FilterButton onClick={() => {
+            setShowLabel(false);
             setFilter(!filter);
           }} />
+          <ShowLabelButton
+            onClick={() => {
+            setShowLabel(!showLabel);
+          }}/>
           <CreateLabelButton onClick={() => {
-            setAddLabel(!addLabel);
+            setShowLabel(false);
+            setCreateLabel(!createLabel);
+          }} />
+          <DeleteLabelsButton onClick={() => {
+            setShowLabel(false);
+            setDeleteLabel(!deleteLabel);
           }} />
           <AddButton onClick={() => {
-            setAddTask(!addTask);
+            setShowLabel(false);
+            setCreateTask(!createTask);
           }} />
         </div>
       </div>
@@ -102,31 +119,52 @@ export const TaskOverviewPage = () => {
         />
       </Modal>
       )}
-      {addLabel && (<Modal
+      {createLabel && (<Modal
         title="Label erstellen"
         onCancel={() => {
-          setAddLabel(false);
+          setCreateLabel(false);
         }}>
         <CreateLabelForm
           afterSubmit={() => {
-            setAddLabel(false);
+            setCreateLabel(false);
             fetchTask();
           }}
         />
       </Modal>
       )}
-      {addTask && (<Modal
-        title="Task erstellen"
+      {deleteLabel && (<Modal
+        title="Label löschen"
         onCancel={() => {
-          setAddTask(false);
+          setDeleteLabel(false);
         }}>
-        <CreateTaskForm
+        <DeleteLabelForm
           afterSubmit={() => {
-            setAddTask(false);
+            setDeleteLabel(false);
             fetchTask();
           }}
         />
       </Modal>
+      )}
+      {createTask && (<Modal
+        title="Task erstellen"
+        onCancel={() => {
+          setCreateTask(false);
+        }}>
+        <CreateTaskForm
+          afterSubmit={() => {
+            setCreateTask(false);
+            fetchTask();
+          }}
+        />
+      </Modal>
+      )}
+      {showLabel && (
+        <ShowAllLabelForm
+          afterSubmit={() => {
+            setShowLabel(false);
+            fetchTask();
+          }}
+        />
       )}
       <TaskList>
         {allTask.map((allTask) => (

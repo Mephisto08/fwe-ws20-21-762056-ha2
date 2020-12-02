@@ -86,6 +86,7 @@ export const TaskItemStyle = styled.div`
 `;
 
 export const TaskList = styled.div`
+  clear:both;
   list-style: none;
   box-shadow: 0 0.125em 0.25em 0 ${(props) => props.theme.colors.shadowColor};
   width: 100%;

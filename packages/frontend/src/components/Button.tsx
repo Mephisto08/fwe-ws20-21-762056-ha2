@@ -162,6 +162,27 @@ export const DeleteButton = (
   );
 };
 
+export const DeleteLabelsButton = (
+  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+) => {
+  const StyledButton = styled.button`
+    margin-left: 0.5rem;
+    width: 48px;
+    border: 0px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    float: right;
+    background-color: ${(props) => props.theme.colors.primary};
+  `;
+  return (
+    <StyledButton {...props}>
+      Entf. Label
+    </StyledButton>
+  );
+};
+
 export const DeleteLabelButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
@@ -182,7 +203,6 @@ export const DeleteLabelButton = (
     </StyledButton>
   );
 };
-
 export const EditButton = (
   props: React.ButtonHTMLAttributes<HTMLButtonElement>
 ) => {
