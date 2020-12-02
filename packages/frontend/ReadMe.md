@@ -8,22 +8,30 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 - Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Test ausführen kann.  
   
 ## Anwendung
+### Allgemein
 - Unter **localhost:2000** ist das Frontend erreichbar.
+-  Alle Modal Fenster können durch ein Klick auf das sich in der oberen rechten Ecke befindenden Kreuzes geschlossen werden.
 
-<img src="/packages/frontend/readMe_pictures/TaskOverviewPage.png" alt="Alt-Text" title="Übersichts Seite"/>
+### Task Übersichts Seite
+
+<img  src="/packages/frontend/readMe_pictures/TaskOverviewPage.png"  alt="Alt-Text"  title="Übersichts Seite"  />
 
 ### 1. Webadresse unter der man die Anwendung finden kann.
+
 ### 2. Filter Button
 
-<img src="/packages/frontend/readMe_pictures/Filter.png" alt="Alt-Text" title="Filter"/>
+<img  src="/packages/frontend/readMe_pictures/Filter.png"  alt="Alt-Text"  title="Filter"  />
 
-Bei einem Klick auf den Button mit dem Namen Filter, wird ein Modal-Fenster geöffnet. In diesem kann der Filter eingestellt werden, nachdem die  **[Task-Liste](#task_liste)** sortiert werden soll. Es kann nach dem Task Namen, der Task Beschreibung und nach den Labels sortiert werden. Es kann immer nur nach einem Namen, Beschreibung und einem Label gefiltert werden. Es ist jedoch möglich, eine Kombination aus den drei Filtern anzuwenden.
+Bei einem Klick auf den Button mit dem Namen **"Filter"**, wird ein Modal-Fenster geöffnet. In diesem kann der Filter eingestellt werden, nachdem die  **[Task-Liste](#task_liste)** gefiltert werden soll. Es kann nach dem Task Namen, der Task Beschreibung und nach den Labels sortiert werden. Es kann immer nur nach einem Namen, Beschreibung und einem Label gefiltert werden. Es ist jedoch möglich, eine Kombination aus den drei Filtern anzuwenden.
+
 ### 3. Erstellen eines Labels
 
-<img src="/packages/frontend/readMe_pictures/createLabel.png" alt="Alt-Text" title="Erstellen eines Labels"/>
+<img  src="/packages/frontend/readMe_pictures/createLabel.png"  alt="Alt-Text"  title="Erstellen eines Labels"  />
 
+Bei einem Klick auf den Button mit dem Namen **"Erstelle Label"**, wird ein Modal-Fenster geöffnet. In diesem kann der Namen angegeben werden für das Label das erstellt werden soll.
 
 ### 4. Erstellen eines Tasks
+
 ### 5. Task-Liste
   
 ## Beispieldaten generieren  
