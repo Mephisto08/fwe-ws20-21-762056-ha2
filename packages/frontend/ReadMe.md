@@ -3,6 +3,8 @@
 Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene Webentwicklung.
 
 - Welche Funktionen und Features die Website hat wird unter **[Anwendung](#anwendung)** beschrieben.
+	- Unter dem Unterpunkt **[Task Übersichts Seite](#task_übersichts_seite)**  ist alles zu finden, was auf der Übersichtsseite gemacht werden kann.
+	- Unter dem Unterpunkt **[Task Detail Seite](#task_detail_seite)**  ist alles zu finden, was auf der Übersichtsseite gemacht werden kann.
 - Um Beispieldaten zu generieren kann das Kapitel **[Beispieldaten generieren](#beispieldaten-generieren)** eingesehen werden.  
 - In dem Unterpunkt **[Datenbank](#datenbank)**, wird beschrieben, wie man in die Datenbankanwendung gelangen kann und Datensätze abfragen kann.  
 - Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Test ausführen kann.  
@@ -16,7 +18,8 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 
 <img  src="/packages/frontend/readMe_pictures/TaskOverviewPage.png"  alt="Alt-Text"  title="Übersichts Seite"  />
 
-#### 1. Webadresse unter der man die Anwendung finden kann.
+#### 1. URL
+Webadresse unter der man die Anwendung finden kann.
 #### 2. Filter Button
 <img  src="/packages/frontend/readMe_pictures/Filter.png"  alt="Alt-Text"  title="Filter"  />
 
@@ -64,6 +67,8 @@ Bei Klick auf den Button, wird das Tracking gespeichert und das Modal-Fenster wi
 ##### 6. Lösche eines Labels
 Bei einem Klick auf den **Mülleimer** wird ein Task aus der Task-Liste und somit aus der Datenbank gelöscht. Mit ihm werden alle Trackings die ein Task besitzt gelöscht. Die Labels die einem Task zugeordnet sind, bleiben bestehen.
   
+### Task Detail Seite
+
 ## Beispieldaten generieren  
   
 
