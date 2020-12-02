@@ -19,7 +19,7 @@ Dies ist das Backend für die erste Hausaufgabe in dem Fach Fortgeschrittene Web
 	
 - Es muss eine .env - Datei erstellt werden. In dieser kann das Passwort, der Benutzername, sowie der Namen der Datenbank festgelegt werden.
 
-**Hinweis:**  Es kann die .env_example zu .env umbenannt werden. Dies reicht aus, damit die Datenbank korrekt starten kann.
+**Hinweis:**  Es kann die .env_example zu .env umbenannt werden. Dies reicht aus, damit der Docker korrekt starten kann.
 
 - Der Docker-Container wird mit folgendem Befehl gestartet:
 
