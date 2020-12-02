@@ -13,7 +13,7 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 ### <ins>Allgemein</ins>
 - Unter **localhost:2000** ist das Frontend erreichbar.
 -  Alle Modal Fenster können durch ein Klick auf das sich in der oberen rechten Ecke befindenden Kreuzes geschlossen werden.
-- Alle Zeit angaben sind im Format **"Stunde:Minute:Sekunde"** angeben. 
+- Alle Zeitangaben sind im Format **"Stunde:Minute:Sekunde"** angeben. 
 
 ###  <ins>Task Übersichts Seite</ins>
 
