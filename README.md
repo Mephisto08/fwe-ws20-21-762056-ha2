@@ -6,7 +6,7 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 - Im Unterpunkt **[Frontend](#frontend)**, kann nachgeschaut werden wo das Frontend zu finden ist und die Dokumentation dazu.
 - Um Beispieldaten zu generieren kann das Kapitel **[Beispieldaten generieren](#beispieldaten-generieren)** eingesehen werden.
 - In dem Unterpunkt **[Datenbank](#datenbank)**, wird beschrieben, wie man in die Datenbankanwendung gelangen kann und Datensätze abfragen kann.
-- Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Test ausführen kann.
+- Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Tests ausführen kann.
 
 ## Setup
 
