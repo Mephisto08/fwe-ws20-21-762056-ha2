@@ -56,7 +56,7 @@ Um die Tests für das Backend auszuführen, wird folgender Befehl in die Kommand
 
 ### Frontend
 
-Um die Tests für das Backend auszuführen, wird folgender Befehl in die Kommando Zeile eingegeben:
+Um die Tests für das Frontend auszuführen, wird folgender Befehl in die Kommando Zeile eingegeben:
 
 	docker-compose exec xxxxxxxxxxxx
 
