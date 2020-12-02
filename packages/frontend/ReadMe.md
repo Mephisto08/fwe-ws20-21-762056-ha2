@@ -21,19 +21,21 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 
 #### 1. URL
 Webadresse unter der man die Anwendung finden kann.
-#### 2. Filter Button
+#### Buttons
+
+##### a ) Filter
 <img  src="/packages/frontend/readMe_pictures/overviewPage/Filter.png"  alt="Alt-Text"  title="Filter"  />
 
 Bei einem Klick auf den Button mit dem Namen **"Filter"**, wird ein Modal-Fenster geöffnet. In diesem kann der Filter eingestellt werden, nachdem die **[Task-Liste](#task_liste)** gefiltert werden soll. Es kann nach dem Task Namen, der Task Beschreibung und nach den Labels sortiert werden. Es kann immer nur nach einem Namen, Beschreibung und einem Label gefiltert werden. Es ist jedoch möglich, eine Kombination aus den drei Filtern anzuwenden.
 
-#### 3. Erstellen eines Labels
+##### c) Erstellen eines Labels
 <img src="/packages/frontend/readMe_pictures/overviewPage/createLabel.png" alt="Alt-Text"  title="Erstellen eines Labels"/>
 
 Bei einem Klick auf den Button mit dem Namen **"Erstelle Label"**, wird ein Modal-Fenster geöffnet. In diesem kann der Namen angegeben werden für das Label das erstellt werden soll. Mit Klick auf den Button **"Erstelle ein Label!"** wird das Modalfenster geschlossen und es wird ein neues Label in der Datenbank angelegt.
  
-#### 4. Erstellen eines Tasks
+##### e) Erstellen eines Tasks
 
-<img src="/packages/frontend/readMe_pictures/overviewPage/CreateTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
+<img src="/packages/frontend/readMe_pictures/overviewPage/createTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
 
 Bei einem Klick auf den Button mit dem Namen **"+"**, wird ein Modal-Fenster geöffnet. In diesem ist es möglich einen neuen Task zu kreieren. In dem Modal-Fenster kann man den Namen und die Beschreibung des Tasks angeben.  Mit Klick auf den Button **"Erstelle ein Task!"** wird das Modalfenster geschlossen und es wird ein neuer Task in der Datenbank angelegt.
 
