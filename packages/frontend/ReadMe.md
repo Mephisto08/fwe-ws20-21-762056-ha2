@@ -13,6 +13,7 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 ### Allgemein
 - Unter **localhost:2000** ist das Frontend erreichbar.
 -  Alle Modal Fenster können durch ein Klick auf das sich in der oberen rechten Ecke befindenden Kreuzes geschlossen werden.
+- Alle Zeit angaben sind im Format **"Stunde:Minute:Sekunde"** angeben. 
 
 ### Task Übersichts Seite
 
@@ -37,6 +38,8 @@ Bei einem Klick auf den Button mit dem Namen **"Erstelle Label"**, wird ein Moda
 Bei einem Klick auf den Button mit dem Namen **"+"**, wird ein Modal-Fenster geöffnet. In diesem ist es möglich einen neuen Task zu kreieren. In dem Modal-Fenster kann man den Namen und die Beschreibung des Tasks angeben.  Mit Klick auf den Button **"Erstelle ein Task!"** wird das Modalfenster geschlossen und es wird ein neuer Task in der Datenbank angelegt.
 
 #### 5. Task-Liste
+Liste mit allen existierenden Tasks. Sie werden in alphabetischer Reihenfolge untereinander aufgelistet.
+
 Bei einem Klick auf die obere Hälfte eines Task, gelangt man auf die **[Task Detail Seite](#task-detail-seite)** dieses Tasks.
 
 <img src="/packages/frontend/readMe_pictures/overviewPage/TaskElement.png" alt="Alt-Text"  title="Task Element"/>
@@ -73,17 +76,32 @@ Bei einem Klick auf den **Mülleimer** wird ein Task aus der Task-Liste und somi
 <img src="/packages/frontend/readMe_pictures/detailPage/TaskDetailPage.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
 #### 1. Name
+Name des Tasks.
 #### 2. Beschreibung
+Beschreibung des Tasks.
 #### 3. Labels eines Task
+Gibt alle Labels an , die einem Task zugeordnet sind.
 #### 4. Gesamte Zeitdauer eines Task
+Es wird die gesamte Dauer eines Task angegeben, die  ein Task bisher gebraucht hat mit all seinen existierenden Trackings.
 #### 5. Trackings
+Liste mit allen existierenden Trackings die einem Task zugeordnet sind. Sie werden in alphabetischer Reihenfolge untereinander aufgelistet.
+
 <img src="/packages/frontend/readMe_pictures/detailPage/tracking.png" alt="Alt-Text"  title="Starten eines Trackings"/>
-##### 5.1
-##### 5.2
-##### 5.3
-##### 5.4
-##### 5.5
-##### 5.6
+
+##### 5.1 Name
+Name des Trackings
+##### 5.2 Startzeitpunkt
+Startzeitpunkt bei dem das Tracking begonnen hat.
+##### 5.3 Endzeitpunkt
+Endzeitpunkt bei dem das Tracking beendet wurde.
+##### 5.4 Dauer
+Zeit die ein Tracking gedauert hat.
+##### 5.5 Editieren
+<img src="/packages/frontend/readMe_pictures/detailPage/editTracking.png" alt="Alt-Text"  title="Starten eines Trackings"/>
+Bei einem Klick auf den Button **"Editiere Tracking"** öffnet sich ein Modal-Fenster. In diesem kann man den Namen des Trackings, den Start- und Endzeitpunkt editieren.
+##### 5.6 Löschen
+Bei einem Klick auf den **Mülleimer** wird ein das Tracking aus der Tracking-Liste und somit aus der Datenbank gelöscht.
+
 
 #### 6. Buttons
 ##### a
