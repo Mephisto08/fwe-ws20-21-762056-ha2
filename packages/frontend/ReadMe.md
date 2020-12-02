@@ -28,14 +28,23 @@ Webadresse unter der man die Anwendung finden kann.
 
 Bei einem Klick auf den Button mit dem Namen **"Filter"**, wird ein Modal-Fenster geöffnet. In diesem kann der Filter eingestellt werden, nachdem die **[Task-Liste](#task_liste)** gefiltert werden soll. Es kann nach dem Task Namen, der Task Beschreibung und nach den Labels sortiert werden. Es kann immer nur nach einem Namen, Beschreibung und einem Label gefiltert werden. Es ist jedoch möglich, eine Kombination aus den drei Filtern anzuwenden.
 
+##### b) Zeige Labels
+<img src="/packages/frontend/readMe_pictures/detailPage/showLabels.png" alt="Alt-Text"  title="Zeige Labels"/>
+
+Bei einem Klick auf den Button **"Zeige Labels"** werden alle existierenden Labels untereinander angezeigt.
+
 ##### c) Erstellen eines Labels
 <img src="/packages/frontend/readMe_pictures/overviewPage/createLabel.png" alt="Alt-Text"  title="Erstellen eines Labels"/>
 
 Bei einem Klick auf den Button mit dem Namen **"Erstelle Label"**, wird ein Modal-Fenster geöffnet. In diesem kann der Namen angegeben werden für das Label das erstellt werden soll. Mit Klick auf den Button **"Erstelle ein Label!"** wird das Modalfenster geschlossen und es wird ein neues Label in der Datenbank angelegt.
  
+##### d) Lösche Label
+<img src="/packages/frontend/readMe_pictures/overviewPage/deleteLabel.png" alt="Alt-Text"  title="Löschen eines Labels"/>
+
+Bei einem Klick auf den Button **"Entf. Labels"** öffnet sich ein Modal-Fenster. In diesem kann die ID angeben werden, welches Label gelöscht werden soll. Wird dies bestätigt, wird das Label aus der Datenbank gelöscht und es wird von allen Tasks entfernt die dieses beinhalten.
 ##### e) Erstellen eines Tasks
 
-<img src="/packages/frontend/readMe_pictures/overviewPage/createTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
+<img src="/packages/frontend/readMe_pictures/overviewPage/CreateTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
 
 Bei einem Klick auf den Button mit dem Namen **"+"**, wird ein Modal-Fenster geöffnet. In diesem ist es möglich einen neuen Task zu kreieren. In dem Modal-Fenster kann man den Namen und die Beschreibung des Tasks angeben.  Mit Klick auf den Button **"Erstelle ein Task!"** wird das Modalfenster geschlossen und es wird ein neuer Task in der Datenbank angelegt.
 
