@@ -66,7 +66,7 @@ Es wird die gesamte Dauer eines Task angegeben, die  ein Task bisher gebraucht h
 ##### 5.5 Start Tracking
 Bei Klick auf den Button **"Start Track."** wird ein Modal-Fenster geöffnet.
 
-<img src="/packages/frontend/readMe_pictures/overviewPage/TaskElement.png" alt="Alt-Text"  title="Starten eines Trackings"/>
+<img src="/packages/frontend/readMe_pictures/overviewPage/startTracking.png" alt="Alt-Text"  title="Starten eines Trackings"/>
 
 ######  5.5.1  Abbrechen
 Tracking wird mit einem Klick auf den Button abgebrochen
