@@ -2,6 +2,8 @@
 
 Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene Webentwicklung.
 
+**Hinweis:**  Dieses Projekt wurde unter Windows 10 Pro entwickelt. Bei Fehler auf anderen Betriebssystemen wird keine Verantwortung übernommen. Es wurde auf 5 verschiedenen Systemen (mit Windows 10 /Pro) installiert und getestet. Bei keinem System ist ein Fehler aufgetreten.
+
 - Welche Funktionen und Features die Website hat wird unter **[Anwendung](#anwendung)** beschrieben.
 	- Unter dem Unterpunkt **[Task Übersichts Seite](#task-übersichts-seite)**  ist alles zu finden, was auf der Übersichtsseite gemacht werden kann.
 	- Unter dem Unterpunkt **[Task Detail Seite](#task-detail-seite)**  ist alles zu finden, was auf der Übersichtsseite gemacht werden kann.
