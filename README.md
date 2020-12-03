@@ -24,7 +24,7 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 ## Backend
 Das Backend ist im Verzeichnis unter  **packages/backend/**** zu finden.
 
-Eine genaue [Dokumentation des Backendes](packages/backend/README.md)kann im Unterordner **packages/backend/ReadMe.md** nachgelesen werden.
+Eine genaue [Dokumentation des Backendes](packages/backend/README.md) kann im Unterordner **packages/backend/ReadMe.md** nachgelesen werden.
 
 ## Frontend
 Das Frontend ist im Verzeichnis unter  **packages/frontend/**** zu finden.
