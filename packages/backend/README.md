@@ -1,5 +1,8 @@
 # **Fortgeschrittene Webentwicklung Backend**
 Dies ist das Backend für die erste Hausaufgabe in dem Fach Fortgeschrittene Webentwicklung. Es beinhaltet einen Docker, in dem alles selbstständig abläuft. In diesem wird alles selbstständig installiert. In ihm wird ein Server für das Backend sowie eine Datenbank zur Verfügung gestellt.
+
+**Hinweis:**  Dieses Projekt wurde unter Windows 10 Pro entwickelt. Bei Fehler auf anderen Betriebssystemen wird keine Verantwortung übernommen. Es wurde auf 5 verschiedenen Systemen (mit Windows 10 /Pro) installiert und getestet. Bei keinem System ist ein Fehler aufgetreten.
+
 - Wie der Docker gestartet wird, kann man in dem Unterpunkt **[Setup](#setup)** nachlesen.
 - Welche Routen zur Verfügung stehen, um Task, Labels und Trackings bearbeiten zu können, kann man in dem Unterpunkt **[Routen](#routen)** nachlesen.
 
