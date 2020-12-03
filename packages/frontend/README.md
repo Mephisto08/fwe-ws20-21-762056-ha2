@@ -164,6 +164,6 @@ Der Nutzername, das Passwort und der Namen der Datenbank sind an die .env.exampl
 ## Test  
   
 Um die Tests für das Backend auszuführen, wird folgender Befehl in die Kommando Zeile eingegeben:  
- docker-compose exec xxxxxxxxxxxx  
+ docker-compose exec frontend npm run test   
   
 
