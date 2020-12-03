@@ -72,11 +72,15 @@ export const StartTrackingForm: React.FC<{ afterSubmit: () => void; startTime: a
 
     /** 
      * Dieses Phänomen kann ich mir nicht erklären. paused nimmt den gleichen Wert an in beiden logs.
-     * Erst beim nächsten Button klick switcht der bool.
-     * Ebenso, wenn der StopBuutton geklickt wird, passiert kein Submit erst bei einem zweiten klicken
+     * Erst beim nächsten Button klick switcht der bool. Ich weeiß, das dies durch den asynchronen 
+     * Ablauf von dem useState entsteht. Jedoh warum dieser Button auf die Klicks so reagiert
+     * kann ich mir nicht erklären.
+     * Ebenso, wenn der StopButton geklickt wird, passiert kein Submit erst bei einem zweiten klicken
      * eines beliebigen Buttons. 
-     * Wenn ich bei einem Button ein onDoubleClick einbaue, reagiert dieser Button jedoch auch mit einem Klick.
+     * Wenn ich bei einem Button ein onDoubleClick einbaue, reagiert dieser Button
+     * jedoch auch mit einem Klick.
      * Bei einem Klick wird Pause und Weiter ausgeführt.
+     * Deswegen einen DoppelKlick ausführen, damit treten keine Fehler auf.
     */
     console.log(paused, '+paused+stop+', stop);
     setPaused(!paused);
