@@ -2,20 +2,16 @@
  * In dieser Datei, wird alles bereitgestellt,
  * um ein label zu löschen.
  */
-import React, { useState, ChangeEvent } from "react";
-import { Input } from "../../../components/Input";
-import { Button20rem } from "../../../components/Button";
-
-interface EditTrackingFormState {
-  id: number;
-}
+import React, {useState, ChangeEvent} from "react";
+import {Input}  from "../../../components/Input";
+import {Button20rem} from "../../../components/Button";
 
 export const DeleteLabelForm: React.FC<{ afterSubmit: () => void }> = ({
   afterSubmit,
 }) => {
-    const [values, setValues] = useState({
-        id: "",
-      });
+  const [values, setValues] = useState({
+    id: "",
+  });
 
   const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value });
