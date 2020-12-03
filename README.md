@@ -64,5 +64,5 @@ Um die Tests für das Backend auszuführen, wird folgender Befehl in die Kommand
 
 Um die Tests für das Frontend auszuführen, wird folgender Befehl in die Kommando Zeile eingegeben:
 
-	docker-compose exec xxxxxxxxxxxx
+	docker-compose exec frontend npm run test   
 
