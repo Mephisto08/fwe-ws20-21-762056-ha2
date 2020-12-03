@@ -12,6 +12,7 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 ## Anwendung
 ### <ins>Allgemein</ins>
 - Unter **localhost:2000** ist das Frontend erreichbar.
+- Die Dokumentation ist in deutsch verfasst. Die Benennung der Funktionen, Variablen etc. ist wie im backend auch mit englsichen Bezeichnern benannt.
 -  Alle Modal Fenster können durch ein Klick auf das sich in der oberen rechten Ecke befindenden Kreuzes geschlossen werden.
 - Alle Zeitangaben sind im Format **"Stunde:Minute:Sekunde"** angeben. 
 
