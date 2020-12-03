@@ -1,6 +1,8 @@
 # **Fortgeschrittene Webentwicklung Hausaufgabe 2**
 Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene Webentwicklung. Es beinhaltet einen Docker. Dieser stellt das Backend, die Datenbank und das Frontend zur Verfügung.
 
+**Hinweis:**  Dieses Projekt wurde unter Windows 10 Pro entwickelt. Bei Fehler auf anderen Betriebssystemen wird keine Verantwortung übernommen. Es wurde auf 5 verschiedenen Systemen (mit Windows 10 /Pro) installiert und getestet. Bei keinem System ist ein Fehler aufgetreten.
+
 - Wie der Docker gestartet wird, kann man in dem Unterpunkt **[Setup](#setup)** nachlesen.
 - Im Unterpunkt **[Backend](#backend)**, kann nachgeschaut werden wo das Backend zu finden ist und die Dokumentation dazu.
 - Im Unterpunkt **[Frontend](#frontend)**, kann nachgeschaut werden wo das Frontend zu finden ist und die Dokumentation dazu.
