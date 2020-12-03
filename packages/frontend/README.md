@@ -149,7 +149,8 @@ Bei einem Klick auf den Button **"+"** öffnet sich ein Modal-Fenster. In diesem
   
 
 Um Beispieldaten generieren zulassen kann folgender Befehl im Docker ausgefhrt werden.  
- docker-compose exec backend npm run fixtures  
+
+	docker-compose exec backend npm run fixtures  
     
 ## Datenbank  
   
@@ -157,13 +158,15 @@ Um Beispieldaten generieren zulassen kann folgender Befehl im Docker ausgefhrt w
 Die Daten werden in einer Datenbank gespeichert. Es wird eine mariaDB verwendet. Die Daten, die die Datenbank beinhaltet, können über die Konsole eingesehen werden.  
   
 Über den folgenden Befehl, gelangt man in die Datenbank und kann dort über SQL die Datensätze abfragen:  
- docker-compose exec mariadb mysql -uexampleuser -pexamplepwd exampledb  
+
+	docker-compose exec mariadb mysql -uexampleuser -pexamplepwd exampledb  
 
 Der Nutzername, das Passwort und der Namen der Datenbank sind an die .env.example angepasst. Sind andere Zugangsdaten in der .env Datei festgelegt worden, muss der Befehl an diese angepasst werden.  
   
 ## Test  
   
 Um die Tests für das Backend auszuführen, wird folgender Befehl in die Kommando Zeile eingegeben:  
- docker-compose exec frontend npm run test   
+
+	docker-compose exec frontend npm run test   
   
 
