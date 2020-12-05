@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /**
  * In dieser Datei, wird alles bereitgestellt,
  * um eine Tracking zu editieren. Hierbei kann die Beschreibung

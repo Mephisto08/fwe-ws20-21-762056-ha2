@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /**
  * In dieser Datei wird alles bereitgestellt,

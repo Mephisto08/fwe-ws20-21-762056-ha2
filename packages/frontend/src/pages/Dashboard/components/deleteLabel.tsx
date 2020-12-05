@@ -7,7 +7,6 @@ import {Input} from '../../../components/Input';
 import {Button20rem} from '../../../components/Button';
 
 export const DeleteLabelForm: React.FC<{ afterSubmit: () => void }> = ({
-  // eslint-disable-next-line react/prop-types
   afterSubmit,
 }) => {
   const [values, setValues] = useState({

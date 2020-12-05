@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /**
  * In dieser Datei, wird das Form erstellt
  * um Trackings für Task starten zukönnen.

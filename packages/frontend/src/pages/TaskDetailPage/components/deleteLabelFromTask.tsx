@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /**
  * In dieser Datei, wird alles bereitgestellt,
  * um ein oder mehrere Labels von einem Task zulöschen.

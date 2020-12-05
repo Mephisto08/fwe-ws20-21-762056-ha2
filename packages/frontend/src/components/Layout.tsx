@@ -35,7 +35,6 @@ const Footer = styled.footer`
 `;
 
 
-// eslint-disable-next-line react/prop-types
 export const Layout: React.FC = ({children}) => {
   return (
     <>

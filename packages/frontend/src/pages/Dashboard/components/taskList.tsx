@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable react/prop-types */
 /* eslint-disable valid-jsdoc */
 /**
  * In dieser Datei, wird ein Task Item erstellt.

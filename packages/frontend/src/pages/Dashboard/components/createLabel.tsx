@@ -13,7 +13,6 @@ import {Button20rem} from '../../../components/Button';
  * @return {HTML} HTML-Gerüst
  */
 export const CreateLabelForm: React.FC<{ afterSubmit: () => void; }> = ({
-  // eslint-disable-next-line react/prop-types
   afterSubmit,
 }) => {
   const [values, setValues] = useState({

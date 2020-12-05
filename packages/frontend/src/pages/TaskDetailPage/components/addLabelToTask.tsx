@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /**
  * In dieser Datei, wird alles bereitgestellt,
  * damit ein Label zu einem Task hinzgefügt werden kann

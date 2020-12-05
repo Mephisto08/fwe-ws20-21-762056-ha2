@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /**
  * In dieser Datei, wird das Form erstellt in dem man nach Task Name,
  * Task Beschreibung und Labels von Tasks filter kann.
