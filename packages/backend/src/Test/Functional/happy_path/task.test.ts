@@ -160,6 +160,77 @@ describe('Tests for the Task class', () => {
           done();
         });
   });
+  it('getAllTasks Filter TaskName', async (done) => {
+    await helper.resetDatabase();
+    await helper.loadFixtures();
+
+    request(helper.app)
+        .get('/api/task?filterTask=Task Test 1')
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          if (err) throw err;
+          expect(res.body.data.length).toBe(1);
+          expect(res.body.data[0].name).toBe('Task Test 1');
+          expect(res.body.data[0].description).toBe('Beschreibung Test 1');
+          done();
+        });
+  });
+  it('getAllTasks Filter Label', async (done) => {
+    await helper.resetDatabase();
+    await helper.loadFixtures();
+
+    request(helper.app)
+        .get('/api/task?filterLabel=Label Test 1')
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          if (err) throw err;
+          expect(res.body.data.length).toBe(2);
+          expect(res.body.data[1].name).toBe('Task Test 3');
+          expect(res.body.data[1].description).toBe('Beschreibung Test 3');
+          done();
+        });
+  });
+
+  it('getAllTasks Filter Label Description', async (done) => {
+    await helper.resetDatabase();
+    await helper.loadFixtures();
+
+    request(helper.app)
+        // eslint-disable-next-line
+        .get('/api/task?filterLabel=Label Test 2&filterDescription=Beschreibung Test 3')
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          if (err) throw err;
+          expect(res.body.data.length).toBe(1);
+          expect(res.body.data[0].name).toBe('Task Test 3');
+          expect(res.body.data[0].description).toBe('Beschreibung Test 3');
+          done();
+        });
+  });
+  it('getAllTasks Filter All', async (done) => {
+    await helper.resetDatabase();
+    await helper.loadFixtures();
+
+    request(helper.app)
+        // eslint-disable-next-line
+        .get('/api/task?filterLabel=Label Test 1&filterDescription=Beschreibung Test 1&filterTask=Task Test 1')
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          if (err) throw err;
+          expect(res.body.data.length).toBe(1);
+          expect(res.body.data[0].name).toBe('Task Test 1');
+          expect(res.body.data[0].description).toBe('Beschreibung Test 1');
+          done();
+        });
+  });
 
   it('getAllTrackingsByTaskId test', async (done) => {
     await helper.resetDatabase();

@@ -178,6 +178,27 @@ describe('Tests for the Task class', () => {
   });
 
   /**
+  * Es wird gefiltert, und es soll kein Task zurückgegeben.
+  * Es existiert kein Task der diese Eigenschaften aufweist.
+  */
+  it('getAllTasks Filter All', async (done) => {
+    await helper.resetDatabase();
+    await helper.loadFixtures();
+
+    request(helper.app)
+        // eslint-disable-next-line
+        .get('/api/task?filterLabel=Label Test 3&filterDescription=Beschreibung Test 2&filterTask=Task Test 1')
+        .set('Content-Type', 'application/json')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          if (err) throw err;
+          expect(res.body.data.length).toBe(0);
+          done();
+        });
+  });
+
+  /**
   * Es wird eine Task Id mitgeschickt, welche nicht existiert
   */
   it('getAllTrackingsByTaskId test wrong infos', async (done) => {
