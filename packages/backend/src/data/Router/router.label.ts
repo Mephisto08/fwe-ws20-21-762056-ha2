@@ -1,15 +1,15 @@
-import {Router} from 'express';
+import { Router } from 'express';
 import {
-  createLabel,
-  deleteLabelById,
-  getAllLabels,
-  getAllTasksByLabelId,
-  getLabelById,
-  updateLabelById,
+	createLabel,
+	deleteLabelById,
+	getAllLabels,
+	getAllTasksByLabelId,
+	getLabelById,
+	updateLabelById,
 } from '../Controller/controller.label';
 
 // eslint-disable-next-line new-cap
-export const labelRouter = Router({mergeParams: true});
+export const labelRouter = Router({ mergeParams: true });
 
 /**
  * Folgend sind alle Routen aufgeführt, die ein Label hat
@@ -20,5 +20,3 @@ labelRouter.get('/', getAllLabels);
 labelRouter.get('/task/:labelId', getAllTasksByLabelId);
 labelRouter.get('/:labelId', getLabelById);
 labelRouter.patch('/:labelId', updateLabelById);
-
-

@@ -4,9 +4,25 @@
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
-    "extends": ["google"],
+    "plugins": [
+      "@typescript-eslint",
+      "eslint-plugin-prettier"
+    ],
+    "extends": [
+      "google",
+      "eslint-config-prettier"
+    ],
     "rules":{
+      "prettier/prettier": ["error",
+        {
+          "semi": true,
+          "trailingComma": "all",
+          "singleQuote": true,
+          "printWidth": 120,
+          "tabWidth": 2,
+          "useTabs": true
+        }
+      ],
       "linebreak-style": 0
     }
   }

@@ -1,6 +1,6 @@
-import {getRepository} from 'typeorm';
-import {Label} from '../Entities/Label';
-import {Task} from '../Entities/Task';
+import { getRepository } from 'typeorm';
+import { Label } from '../Entities/Label';
+import { Task } from '../Entities/Task';
 import Axios from 'axios';
 
 /**
@@ -11,19 +11,18 @@ import Axios from 'axios';
  * @param {Request}req Request
  * @param {Response}res Response
  */
-export const addLabelsByTaskId = async (req, res) =>{
-  const taskId = req.params.taskId;
-  const {labelList} = req.body;
+export const addLabelsByTaskId = async (req, res) => {
+	const taskId = req.params.taskId;
+	const { labelList } = req.body;
 
-  if (!taskId || !labelList) {
-    res.status(400).send({
-      error: 'Error: Parameter fehlt!',
-    });
-    return;
-  };
-  addLabels(taskId, labelList, res);
+	if (!taskId || !labelList) {
+		res.status(400).send({
+			error: 'Error: Parameter fehlt!',
+		});
+		return;
+	}
+	addLabels(taskId, labelList, res);
 };
-
 
 /**
  * Erstellt einen Task. Wird nur aus addlabelsByTaskId aufgerufen.
@@ -32,34 +31,32 @@ export const addLabelsByTaskId = async (req, res) =>{
  * @param {Response}res Response
  */
 async function addLabels(taskId, labelList, res) {
-  type NewType = number;
-  const taskRepo = getRepository(Task);
-  try {
-    const task =
-    await taskRepo.findOneOrFail(taskId, {relations: ['labels']});
-    const taskLabelsList = task.labels;
-    const labelRepo = getRepository(Label);
+	type NewType = number;
+	const taskRepo = getRepository(Task);
+	try {
+		const task = await taskRepo.findOneOrFail(taskId, { relations: ['labels'] });
+		const taskLabelsList = task.labels;
+		const labelRepo = getRepository(Label);
 
-    for (let i = 0; i < Object.keys(labelList).length; ++i) {
-      const labelId: NewType = labelList[i];
-      const found = await labelRepo.findOne(labelId);
-      if (found === undefined) {
-        continue;
-      }
-      const label = await labelRepo.findOneOrFail(labelId);
-      taskLabelsList.push(label);
-      await taskRepo.save(task);
-    }
-    res.status(200).send({
-      data: task,
-    });
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+		for (let i = 0; i < Object.keys(labelList).length; ++i) {
+			const labelId: NewType = labelList[i];
+			const found = await labelRepo.findOne(labelId);
+			if (found === undefined) {
+				continue;
+			}
+			const label = await labelRepo.findOneOrFail(labelId);
+			taskLabelsList.push(label);
+			await taskRepo.save(task);
+		}
+		res.status(200).send({
+			data: task,
+		});
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 }
-
 
 /**
  * Erstellt einen Task.
@@ -69,24 +66,24 @@ async function addLabels(taskId, labelList, res) {
  * @param {Response}res Response
  */
 export const createTask = async (req, res) => {
-  const {name, description} = req.body;
+	const { name, description } = req.body;
 
-  if (!name || !description) {
-    res.status(400).send({
-      status: 'Error: Parameter fehlt!',
-    });
-    return;
-  };
-  const task = new Task();
-  task.name = name;
-  task.description = description;
+	if (!name || !description) {
+		res.status(400).send({
+			status: 'Error: Parameter fehlt!',
+		});
+		return;
+	}
+	const task = new Task();
+	task.name = name;
+	task.description = description;
 
-  const taskRepository = getRepository(Task);
-  const createdTask = await taskRepository.save(task);
+	const taskRepository = getRepository(Task);
+	const createdTask = await taskRepository.save(task);
 
-  res.status(200).send({
-    data: createdTask,
-  });
+	res.status(200).send({
+		data: createdTask,
+	});
 };
 
 /**
@@ -97,40 +94,40 @@ export const createTask = async (req, res) => {
  * @param {Request}req Request
  * @param {Response}res Response
  */
-export const deleteLabelsByTaskId = async (req, res) =>{
-  const taskId = req.params.taskId;
-  const {labelList} = req.body;
+export const deleteLabelsByTaskId = async (req, res) => {
+	const taskId = req.params.taskId;
+	const { labelList } = req.body;
 
-  if (checkIfAllParamsSet(taskId, labelList)) {
-    res.status(400).send({
-      status: 'Error: Parameter fehlt!',
-    });
-    return;
-  };
+	if (checkIfAllParamsSet(taskId, labelList)) {
+		res.status(400).send({
+			status: 'Error: Parameter fehlt!',
+		});
+		return;
+	}
 
-  try {
-    const taskRepo = getRepository(Task);
-    const task = await taskRepo.findOneOrFail(taskId, {relations: ['labels']});
-    const taskLabelsList = task.labels;
+	try {
+		const taskRepo = getRepository(Task);
+		const task = await taskRepo.findOneOrFail(taskId, { relations: ['labels'] });
+		const taskLabelsList = task.labels;
 
-    for (let i = 0; i < Object.keys(labelList).length; ++i) {
-      for (let j = 0; j < taskLabelsList.length; ++j) {
-        if (labelList[i] == taskLabelsList[j].id) {
-          taskLabelsList.splice(j, 1);
-        }
-      }
-    }
-    task.labels = taskLabelsList;
+		for (let i = 0; i < Object.keys(labelList).length; ++i) {
+			for (let j = 0; j < taskLabelsList.length; ++j) {
+				if (labelList[i] == taskLabelsList[j].id) {
+					taskLabelsList.splice(j, 1);
+				}
+			}
+		}
+		task.labels = taskLabelsList;
 
-    await taskRepo.save(task);
-    res.status(200).send({
-      data: task,
-    });
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+		await taskRepo.save(task);
+		res.status(200).send({
+			data: task,
+		});
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -140,7 +137,7 @@ export const deleteLabelsByTaskId = async (req, res) =>{
  * @return {boolean} True, wenn alle Parameter gesetzt wurden
  */
 function checkIfAllParamsSet(taskId: any, labelList: any) {
-  return !taskId || !labelList;
+	return !taskId || !labelList;
 }
 
 /**
@@ -152,18 +149,18 @@ function checkIfAllParamsSet(taskId: any, labelList: any) {
  * @param {Response}res Response
  */
 export const deleteTaskById = async (req, res) => {
-  const taskId = req.params.taskId;
-  const taskRepo = getRepository(Task);
+	const taskId = req.params.taskId;
+	const taskRepo = getRepository(Task);
 
-  try {
-    const task = await taskRepo.findOneOrFail(taskId);
-    await taskRepo.remove(task);
-    res.status(200).send({});
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+	try {
+		const task = await taskRepo.findOneOrFail(taskId);
+		await taskRepo.remove(task);
+		res.status(200).send({});
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -174,17 +171,17 @@ export const deleteTaskById = async (req, res) => {
  * @param {Response}res Response
  */
 export const getAllLabesByTaskId = async (req, res) => {
-  const taskId = req.params.taskId;
-  const taskRepo = getRepository(Task);
-  try {
-    const task = await taskRepo.findOneOrFail(taskId, {relations: ['labels']});
-    const taskLabelsList = task.labels;
-    res.status(200).send({data: taskLabelsList});
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+	const taskId = req.params.taskId;
+	const taskRepo = getRepository(Task);
+	try {
+		const task = await taskRepo.findOneOrFail(taskId, { relations: ['labels'] });
+		const taskLabelsList = task.labels;
+		res.status(200).send({ data: taskLabelsList });
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -195,24 +192,23 @@ export const getAllLabesByTaskId = async (req, res) => {
  * @param {Response}res Response
  */
 export const getAllTasks = async (req, res) => {
-  const taskRepository = getRepository(Task);
-  const tasks = await taskRepository.find(
-      {relations: ['trackings', 'labels']});
+	const taskRepository = getRepository(Task);
+	const tasks = await taskRepository.find({ relations: ['trackings', 'labels'] });
 
-  const {filterTask, filterDescription, filterLabel} = req.query;
-  let result = [...tasks];
+	const { filterTask, filterDescription, filterLabel } = req.query;
+	let result = [...tasks];
 
-  if (filterTask) {
-    result = result.filter((r) => r.name === filterTask);
-  }
-  if (filterLabel) {
-    result = result.filter((t) => t.labels.some((l) => l.name === filterLabel));
-  }
-  if (filterDescription) {
-    result = result.filter((d) => d.description === filterDescription);
-  }
-  result.sort((a, b) => (a.name < b.name ? -1 : 1));
-  res.status(200).send({data: result});
+	if (filterTask) {
+		result = result.filter((r) => r.name === filterTask);
+	}
+	if (filterLabel) {
+		result = result.filter((t) => t.labels.some((l) => l.name === filterLabel));
+	}
+	if (filterDescription) {
+		result = result.filter((d) => d.description === filterDescription);
+	}
+	result.sort((a, b) => (a.name < b.name ? -1 : 1));
+	res.status(200).send({ data: result });
 };
 
 /**
@@ -222,19 +218,20 @@ export const getAllTasks = async (req, res) => {
  * @param {Request}req Request
  * @param {Response}res Response
  */
-export const getAllTrackingsByTaskId = async (req, res) =>{
-  const taskId = req.params.taskId;
-  const taskRepo = getRepository(Task);
-  try {
-    const task = await taskRepo.findOneOrFail(taskId, {
-      relations: ['trackings']});
-    const taskTrackingsList = await task.trackings;
-    res.status(200).send({data: taskTrackingsList});
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+export const getAllTrackingsByTaskId = async (req, res) => {
+	const taskId = req.params.taskId;
+	const taskRepo = getRepository(Task);
+	try {
+		const task = await taskRepo.findOneOrFail(taskId, {
+			relations: ['trackings'],
+		});
+		const taskTrackingsList = await task.trackings;
+		res.status(200).send({ data: taskTrackingsList });
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -245,21 +242,19 @@ export const getAllTrackingsByTaskId = async (req, res) =>{
  * @param {Response}res Response
  */
 export const getTaskById = async (req, res) => {
-  const taskId = req.params.taskId;
-  const taskRepository = getRepository(Task);
+	const taskId = req.params.taskId;
+	const taskRepository = getRepository(Task);
 
-  try {
-    const task =
-    await taskRepository.findOneOrFail(taskId,
-        {relations: ['trackings', 'labels']});
-    res.status(200).send({
-      data: task,
-    });
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+	try {
+		const task = await taskRepository.findOneOrFail(taskId, { relations: ['trackings', 'labels'] });
+		res.status(200).send({
+			data: task,
+		});
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -270,36 +265,34 @@ export const getTaskById = async (req, res) => {
  * @param {Response}res Response
  */
 export const sendSlackAll = async (req, res) => {
-  const taskRepository = getRepository(Task);
+	const taskRepository = getRepository(Task);
 
-  const task = await taskRepository.find(
-      {relations: ['trackings', 'labels']});
-  let allTasks: string = ``;
-  for (let i = 0; i < task.length; ++i) {
-    allTasks +=
-      ` Task Id: ${task[i].id}:
+	const task = await taskRepository.find({ relations: ['trackings', 'labels'] });
+	let allTasks: string = ``;
+	for (let i = 0; i < task.length; ++i) {
+		allTasks += ` Task Id: ${task[i].id}:
        Name:         ${task[i].name} 
        Beschr:       ${task[i].description}
        Erzeugt:      ${task[i].created}
        Update:       ${task[i].updated}
       \n`;
-  }
-  if (task.length === 0) {
-    await Axios.post(`https://hooks.slack.com/services/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`, {
-      text: `!!! Keine Task in der Datenbank !!!`,
-    });
-    res.status(200).send({
-      data: `!!! Keine Task in der Datenbank !!!`,
-    });
-    return;
-  } else {
-    await Axios.post(`https://hooks.slack.com/services/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`, {
-      text: `Tasks: \n${allTasks}`,
-    });
-    res.status(200).send({
-      data: task,
-    });
-  }
+	}
+	if (task.length === 0) {
+		await Axios.post(`https://hooks.slack.com/services/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`, {
+			text: `!!! Keine Task in der Datenbank !!!`,
+		});
+		res.status(200).send({
+			data: `!!! Keine Task in der Datenbank !!!`,
+		});
+		return;
+	} else {
+		await Axios.post(`https://hooks.slack.com/services/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`, {
+			text: `Tasks: \n${allTasks}`,
+		});
+		res.status(200).send({
+			data: task,
+		});
+	}
 };
 
 /**
@@ -310,32 +303,30 @@ export const sendSlackAll = async (req, res) => {
  * @param {Response}res Response
  */
 export const sendSlackByTaskId = async (req, res) => {
-  const taskId = req.params.taskId;
-  const taskRepository = getRepository(Task);
+	const taskId = req.params.taskId;
+	const taskRepository = getRepository(Task);
 
-  try {
-    const task =
-    await taskRepository.findOneOrFail(taskId,
-        {relations: ['trackings', 'labels']});
-    await Axios.post(`https://hooks.slack.com/services/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`, {
-      text: `Task ${task.id}:
+	try {
+		const task = await taskRepository.findOneOrFail(taskId, { relations: ['trackings', 'labels'] });
+		await Axios.post(`https://hooks.slack.com/services/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`, {
+			text: `Task ${task.id}:
              Name:         ${task.name} 
              Beschr:       ${task.description}
              Erzeugt:      ${task.created}
              Update:       ${task.updated}
              `,
-    });
-    res.status(200).send({
-      data: task,
-    });
-  } catch (error) {
-    await Axios.post(`https://hooks.slack.com/services/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`, {
-      text: `!!! Task wurde nicht gefunden oder Fehler bei der Übertragung !!!`,
-    });
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+		});
+		res.status(200).send({
+			data: task,
+		});
+	} catch (error) {
+		await Axios.post(`https://hooks.slack.com/services/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`, {
+			text: `!!! Task wurde nicht gefunden oder Fehler bei der Übertragung !!!`,
+		});
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -347,25 +338,23 @@ export const sendSlackByTaskId = async (req, res) => {
  * @param {Response}res Response
  */
 export const updateTaskById = async (req, res) => {
-  const taskId = req.params.taskId;
-  const {name, description} = req.body;
-  const taskRepository = getRepository(Task);
+	const taskId = req.params.taskId;
+	const { name, description } = req.body;
+	const taskRepository = getRepository(Task);
 
-  try {
-    let task =
-    await taskRepository.findOneOrFail(taskId,
-        {relations: ['trackings', 'labels']});
-    task.name = name;
-    task.description = description;
+	try {
+		let task = await taskRepository.findOneOrFail(taskId, { relations: ['trackings', 'labels'] });
+		task.name = name;
+		task.description = description;
 
-    task = await taskRepository.save(task);
+		task = await taskRepository.save(task);
 
-    res.status(200).send({
-      data: task,
-    });
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+		res.status(200).send({
+			data: task,
+		});
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };

@@ -1,7 +1,7 @@
 /**
  * In dieser Datei wird das GlobalStyle Element definiert.
  */
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -17,4 +17,3 @@ export const GlobalStyle = createGlobalStyle`
         width: 100;
     }
 `;
-

@@ -1,5 +1,5 @@
-import {getRepository} from 'typeorm';
-import {Label} from '../Entities/Label';
+import { getRepository } from 'typeorm';
+import { Label } from '../Entities/Label';
 
 /**
  * Erstellt ein Label.
@@ -9,23 +9,23 @@ import {Label} from '../Entities/Label';
  * @param {Response}res Response
  */
 export const createLabel = async (req, res) => {
-  const {name} = req.body;
+	const { name } = req.body;
 
-  if (!name) {
-    res.status(400).send({
-      error: 'Error: Parameter fehlt!',
-    });
-    return;
-  };
-  const label = new Label();
-  label.name = name;
+	if (!name) {
+		res.status(400).send({
+			error: 'Error: Parameter fehlt!',
+		});
+		return;
+	}
+	const label = new Label();
+	label.name = name;
 
-  const labelRepository = getRepository(Label);
-  const createdlabel = await labelRepository.save(label);
+	const labelRepository = getRepository(Label);
+	const createdlabel = await labelRepository.save(label);
 
-  res.status(200).send({
-    data: createdlabel,
-  });
+	res.status(200).send({
+		data: createdlabel,
+	});
 };
 
 /**
@@ -36,18 +36,18 @@ export const createLabel = async (req, res) => {
  * @param {Response}res Response
  */
 export const deleteLabelById = async (req, res) => {
-  const labelId = req.params.labelId;
-  const labelRepository = getRepository(Label);
+	const labelId = req.params.labelId;
+	const labelRepository = getRepository(Label);
 
-  try {
-    const label = await labelRepository.findOneOrFail(labelId);
-    await labelRepository.remove(label);
-    res.status(200).send({});
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+	try {
+		const label = await labelRepository.findOneOrFail(labelId);
+		await labelRepository.remove(label);
+		res.status(200).send({});
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -58,10 +58,10 @@ export const deleteLabelById = async (req, res) => {
  * @param {Response}res Response
  */
 export const getAllLabels = async (req, res) => {
-  const labelRepository = getRepository(Label);
-  const labels = await labelRepository.find();
-  labels.sort((a, b) => (a.id < b.id ? -1 : 1));
-  res.send({data: labels});
+	const labelRepository = getRepository(Label);
+	const labels = await labelRepository.find();
+	labels.sort((a, b) => (a.id < b.id ? -1 : 1));
+	res.send({ data: labels });
 };
 
 /**
@@ -72,17 +72,17 @@ export const getAllLabels = async (req, res) => {
  * @param {Response}res Response
  */
 export const getAllTasksByLabelId = async (req, res) => {
-  const labelId = req.params.labelId;
-  const labelRepo = getRepository(Label);
-  try {
-    const label = await labelRepo.findOneOrFail(labelId);
-    const labelTaskList = await label.tasks;
-    res.status(200).send({data: labelTaskList});
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+	const labelId = req.params.labelId;
+	const labelRepo = getRepository(Label);
+	try {
+		const label = await labelRepo.findOneOrFail(labelId);
+		const labelTaskList = await label.tasks;
+		res.status(200).send({ data: labelTaskList });
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -93,19 +93,19 @@ export const getAllTasksByLabelId = async (req, res) => {
  * @param {Response}res Response
  */
 export const getLabelById = async (req, res) => {
-  const labelId = req.params.labelId;
-  const labelRepository = getRepository(Label);
+	const labelId = req.params.labelId;
+	const labelRepository = getRepository(Label);
 
-  try {
-    const label = await labelRepository.findOneOrFail(labelId);
-    res.status(200).send({
-      data: label,
-    });
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+	try {
+		const label = await labelRepository.findOneOrFail(labelId);
+		res.status(200).send({
+			data: label,
+		});
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
 
 /**
@@ -116,22 +116,22 @@ export const getLabelById = async (req, res) => {
  * @param {Response}res Response
  */
 export const updateLabelById = async (req, res) => {
-  const labelId = req.params.labelId;
-  const {name} = req.body;
-  const labelRepository = getRepository(Label);
+	const labelId = req.params.labelId;
+	const { name } = req.body;
+	const labelRepository = getRepository(Label);
 
-  try {
-    let label = await labelRepository.findOneOrFail(labelId);
-    label.name = name;
+	try {
+		let label = await labelRepository.findOneOrFail(labelId);
+		label.name = name;
 
-    label = await labelRepository.save(label);
+		label = await labelRepository.save(label);
 
-    res.status(200).send({
-      data: label,
-    });
-  } catch (error) {
-    res.status(404).send({
-      status: 'Error: ' + error,
-    });
-  }
+		res.status(200).send({
+			data: label,
+		});
+	} catch (error) {
+		res.status(404).send({
+			status: 'Error: ' + error,
+		});
+	}
 };
