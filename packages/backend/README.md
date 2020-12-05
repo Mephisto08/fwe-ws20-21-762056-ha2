@@ -245,9 +245,14 @@ Um die Tests auszuführen, wird folgender Befehl in die Kommando Zeile eingegebe
 			docker-compose exec backend npm run test 
 			
 ## Statische Code Analyse
-Die Code der Anwendung wird mittels es-lint  überprüft. Um alle Fehler anzuzeigen, kann die Konsole angewendet werden, um alle Fehler aufzulisten. Jedoch ist dies eher unkomfortable. Ich empfehle daher die Benutzung von einem Vs-Code Extension ESLINT.
+Die Code der Anwendung wird mittels es-lint  überprüft. Um alle Fehler anzuzeigen, kann die Konsole angewendet werden, um alle Fehler aufzulisten.
+Dies kann unter folgendem Befehl ausgeführt werden:
 
-Die Richtlinien die bei ES-Lint eingestellt wurden, sind die aktuellen Google-Richtlienien die zur Verfügung gestellt werden. 
+			docker-compose exec backend npm run lint
+
+Jedoch ist dies eher unkomfortable. Ich empfehle daher die Benutzung von einem Vs-Code Extension ESLINT.
+
+Die Richtlinien die bei ES-Lint eingestellt wurden, sind die aktuellen Google-Richtlinien die zur Verfügung gestellt werden. 
 
 ## Zusatzaufgabe
 Die Zusatzfunktion nutzt die API von Slack. Man kann entweder einen Task anhand seiner Id an einen Channel senden oder kann alle seine Tasks an einen Slack Channel senden. Die Routen, die hier zur Verfügung stehen kann man in dem Unterpunkt **Routen** **Task** einsehen.
