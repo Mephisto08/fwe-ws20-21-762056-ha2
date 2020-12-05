@@ -1,58 +1,65 @@
 /**
- * Dies ist die Startseite der Anwendung. Auf dieser Seite werden alle Task angezeigt.
+ * Dies ist die Startseite der Anwendung.
+ * Auf dieser Seite werden alle Task angezeigt.
  * Ebenso können auf dieser Seite Task erstellt werden auf dem + Button.
- * Es können Labels erstellt weden und es kann ein Filter auf die Task angewendet werden.
+ * Es können Labels erstellt weden und es
+ * kann ein Filter auf die Task angewendet werden.
  * Man kann nach Task Description, Label von Task und Task Namen filtern.
  */
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from 'react';
 // Dieser Import wird zwar nicht angezeigt als nicht benötigt,
 // jedoch verändert sich das Layout, wenn der Import entfernt wird.
 // Deswegen bleubt er erhalten.
-import styled from "styled-components/macro";
+// eslint-disable-next-line
+import styled from 'styled-components/macro';
 import {
   Task,
   TaskList,
   TaskItem,
-} from "./components/taskList";
+} from './components/taskList';
 import {
   AddButton,
   CreateLabelButton,
   DeleteLabelsButton,
   FilterButton,
   ShowLabelButton,
-} from "../../components/Button";
-import {CreateTaskForm} from "./components/createTask";
-import {Layout} from "../../components/Layout";
-import {useHistory} from "react-router-dom";
-import {Modal} from "../../components/Modal";
-import {CreateLabelForm} from "./components/createLabel";
-import {FilterForm} from "./components/filter";
-import { ShowAllLabelForm } from "../TaskDetailPage/components/showAllLabel";
-import { DeleteLabelForm } from "./components/deleteLabel";
+} from '../../components/Button';
+import {CreateTaskForm} from './components/createTask';
+import {Layout} from '../../components/Layout';
+import {useHistory} from 'react-router-dom';
+import {Modal} from '../../components/Modal';
+import {CreateLabelForm} from './components/createLabel';
+import {FilterForm} from './components/filter';
+import {ShowAllLabelForm} from '../TaskDetailPage/components/showAllLabel';
+import {DeleteLabelForm} from './components/deleteLabel';
 
 
+// eslint-disable-next-line
 export const TaskOverviewPage = () => {
   const [allTask, setTask] = useState<Task[]>([]);
   const [createTask, setCreateTask] = useState(false);
   const [createLabel, setCreateLabel] = useState(false);
-  const [taskFilter, setTaskFilter] = useState({ taskName: "", taskDescription: "", taskLabel: "" });
+  const [taskFilter, setTaskFilter] =
+    useState({taskName: '', taskDescription: '', taskLabel: ''});
   const [filter, setFilter] = useState(false);
   const [taskTrackingId, setTaskTrackingId] = useState(-1);
   const [showLabel, setShowLabel] = useState(false);
   const [deleteLabel, setDeleteLabel] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
 
   /**
    * Es werden alle Task geladen. Dabei werden auch die Filter mitgesendet.
-   * Wenn diese nicht gesetzt wurden durch den Anwender, werden sie als leere Strings mitgeschickt.
+   * Wenn diese nicht gesetzt wurden durch den Anwender,
+   * werden sie als leere Strings mitgeschickt.
    * Dies hat somit keine Ausiwrkunng auff den fetch.
    */
-  const fetchTask = async function () {
+  const fetchTask = async function() {
     const taskRequest = await fetch(
-      `/api/task?filterTask=${taskFilter.taskName}&filterDescription=${taskFilter.taskDescription}&filterLabel=${taskFilter.taskLabel}`, {
-      method: "GET",
-      headers: { "content-type": "application/json" },
-    });
+        // eslint-disable-next-line
+        `/api/task?filterTask=${taskFilter.taskName}&filterDescription=${taskFilter.taskDescription}&filterLabel=${taskFilter.taskLabel}`, {
+          method: 'GET',
+          headers: {'content-type': 'application/json'},
+        });
     if (taskRequest.status === 200) {
       const taskJSON = await taskRequest.json();
       setTask(taskJSON.data);
@@ -89,8 +96,8 @@ export const TaskOverviewPage = () => {
           }} />
           <ShowLabelButton
             onClick={() => {
-            setShowLabel(!showLabel);
-          }}/>
+              setShowLabel(!showLabel);
+            }}/>
           <CreateLabelButton onClick={() => {
             setShowLabel(false);
             setCreateLabel(!createLabel);
@@ -169,7 +176,11 @@ export const TaskOverviewPage = () => {
       <TaskList>
         {allTask.map((allTask) => (
           <TaskItem onClick={() => (history.push(`/task/${allTask.id}`))}
-            key={allTask.id} task={allTask} fetchTask={fetchTask} taskTrackingId={taskTrackingId} setTaskTrackingId={setTaskTrackingId}>
+            key={allTask.id}
+            task={allTask}
+            fetchTask={fetchTask}
+            taskTrackingId={taskTrackingId}
+            setTaskTrackingId={setTaskTrackingId}>
           </TaskItem>
         ))}
       </TaskList>

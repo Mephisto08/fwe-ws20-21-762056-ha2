@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /**
  * In dieser Datei werden alle Buttons definiert,
  * die in der gesamten Anwednung verwendet werden.
  * Grundlegendes Design der Buttons.
  */
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export const AddButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -27,7 +28,7 @@ export const AddButton = (
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"
         focusable="false"
-        style={{ fill: "#000", height: "24px", width: "24px" }}
+        style={{fill: '#000', height: '24px', width: '24px'}}
       >
         <path d="M14.5 2a1.5 1.5 0 0 1 3 0v28a1.5 1.5 0 0 1-3 0V2z"></path>
         <path d="M30 14.5a1.5 1.5 0 0 1 0 3H2a1.5 1.5 0 0 1 0-3h28z"></path>
@@ -37,7 +38,7 @@ export const AddButton = (
 };
 
 export const AddLabelButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -121,7 +122,7 @@ export const ButtonModal = styled.button`
 `;
 
 export const CreateLabelButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -143,7 +144,7 @@ export const CreateLabelButton = (
 };
 
 export const DeleteButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     width: 48px;
@@ -163,7 +164,7 @@ export const DeleteButton = (
 };
 
 export const DeleteLabelsButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -184,7 +185,7 @@ export const DeleteLabelsButton = (
 };
 
 export const DeleteLabelButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -204,7 +205,7 @@ export const DeleteLabelButton = (
   );
 };
 export const EditButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     width: 48px;
@@ -224,7 +225,7 @@ export const EditButton = (
 };
 
 export const FilterButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -246,7 +247,7 @@ export const FilterButton = (
 };
 
 export const PauseButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -267,24 +268,26 @@ export const PauseButton = (
         preserveAspectRatio="xMidYMid meet">
         <metadata>
           Created by potrace 1.15, written by Peter Selinger 2001-2017
-      </metadata>
+        </metadata>
         <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
           fill="#000000" stroke="none">
-          <path d="M669 12214 c-59 -18 -130 -81 -160 -141 l-24 -48 0 -5650 0 -5650 23
-      -47 c13 -26 43 -65 67 -87 83 -77 -104 -71 2295 -71 2400 0 2212 -6 2295 71
-      24 23 54 62 67 87 l23 47 0 5650 0 5650 -23 47 c-13 25 -43 64 -67 87 -83 77
-      105 71 -2299 70 -1824 0 -2158 -3 -2197 -15z"/>
-          <path d="M7542 12211 c-63 -22 -123 -76 -155 -141 l-22 -45 0 -5650 0 -5650
-      23 -47 c13 -25 43 -64 67 -87 83 -77 -105 -71 2295 -71 2399 0 2212 -6 2295
-      71 24 22 54 61 67 87 l23 47 0 5650 0 5650 -24 48 c-31 63 -101 123 -164 142
-      -44 13 -321 15 -2201 15 -2062 -1 -2153 -1 -2204 -19z"/>
+          <path d="M669 12214 c-59 -18 -130 -81 -160
+          -141 l-24 -48 0 -5650 0 -5650 23 -47 c13 -26 43 -65 67 -87 83 -77
+          -104 -71 2295 -71 2400 0 2212 -6 2295 71 24 23 54 62 67 87 l23 47 0
+          5650 0 5650 -23 47 c-13 25 -43 64 -67 87 -83 77 105 71 -2299 70 -1824
+          0 -2158 -3 -2197 -15z"/>
+          <path d="M7542 12211 c-63 -22 -123 -76 -155 -141 l-22 -45 0 -5650 0
+          -5650 23 -47 c13 -25 43 -64 67 -87 83 -77 -105 -71 2295 -71 2399 0
+          2212 -6 2295 71 24 22 54 61 67 87 l23 47 0 5650 0 5650 -24 48 c-31
+          63 -101 123 -164 142 -44 13 -321 15 -2201 15 -2062 -1 -2153 -1 -2204
+          -19z"/>
         </g>
       </svg>
     </StyledButton>
   );
 };
 export const ShowLabelButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -305,7 +308,7 @@ export const ShowLabelButton = (
 };
 
 export const StartButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -327,7 +330,7 @@ export const StartButton = (
 };
 
 export const StopButton = (
-  props: React.ButtonHTMLAttributes<HTMLButtonElement>
+    props: React.ButtonHTMLAttributes<HTMLButtonElement>,
 ) => {
   const StyledButton = styled.button`
     margin-left: 0.5rem;
@@ -343,12 +346,11 @@ export const StopButton = (
   `;
   return (
     <StyledButton {...props}>
-      <svg width="24" height="24"><rect width="100%" height="100%" fill="rgb(45, 45, 45)" /></svg>
+      <svg width="24" height="24"><rect width="100%"
+        height="100%" fill="rgb(45, 45, 45)" />
+      </svg>
     </StyledButton>
   );
 };
-
-
-
 
 

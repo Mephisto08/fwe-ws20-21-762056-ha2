@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/no-empty-function */
 /**
  * In dieser Datei wird alles bereitgestellt,
- * um alle Trackingd eines Task anzuzeigen. 
+ * um alle Trackingd eines Task anzuzeigen.
  * Es wird für jedes Tracking ei Item erstellt.
  */
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Button8rem, DeleteButton } from "../../../components/Button";
-import { Modal } from "../../../components/Modal";
-import { formatTime } from "../../Dashboard/components/taskList";
-import { EditTrackingForm } from "./editTracking";
+import React, {useState} from 'react';
+import styled from 'styled-components';
+import {Button8rem, DeleteButton} from '../../../components/Button';
+import {Modal} from '../../../components/Modal';
+import {formatTime} from '../../Dashboard/components/taskList';
+import {EditTrackingForm} from './editTracking';
 
 
 export type Tracking = {
@@ -84,10 +87,13 @@ export const TrackingList = styled.div`
 `;
 
 /**
- * Damit die der Titel nicht über sein Feld hinaus geht, wird mit text-overflow gearbeitet.
+ * Damit die der Titel nicht über sein Feld hinaus geht,
+ * wird mit text-overflow gearbeitet.
  * Jedoch konnte nicht auf die Größe des parents des Elementes zugreifen.
- * Deßhalb wurde für die maximale Größe eine Pixel angabe gemacht, die den Browser geeigenet sind.
- * Für Responsives Design ist dies nicht sinnvoll. Un muss abgeändert werden zu relativen Angaben
+ * Deßhalb wurde für die maximale Größe eine Pixel angabe gemacht,
+ * die den Browser geeigenet sind.
+ * Für Responsives Design ist dies nicht sinnvoll.
+ * Und muss abgeändert werden zu relativen Angaben
  */
 export const TrackingTitle = styled.div`
   font-size: 1.5rem;
@@ -122,24 +128,22 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
   fetchTask,
 
 }) => {
-  const { id, description, timeStart, timeEnd } = tracking;
+  const {id, description, timeStart, timeEnd} = tracking;
   const [editTracking, setEditTracking] = useState(false);
 
   const deleteTracking = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     await fetch(`/api/tracking/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
     });
     fetchTask();
   };
 
-  var timeStartDate = new Date(timeStart);
-  var timeEndDate = new Date(timeEnd);
+  const timeStartDate = new Date(timeStart);
+  const timeEndDate = new Date(timeEnd);
 
-  let currentTime: Date;
-  const actualTrackingTime = function (): string {
-    currentTime = new Date();
+  const actualTrackingTime = function(): string {
     const diff = (timeEndDate.getTime() - timeStartDate.getTime());
     return formatTime(diff - diff % 1000);
   };
@@ -165,7 +169,7 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({
       <div>
         <Button8rem
           onClick={() => {
-            setEditTracking(!editTracking)
+            setEditTracking(!editTracking);
           }}
         >Editiere Tracking</Button8rem>
 

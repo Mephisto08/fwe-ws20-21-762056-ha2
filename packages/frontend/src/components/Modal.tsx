@@ -1,9 +1,9 @@
 /**
  * In dieser Datei, wird ein Modal errzeut.
  */
-import React from "react";
-import ReactDOM from "react-dom";
-import styled from "styled-components";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
 const ModalHolder = styled.div`
   position: fixed;
@@ -53,25 +53,27 @@ const ModalCloseButton = styled.button`
 /**
  * In dieser Funktion, wird ein Modal erzeugt.
  * Es wird der Titel übergeben ebenso wird die Funktion onCancel definiert.
- * @param title Es wird der Titel den das MOdal erhalten soll übergeben. 
+ * @param {title} Es wird der Titel den das Modal erhalten soll übergeben.
+ * @return {ModalFenster} HTML-Gerüst für das Modal enster
  */
 export const Modal: React.FC<{
   title: string;
   onCancel: () => void;
-}> = ({ children, title, onCancel }) => {
-  const modalRoot = document.getElementById("modal-root");
+}> = ({children, title, onCancel}) => {
+  const modalRoot = document.getElementById('modal-root');
   return ReactDOM.createPortal(
-    <ModalHolder>
-      <ModalMaskHolder>
-        <ModalMask>
-          <ModalHeader>
-            <ModalTitle>{title}</ModalTitle>
-            <ModalCloseButton onClick={onCancel}>x</ModalCloseButton>
-          </ModalHeader>
-          {children}
-        </ModalMask>
-      </ModalMaskHolder>
-    </ModalHolder>,
-    modalRoot!
+      <ModalHolder>
+        <ModalMaskHolder>
+          <ModalMask>
+            <ModalHeader>
+              <ModalTitle>{title}</ModalTitle>
+              <ModalCloseButton onClick={onCancel}>x</ModalCloseButton>
+            </ModalHeader>
+            {children}
+          </ModalMask>
+        </ModalMaskHolder>
+      </ModalHolder>,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    modalRoot!,
   );
 };

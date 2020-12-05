@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 /**
  * In dieser Datei wird alles bereitgestellt,
  * um alle Label anzeigen zukönnen.
  */
-import React, {useState, useEffect} from "react";
-import styled from "styled-components";
-import {Label} from "../../Dashboard/components/taskList";
+import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
+import {Label} from '../../Dashboard/components/taskList';
 
 export const LabelList = styled.ul`
   flex-grow: 1;
@@ -21,35 +22,41 @@ export const LabelList = styled.ul`
   }
 `;
 
-export const ShowAllLabelForm: React.FC<{ afterSubmit: () => void; }> = ({
-  afterSubmit,
-}) => {
-  const [allLabel, setLabel] = useState<Label[]>([]);
+export const ShowAllLabelForm: React.FC<{
+  afterSubmit: () => void; }> = ({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    afterSubmit,
+  }) => {
+    const [allLabel, setLabel] = useState<Label[]>([]);
 
-  const fetchLabel = async function () {
-    const labelRequest = await fetch("/api/label", {
-      method: "GET",
-      headers: { "content-type": "application/json" },
-    });
-    if (labelRequest.status === 200) {
-      const labelJSON = await labelRequest.json();
-      setLabel(labelJSON.data);
-    }
+    const fetchLabel = async function() {
+      const labelRequest = await fetch('/api/label', {
+        method: 'GET',
+        headers: {'content-type': 'application/json'},
+      });
+      if (labelRequest.status === 200) {
+        const labelJSON = await labelRequest.json();
+        setLabel(labelJSON.data);
+      }
+    };
+
+    useEffect(() => {
+      fetchLabel();
+    }, []);
+
+    return (
+      <>
+        <h3>Alle Labels</h3>
+        <LabelList>
+          {allLabel &&
+            allLabel.map((label: Label) => {
+              return <li css={'margin-top: 0.2rem;'}
+                key={label.id}>
+                {label.id}
+                {label.name}
+              </li>;
+            })}
+        </LabelList>
+      </>
+    );
   };
-
-  useEffect(() => {
-    fetchLabel();
-  }, []);
-
-  return (
-    <>
-      <h3>Alle Labels</h3>
-      <LabelList>
-        {allLabel &&
-          allLabel.map((label: Label) => {
-            return <li css={"margin-top: 0.2rem;"} key={label.id}>{label.id} {label.name}</li>;
-          })}
-      </LabelList>
-    </>
-  );
-};

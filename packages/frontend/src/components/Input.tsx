@@ -2,8 +2,8 @@
  * In dieser Datei, wird das InputLayout festgelegt,
  * dass in der gesamten Anwendung genutzt wird.
  */
-import React, {useRef} from "react";
-import styled from "styled-components";
+import React, {useRef} from 'react';
+import styled from 'styled-components';
 
 const InputLabel = styled.label`
   position: absolute;
@@ -53,15 +53,16 @@ const InputContainer = styled.div`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const Input = ({
   label,
   ...props
-}: React.ComponentPropsWithoutRef<"input"> & {
+}: React.ComponentPropsWithoutRef<'input'> & {
   label: string;
-  type?: "text" | "password" | "number" | "email";
+  type?: 'text' | 'password' | 'number' | 'email';
 }) => {
   const id = useRef(
-    `${label.replace(" ", "-")}-${Math.floor(Math.random() * 10000)}`
+      `${label.replace(' ', '-')}-${Math.floor(Math.random() * 10000)}`,
   );
 
   return (

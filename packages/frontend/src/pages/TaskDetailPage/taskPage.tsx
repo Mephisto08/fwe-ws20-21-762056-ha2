@@ -1,27 +1,44 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /**
  * In dieser Datei, wird eine Task Detail Seite erzeugt.
  * Auf dieser wird der Name, die Beschreibung, die dazugehörigen Labels
  * und die Gesamtdauer angezeigt.
  * Ebenso werden alle Trackings eines Task angeziegt.
- * Durch Klick auf verschiedene Buttons werden folgende Funktionen bereitgestellt:
- * Editieren eines Tasks, anzeigen aller existierden Labels, Labels zu einem Task hinzufügen,
- * löschen von Labels eines Tasks und ein Tracking erstellen.  
+ * Durch Klick auf verschiedene Buttons
+ * werden folgende Funktionen bereitgestellt:
+ * Editieren eines Tasks, anzeigen aller existierden Labels,
+ * Labels zu einem Task hinzufügen,
+ * löschen von Labels eines Tasks und ein Tracking erstellen.
  */
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {Task, LabelItem, TrackedTime, LabelList, Label, TaskDescription, formatTime} from "../Dashboard/components/taskList";
-import {Layout} from "../../components/Layout";
-import {Tracking, TrackingItem, TrackingList} from "./components/trackingList";
-import {AddButton, AddLabelButton, DeleteLabelsButton, EditButton, ShowLabelButton} from "../../components/Button";
-import {EditTaskForm} from "./components/editTask";
-import {CreateTrackingForm} from "./components/createTracking";
-import {AddLabelToTaskForm} from "./components/addLabelToTask";
-import {DeleteLabelFromTaskForm as DeleteLabelFromTaskForm} from "./components/deleteLabelFromTask";
-import {ShowAllLabelForm} from "./components/showAllLabel";
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import {Task,
+  LabelItem,
+  TrackedTime,
+  LabelList,
+  Label,
+  TaskDescription,
+  formatTime} from '../Dashboard/components/taskList';
+import {Layout} from '../../components/Layout';
+import {Tracking, TrackingItem, TrackingList} from './components/trackingList';
+import {AddButton,
+  AddLabelButton,
+  DeleteLabelsButton,
+  EditButton,
+  ShowLabelButton}
+  from '../../components/Button';
+import {EditTaskForm} from './components/editTask';
+import {CreateTrackingForm} from './components/createTracking';
+import {AddLabelToTaskForm} from './components/addLabelToTask';
+import {DeleteLabelFromTaskForm as DeleteLabelFromTaskForm}
+  from './components/deleteLabelFromTask';
+import {ShowAllLabelForm} from './components/showAllLabel';
 
 
 export const TaskPageID = () => {
-  const { taskId }: any = useParams();
+  const {taskId}: any = useParams();
   const [task, setTask] = useState<Task>();
   const [editTask, setEditTask] = useState(false);
   const [addLabelToTask, setAddLabelToTask] = useState(false);
@@ -31,8 +48,10 @@ export const TaskPageID = () => {
 
   /**
    * Berechnet die Gesamtzeit eines Tasks.
+   * @return {Zeit} Return eine Funktion,
+   * die die Berechnete Zeit in Milliskeunden in ein Zeitformat bringt.
    */
-  const getTotalTime = function (): string {
+  const getTotalTime = function(): string {
     const ms = task?.trackings.reduce((prev: any, cur: any) => {
       const timeStart = new Date(cur.timeStart);
       const timeEnd = new Date(cur.timeEnd);
@@ -42,16 +61,16 @@ export const TaskPageID = () => {
     }, 0);
 
     return formatTime(ms);
-  }
+  };
 
 
   /**
    * Es werden alle Task geladen.
    */
-  const fetchTask = async function () {
+  const fetchTask = async function() {
     const taskRequest = await fetch(`/api/task/${taskId}`, {
-      method: "GET",
-      headers: { "content-type": "application/json" },
+      method: 'GET',
+      headers: {'content-type': 'application/json'},
     });
     if (taskRequest.status === 200) {
       const taskJSON = await taskRequest.json();
@@ -124,7 +143,7 @@ export const TaskPageID = () => {
         <div>
           <LabelItem>
             Label:
-                    <LabelList>
+            <LabelList>
               {task?.labels &&
                 task?.labels.map((label: Label) => {
                   return <li key={label.id}>{label.id} {label.name}</li>;
@@ -191,7 +210,9 @@ export const TaskPageID = () => {
 
       <TrackingList>
         {task?.trackings.map((tracking: Tracking) => (
-          <TrackingItem key={tracking.id} tracking={tracking} fetchTask={fetchTask}></TrackingItem>
+          <TrackingItem key={tracking.id}
+            tracking={tracking}
+            fetchTask={fetchTask}></TrackingItem>
         ))}
       </TrackingList>
     </Layout>

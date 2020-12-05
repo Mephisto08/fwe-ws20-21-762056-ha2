@@ -1,14 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable react/prop-types */
+/* eslint-disable valid-jsdoc */
 /**
  * In dieser Datei, wird ein Task Item erstellt.
  * Ebenso wird das Layout erstellt für das aussehen der Liste der Task.
  */
-import React, {useState} from "react";
-import styled from "styled-components";
-import {Button8rem, DeleteButton} from "../../../components/Button";
-import {StartTrackingForm} from "./startTracking";
+import React, {useState} from 'react';
+import styled from 'styled-components';
+import {Button8rem, DeleteButton} from '../../../components/Button';
+import {StartTrackingForm} from './startTracking';
 
-// Hier werden Contexte bereitgestellt, die benötigt werden 
-const defaultValue: any = "";
+// Hier werden Contexte bereitgestellt, die benötigt werden
+const defaultValue: any = '';
 export const taskNameContext = React.createContext(defaultValue);
 export const taskIdContext = React.createContext(defaultValue);
 export const trackingStartDate = React.createContext(new Date());
@@ -102,10 +106,13 @@ export const TaskList = styled.div`
 `;
 
 /**
- * Damit die der Titel nicht über sein Feld hinaus geht, wird mit text-overflow gearbeitet.
+ * Damit die der Titel nicht über sein Feld hinaus geht,
+ * wird mit text-overflow gearbeitet.
  * Jedoch konnte nicht auf die Größe des parents des Elementes zugreifen.
- * Deßhalb wurde für die maximale Größe eine Pixel angabe gemacht, die den Browser geeigenet sind.
- * Für Responsives Design ist dies nicht sinnvoll. Un muss abgeändert werden zu relativen Angaben
+ * Deßhalb wurde für die maximale Größe eine Pixel angabe gemacht,
+ * die den Browser geeigenet sind.
+ * Für Responsives Design ist dies nicht sinnvoll.
+ * Und muss abgeändert werden zu relativen Angaben
  */
 export const TaskTitle = styled.div`
   font-size: 1.2rem;
@@ -119,10 +126,13 @@ export const TaskTitle = styled.div`
 `;
 
 /**
- * Damit die der Titel nicht über sein Feld hinaus geht, wird mit text-overflow gearbeitet.
+ * Damit die der Titel nicht über sein Feld hinaus geht,
+ * wird mit text-overflow gearbeitet.
  * Jedoch konnte nicht auf die Größe des parents des Elementes zugreifen.
- * Deßhalb wurde für die maximale Größe eine Pixel angabe gemacht, die den Browser geeigenet sind.
- * Für Responsives Design ist dies nicht sinnvoll. Un muss abgeändert werden zu relativen Angaben
+ * Deßhalb wurde für die maximale Größe eine Pixel angabe gemacht,
+ * die den Browser geeigenet sind.
+ * Für Responsives Design ist dies nicht sinnvoll.
+ * Und muss abgeändert werden zu relativen Angaben
  */
 export const TaskDescription = styled.div`
   font-size: 1rem;
@@ -153,22 +163,26 @@ export type TaskItemProps = {
   onClick?: (task: Task) => void;
   fetchTask: () => void;
   setTaskTrackingId: any;
-  taskTrackingId: Number;
+  taskTrackingId: number;
 };
 
 /**
  * Rechnet Millisekunden in das Format  Stunden:Minuten:Sekunden um.
- * @param ms Zeit in Millisekunden. Diese werden in das Format Stunden:Minuten:Sekunden umgerechnet.
+ * @param {ms} Zeit in Millisekunden.
+ * Diese werden in das Format Stunden:Minuten:Sekunden umgerechnet.
+ * @return {Zeit} HTML-Grundgerüst
  */
 export function formatTime(ms: any) {
-  var pad = function (num: number, size: number) { return ('000' + num).slice(size * -1); };
+  const pad = function(num: number, size: number) {
+    return ('000' + num).slice(size * -1);
+  };
   let seconds = ms / 1000;
   const hours = parseInt((seconds / 3600).toString());
   seconds = seconds % 3600;
   const minutes = parseInt((seconds / 60).toString());
   seconds = seconds % 60;
 
-  return (pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2));
+  return (pad(hours, 2) + ':' + pad(minutes, 2) + ':' + pad(seconds, 2));
 }
 
 /**
@@ -176,16 +190,18 @@ export function formatTime(ms: any) {
  * ein Tracking für ein Task gestartet werden.
  * Ebenso wird hier der Name, die Beschreibung, die gesamt Zeit
  * sowie die dazugehörigen Labels eines Task angzeigt.
+ * @return {HTML} HTML-Grundgerüst
  */
 export const TaskItem: React.FC<TaskItemProps> = ({
   task,
-  onClick = () => { },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onClick = () => {},
   fetchTask,
   taskTrackingId,
   setTaskTrackingId,
 
 }) => {
-  const { id, name, description, labels } = task;
+  const {id, name, description, labels} = task;
   const [startTracking, setStartTracking] = useState(false);
 
   /**
@@ -194,8 +210,8 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   const deleteTask = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     await fetch(`/api/task/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
     });
     fetchTask();
   };
@@ -203,7 +219,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   /**
    * Berechnet die Gesamtzeit eines Task.
    */
-  const getTotalTime = function (): string {
+  const getTotalTime = function(): string {
     const ms = task?.trackings.reduce((prev: any, cur: any) => {
       const timeStart = new Date(cur.timeStart);
       const timeEnd = new Date(cur.timeEnd);
@@ -213,17 +229,17 @@ export const TaskItem: React.FC<TaskItemProps> = ({
     }, 0);
 
     return formatTime(ms);
-  }
+  };
 
   const totalTimeOfTask = getTotalTime();
 
   /**
    * Erstellt die Startzeit, wenn ein Tracking gestartet wird.
    */
-  const startTrackingTime = function (): any {
+  const startTrackingTime = function(): any {
     const creationDate = new Date();
     return creationDate;
-  }
+  };
 
   return (
     <TaskItemStyle>
@@ -242,7 +258,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
               <TaskDescription>{description}</TaskDescription>
               <LabelItem>
                 Label:
-              <LabelList>
+                <LabelList>
                   {labels &&
                     labels.map((label: Label) => {
                       return <li key={label.id}>{label.id} {label.name}</li>;
@@ -258,15 +274,18 @@ export const TaskItem: React.FC<TaskItemProps> = ({
                 setTaskTrackingId(id);
                 setStartTracking(!startTracking);
               }}
-              disabled={taskTrackingId == id || taskTrackingId == -1 ? false : true}
-            >{!startTracking ? "Start Track." : "Abbrechen"}
+              disabled={taskTrackingId == id ||
+                taskTrackingId == -1 ? false : true}
+            >{!startTracking ? 'Start Track.' : 'Abbrechen'}
             </Button8rem>
           </div>
           {startTracking && (
             <StartTrackingForm
               fetchTask={fetchTask}
               startTime={startTrackingTime()}
-              afterSubmit={() => { setStartTracking(false); setTaskTrackingId(-1); }}
+              afterSubmit={() => {
+                setStartTracking(false); setTaskTrackingId(-1);
+              }}
             />
           )}
         </taskIdContext.Provider>
