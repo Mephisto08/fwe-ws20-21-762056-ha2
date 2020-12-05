@@ -4,7 +4,7 @@
  * und/oder Der Start und Endzeitpunkt geupdatet werden.
  */
 import React, { useState, ChangeEvent } from 'react';
-import { Input } from '../../../components/Input';
+import { Input } from '../../../components/input/Input';
 import { ButtonModal } from '../../../components/Button';
 import { Tracking } from '../../Dashboard/components/taskList';
 

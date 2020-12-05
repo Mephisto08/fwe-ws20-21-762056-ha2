@@ -6,7 +6,7 @@ import React, { ChangeEvent, useContext, useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { Button8rem, StopButton } from '../../../components/Button';
-import { Input } from '../../../components/Input';
+import { Input } from '../../../components/input/Input';
 import { formatTime, taskIdContext, taskNameContext } from './taskList';
 
 export const Time = styled.div`

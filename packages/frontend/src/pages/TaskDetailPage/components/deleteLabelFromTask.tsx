@@ -3,7 +3,7 @@
  * um ein oder mehrere Labels von einem Task zulöschen.
  */
 import React, { useState, ChangeEvent } from 'react';
-import { Input } from '../../../components/Input';
+import { Input } from '../../../components/input/Input';
 import { Button20rem } from '../../../components/Button';
 import { Task } from '../../Dashboard/components/taskList';
 

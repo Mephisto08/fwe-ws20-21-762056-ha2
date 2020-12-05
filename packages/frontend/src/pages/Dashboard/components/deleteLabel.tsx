@@ -3,7 +3,7 @@
  * um ein label zu löschen.
  */
 import React, { useState, ChangeEvent } from 'react';
-import { Input } from '../../../components/Input';
+import { Input } from '../../../components/input/Input';
 import { Button20rem } from '../../../components/Button';
 
 export const DeleteLabelForm: React.FC<{ afterSubmit: () => void }> = ({ afterSubmit }) => {

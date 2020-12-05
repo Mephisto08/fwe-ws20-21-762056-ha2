@@ -5,7 +5,7 @@
  */
 import React, { useState, ChangeEvent } from 'react';
 import { Button20rem } from '../../../components/Button';
-import { Input } from '../../../components/Input';
+import { Input } from '../../../components/input/Input';
 import { Task } from '../../Dashboard/components/taskList';
 
 interface EditTaskFormState {

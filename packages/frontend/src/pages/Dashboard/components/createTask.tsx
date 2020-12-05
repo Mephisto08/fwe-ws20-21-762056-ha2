@@ -3,7 +3,7 @@
  * um Task erstellen zu können.
  */
 import React, { useState, ChangeEvent } from 'react';
-import { Input } from '../../../components/Input';
+import { Input } from '../../../components/input/Input';
 import { Button20rem } from '../../../components/Button';
 
 /**
