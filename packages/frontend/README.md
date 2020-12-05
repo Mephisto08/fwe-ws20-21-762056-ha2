@@ -30,6 +30,7 @@ Webadresse unter der man die Anwendung finden kann.
 <img  src="/packages/frontend/readMe_pictures/overviewPage/Filter.png"  alt="Alt-Text"  title="Filter"  />
 
 Bei einem Klick auf den Button mit dem Namen **"Filter"**, wird ein Modal-Fenster geöffnet. In diesem kann der Filter eingestellt werden, nachdem die **[Task-Liste](#task_liste)** gefiltert werden soll. Es kann nach dem Task Namen, der Task Beschreibung und nach den Labels sortiert werden. Es kann immer nur nach einem Namen, Beschreibung und einem Label gefiltert werden. Es ist jedoch möglich, eine Kombination aus den drei Filtern anzuwenden.
+Wenn kein Filter angewendet werden soll, müssen alle Felder leer abgeschickt werden.
 
 ##### b) Zeige Labels
 <img src="/packages/frontend/readMe_pictures/detailPage/showLabels.png" alt="Alt-Text"  title="Zeige Labels"/>
