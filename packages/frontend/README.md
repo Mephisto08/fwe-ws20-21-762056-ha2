@@ -161,7 +161,7 @@ Um Beispieldaten generieren zulassen kann folgender Befehl im Docker ausgefhrt w
 Die Code der Anwendung wird mittels es-lint  überprüft. Um alle Fehler anzuzeigen, kann die Konsole angewendet werden, um alle Fehler aufzulisten.
 Dies kann unter folgendem Befehl ausgeführt werden:
 
-	docker-compose exec backend npm run lint
+	docker-compose exec frontend npm run lint
 
 Jedoch ist dies eher unkomfortable. Ich empfehle daher die Benutzung von einem Vs-Code Extension ESLINT.
 
