@@ -7,7 +7,8 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 - Welche Funktionen und Features die Website hat wird unter **[Anwendung](#anwendung)** beschrieben.
 	- Unter dem Unterpunkt **[Task Übersichts Seite](#task-übersichts-seite)**  ist alles zu finden, was auf der Übersichtsseite gemacht werden kann.
 	- Unter dem Unterpunkt **[Task Detail Seite](#task-detail-seite)**  ist alles zu finden, was auf der Übersichtsseite gemacht werden kann.
-- Um Beispieldaten zu generieren kann das Kapitel **[Beispieldaten generieren](#beispieldaten-generieren)** eingesehen werden.  
+- Um Beispieldaten zu generieren kann das Kapitel **[Beispieldaten generieren](#beispieldaten-generieren)** eingesehen werden.
+- Mit welchen Mitteln der Code analysiert wird, kann man in dem Unterpunkt **[Statische Code Analyse](#statische-code-analyse)** nachvollziehen.
 - In dem Unterpunkt **[Datenbank](#datenbank)**, wird beschrieben, wie man in die Datenbankanwendung gelangen kann und Datensätze abfragen kann.  
 - Der Unterpunkt **[Test](#test)**, beschreibt, wie man die Test ausführen kann.  
   
