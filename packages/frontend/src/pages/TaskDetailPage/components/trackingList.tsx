@@ -53,7 +53,7 @@ export const TrackingHighlight = styled.div`
 	background-color: ${(props) => props.theme.colors.primary};
 `;
 
-export const TrackingItemStyle = styled.div`
+export const TrackingItemStyle = styled.li`
 	margin: 0;
 	min-height: 9rem;
 	max-width: 100%;
@@ -65,7 +65,7 @@ export const TrackingItemStyle = styled.div`
 		}
 	}
 `;
-export const TrackingList = styled.div`
+export const TrackingList = styled.ul`
 	clear: both;
 	list-style: none;
 	box-shadow: 0 0.125em 0.25em 0 ${(props) => props.theme.colors.shadowColor};

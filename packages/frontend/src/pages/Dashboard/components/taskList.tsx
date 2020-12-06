@@ -74,7 +74,7 @@ export const TaskHighlight = styled.div`
 	background-color: ${(props) => props.theme.colors.primary};
 `;
 
-export const TaskItemStyle = styled.div`
+export const TaskItemStyle = styled.li`
 	margin: 0;
 	min-height: 9rem;
 	max-width: 100%;
@@ -87,7 +87,7 @@ export const TaskItemStyle = styled.div`
 	}
 `;
 
-export const TaskList = styled.div`
+export const TaskList = styled.ul`
 	clear: both;
 	list-style: none;
 	box-shadow: 0 0.125em 0.25em 0 ${(props) => props.theme.colors.shadowColor};
@@ -244,7 +244,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
 			<taskNameContext.Provider value={name}>
 				<taskIdContext.Provider value={id}>
 					<div>
-						<DeleteButton onClick={deleteTask}></DeleteButton>
+						<DeleteButton onClick={deleteTask} data-testid="delete-task-button"></DeleteButton>
 					</div>
 					<TaskFlex
 						onClick={() => {

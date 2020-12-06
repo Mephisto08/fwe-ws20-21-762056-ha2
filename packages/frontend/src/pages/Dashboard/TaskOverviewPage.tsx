@@ -186,7 +186,7 @@ export const TaskOverviewPage = () => {
 					}}
 				/>
 			)}
-			<TaskList>
+			<TaskList data-testid="task-item-list">
 				{allTask.map((allTask) => (
 					<TaskItem
 						onClick={() => history.push(`/task/${allTask.id}`)}
