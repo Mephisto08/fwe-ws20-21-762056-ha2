@@ -52,8 +52,7 @@ export const ShowAllLabelForm: React.FC<{
 					allLabel.map((label: Label) => {
 						return (
 							<li css={'margin-top: 0.2rem;'} key={label.id}>
-								{label.id}
-								{label.name}
+								{label.id}: {label.name}
 							</li>
 						);
 					})}
