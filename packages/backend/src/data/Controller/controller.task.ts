@@ -110,8 +110,8 @@ export const deleteLabelsByTaskId = async (req, res) => {
 		const task = await taskRepo.findOneOrFail(taskId, { relations: ['labels'] });
 		const taskLabelsList = task.labels;
 
-		for (let i = 0; i < Object.keys(labelList).length; ++i) {
-			for (let j = 0; j < taskLabelsList.length; ++j) {
+		for (let i = Object.keys(labelList).length - 1; i >= 0; --i) {
+			for (let j = taskLabelsList.length - 1; j >= 0; --j) {
 				if (labelList[i] == taskLabelsList[j].id) {
 					taskLabelsList.splice(j, 1);
 				}
