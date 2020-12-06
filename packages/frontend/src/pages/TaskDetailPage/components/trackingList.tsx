@@ -139,7 +139,7 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({ tracking, onClick = 
 	};
 
 	return (
-		<TrackingItemStyle>
+		<TrackingItemStyle data-testid="tracking-item">
 			<TrackingHighlight />
 			<div>
 				<DeleteButton onClick={deleteTracking} />

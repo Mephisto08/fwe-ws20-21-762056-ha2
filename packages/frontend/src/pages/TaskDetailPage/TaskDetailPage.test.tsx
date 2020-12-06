@@ -14,40 +14,36 @@ describe('TaskDetailPage', () => {
 		(fetch as FetchMock).resetMocks();
 	});
 	it('adds an Item after Create', async () => {
-		const taskInitialFetchResponse = {
+		const trackingInitialFetchResponse = {
 			data: [],
 			status: 'ok',
 		};
 
-		const taskPostResponse = {
+		const trackingPostResponse = {
 			data: {
-				name: 'Task Test 1 Test',
-				description: 'Beschreibung Test 1 Test',
+				name: 'Tracking Test 1 Test',
 				created: new Date('2019-01-01'),
 				updated: new Date('2019-01-01'),
-				labels: [],
-				trackings: [],
+				task: 1,
 			},
 			status: 'ok',
 		};
 
-		const taskResponse = {
+		const trackingResponse = {
 			data: [
 				{
-					name: 'Task Test 2 Test',
-					description: 'Beschreibung Test 2 Test',
+					name: 'Tracking Test 2 Test',
 					created: new Date('2019-01-01'),
 					updated: new Date('2019-01-01'),
-					labels: [],
-					trackings: [],
+					task: 1,
 				},
 			],
 			status: 'ok',
 		};
 		(fetch as FetchMock)
-			.once(JSON.stringify(taskInitialFetchResponse))
-			.once(JSON.stringify(taskPostResponse))
-			.once(JSON.stringify(taskResponse));
+			.once(JSON.stringify(trackingInitialFetchResponse))
+			.once(JSON.stringify(trackingPostResponse))
+			.once(JSON.stringify(trackingResponse));
 		const { getByLabelText: getByLabelTextContainer, getByTestId, findAllByTestId } = render(
 			<ThemeProvider theme={theme}>
 				<BrowserRouter>
@@ -56,30 +52,30 @@ describe('TaskDetailPage', () => {
 			</ThemeProvider>,
 		);
 
-		const createTask = getByTestId('create-task-button');
+		const createTask = getByTestId('create-tracking-button');
 
 		await act(async () => {
 			fireEvent.click(createTask);
 		});
 		await waitFor(() => {
-			expect(getByTestId('create-task-form')).toBeInTheDocument();
+			expect(getByTestId('create-tracking-form')).toBeInTheDocument();
 		});
-		const taskForm = getByTestId('create-task-form');
+		const trackingForm = getByTestId('create-tracking-form');
 
 		const name = getByLabelTextContainer(/name/i);
-		const description = getByLabelTextContainer(/beschreibung/i);
+		const task = getByLabelTextContainer(/task/i);
 
 		fireEvent.change(name, {
-			target: { value: taskResponse.data[0].name },
+			target: { value: trackingResponse.data[0].name },
 		});
-		fireEvent.change(description, {
-			target: { value: taskResponse.data[0].description },
+		fireEvent.change(task, {
+			target: { value: trackingResponse.data[0].task },
 		});
 
-		const submit = getByText(taskForm, /Erstelle einen Task!/i);
+		const submit = getByText(trackingForm, /Erstelle einen Tracking für diesen Task!/i);
 		fireEvent.click(submit);
 
-		await findAllByTestId('task-item');
-		expect((await findAllByTestId('task-item')).length).toBe(1);
+		await findAllByTestId('tracking-item');
+		expect((await findAllByTestId('tracking-item')).length).toBe(1);
 	});
 });

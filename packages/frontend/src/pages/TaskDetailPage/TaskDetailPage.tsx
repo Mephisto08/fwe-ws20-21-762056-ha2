@@ -78,6 +78,7 @@ export const TaskDetailPage = () => {
 	return (
 		<Layout>
 			<AddButton
+				data-testid="create-tracking-button"
 				onClick={() => {
 					setDeleteLabelToTask(false);
 					setAddLabelToTask(false);
