@@ -24,9 +24,9 @@ export const DeleteLabelForm: React.FC<{ afterSubmit: () => void }> = ({ afterSu
 		if (labelRequest.status === 200) {
 			const labelJSON = await labelRequest.json();
 
-			for (let i = 0; i < Object.keys(labelJSON.data).length; i++) {
-				if (labelJSON.data[i].name === values.name) {
-					await fetch(`/api/label/${labelJSON.data[i].id}`, {
+			for (let i = Object.keys(labelJSON.data).length; i >= 0; --i) {
+				if (labelJSON.data[i - 1].name === values.name) {
+					await fetch(`/api/label/${labelJSON.data[i - 1].id}`, {
 						method: 'DELETE',
 						headers: { 'Content-Type': 'application/json' },
 					});
