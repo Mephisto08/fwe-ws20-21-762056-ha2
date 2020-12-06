@@ -47,6 +47,7 @@ Bei einem Klick auf den Button mit dem Namen **"Erstelle Label"**, wird ein Moda
 <img src="/packages/frontend/readMe_pictures/overviewPage/deleteLabel.png" alt="Alt-Text"  title="Löschen eines Labels"/>
 
 Bei einem Klick auf den Button **"Entf. Labels"** öffnet sich ein Modal-Fenster. In diesem kann die Name angeben werden, welches Label gelöscht werden soll. Wird dies bestätigt, wird das Label aus der Datenbank gelöscht und es wird von allen Tasks entfernt die dieses beinhalten.
+Bei gleichem Namen eines Labels wird das zuletzt erstellte/ das neuste gelöscht.
 ##### e) Erstellen eines Tasks
 
 <img src="/packages/frontend/readMe_pictures/overviewPage/CreateTask.png" alt="Alt-Text"  title="Erstellen eines Tasks"/>
