@@ -24,5 +24,17 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import '@testing-library/cypress/add-commands';
+import { taskBuilder } from "../builder/task";
 
+Cypress.Commands.add("createTask", (override = {}) => {
+    const task = taskBuilder({})();
+    return cy
+      .request({
+        body: task,
+        method: "POST",
+        url: "localhost:3000/api/task"
+      })
+      .then(() => task);
+  });
+  
   

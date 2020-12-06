@@ -8,27 +8,40 @@ import { Button20rem } from '../../../components/Button';
 
 export const DeleteLabelForm: React.FC<{ afterSubmit: () => void }> = ({ afterSubmit }) => {
 	const [values, setValues] = useState({
-		id: '',
+		name: '',
 	});
 
 	const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setValues({ ...values, [e.target.name]: e.target.value });
 	};
+
 	const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		await fetch(`/api/label/${values.id}`, {
-			method: 'DELETE',
+		const labelRequest = await fetch('/api/label', {
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({}),
 		});
+		if (labelRequest.status === 200) {
+			const labelJSON = await labelRequest.json();
+
+			for (let i = 0; i < Object.keys(labelJSON.data).length; i++) {
+				if (labelJSON.data[i].name === values.name) {
+					await fetch(`/api/label/${labelJSON.data[i].id}`, {
+						method: 'DELETE',
+						headers: { 'Content-Type': 'application/json' },
+					});
+					afterSubmit();
+					return;
+				}
+			}
+		}
 		afterSubmit();
 	};
 	return (
 		<>
 			<form onSubmit={onSubmitForm}>
-				<Input name="id" label="Label Id" type="text" onChange={fieldDidChange} required />
-				<Button20rem type="submit">Lösche Label/s von diesem Task!</Button20rem>
+				<Input name="name" label="Label Name" type="text" onChange={fieldDidChange} required />
+				<Button20rem type="submit">Lösche Label!</Button20rem>
 			</form>
 		</>
 	);

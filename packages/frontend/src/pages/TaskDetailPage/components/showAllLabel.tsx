@@ -47,7 +47,7 @@ export const ShowAllLabelForm: React.FC<{
 	return (
 		<>
 			<h3>Alle Labels</h3>
-			<LabelList>
+			<LabelList data-testid="label-list">
 				{allLabel &&
 					allLabel.map((label: Label) => {
 						return (

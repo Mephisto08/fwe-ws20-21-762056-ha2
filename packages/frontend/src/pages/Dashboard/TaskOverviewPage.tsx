@@ -86,23 +86,27 @@ export const TaskOverviewPage = () => {
 					`}
 				>
 					<FilterButton
+						data-testid="filter-button"
 						onClick={() => {
 							setShowLabel(false);
 							setFilter(!filter);
 						}}
 					/>
 					<ShowLabelButton
+						data-testid="show-label-button"
 						onClick={() => {
 							setShowLabel(!showLabel);
 						}}
 					/>
 					<CreateLabelButton
+						data-testid="create-label-button"
 						onClick={() => {
 							setShowLabel(false);
 							setCreateLabel(!createLabel);
 						}}
 					/>
 					<DeleteLabelsButton
+						data-testid="delete-label-button"
 						onClick={() => {
 							setShowLabel(false);
 							setDeleteLabel(!deleteLabel);
