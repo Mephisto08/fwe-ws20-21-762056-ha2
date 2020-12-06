@@ -239,7 +239,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
 	};
 
 	return (
-		<TaskItemStyle>
+		<TaskItemStyle data-testid="task-item">
 			<TaskHighlight />
 			<taskNameContext.Provider value={name}>
 				<taskIdContext.Provider value={id}>

@@ -8,7 +8,7 @@ import { GlobalStyle } from './components/GlobalStyle';
 import { theme } from './theme';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { TaskOverviewPage } from './pages/Dashboard/TaskOverviewPage';
-import { TaskPageID } from './pages/TaskDetailPage/taskPage';
+import { TaskDetailPage } from './pages/TaskDetailPage/TaskDetailPage';
 
 export interface TaskResponse {
 	data: Data[];
@@ -43,7 +43,7 @@ export const App = () => {
 			<ThemeProvider theme={theme}>
 				<GlobalStyle />
 				<Route exact path="/" component={TaskOverviewPage} />
-				<Route exact path="/task/:taskId" component={TaskPageID} />
+				<Route exact path="/task/:taskId" component={TaskDetailPage} />
 			</ThemeProvider>
 		</BrowserRouter>
 	);

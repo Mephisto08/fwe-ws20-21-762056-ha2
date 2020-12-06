@@ -32,7 +32,7 @@ import { AddLabelToTaskForm } from './components/addLabelToTask';
 import { DeleteLabelFromTaskForm as DeleteLabelFromTaskForm } from './components/deleteLabelFromTask';
 import { ShowAllLabelForm } from './components/showAllLabel';
 
-export const TaskPageID = () => {
+export const TaskDetailPage = () => {
 	const { taskId }: any = useParams();
 	const [task, setTask] = useState<Task>();
 	const [editTask, setEditTask] = useState(false);

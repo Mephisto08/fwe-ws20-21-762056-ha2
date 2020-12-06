@@ -37,7 +37,7 @@ export const CreateTaskForm: React.FC<{ afterSubmit: () => void }> = ({ afterSub
 
 	return (
 		<>
-			<form onSubmit={onSubmitForm}>
+			<form onSubmit={onSubmitForm} data-testid="create-task-form">
 				<Input name="name" label="Name" type="text" onChange={fieldDidChange} required />
 				<Input name="description" label="Beschreibung" type="text" onChange={fieldDidChange} required />
 				<Button20rem type="submit">Erstelle einen Task!</Button20rem>

@@ -48,15 +48,15 @@ export const TaskOverviewPage = () => {
 	 * Dies hat somit keine Ausiwrkunng auff den fetch.
 	 */
 	const fetchTask = async function () {
-		const taskRequest = await fetch(
+		const tasksRequest = await fetch(
 			// eslint-disable-next-line
         `/api/task?filterTask=${taskFilter.taskName}&filterDescription=${taskFilter.taskDescription}&filterLabel=${taskFilter.taskLabel}`, {
 				method: 'GET',
 				headers: { 'content-type': 'application/json' },
 			},
 		);
-		if (taskRequest.status === 200) {
-			const taskJSON = await taskRequest.json();
+		if (tasksRequest.status === 200) {
+			const taskJSON = await tasksRequest.json();
 			setTask(taskJSON.data);
 		}
 	};
@@ -109,6 +109,7 @@ export const TaskOverviewPage = () => {
 						}}
 					/>
 					<AddButton
+						data-testid="create-task-button"
 						onClick={() => {
 							setShowLabel(false);
 							setCreateTask(!createTask);
