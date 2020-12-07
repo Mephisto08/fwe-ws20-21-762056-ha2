@@ -115,6 +115,7 @@ export const TaskDetailPage = () => {
 				}}
 			></ShowLabelButton>
 			<EditButton
+				data-testid="edit-task-button"
 				onClick={() => {
 					setDeleteLabelToTask(false);
 					setAddLabelToTask(false);
@@ -131,9 +132,9 @@ export const TaskDetailPage = () => {
 				`}
 			>
 				<div>
-					<h1>{task?.name}</h1>
+					<h1 data-testid="task-name">{task?.name}</h1>
 				</div>
-				<TaskDescription>{task?.description}</TaskDescription>
+				<TaskDescription data-testid="task-description">{task?.description}</TaskDescription>
 				<div>
 					<LabelItem>
 						Label:

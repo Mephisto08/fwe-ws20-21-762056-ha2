@@ -247,6 +247,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
 						<DeleteButton onClick={deleteTask} data-testid="delete-task-button"></DeleteButton>
 					</div>
 					<TaskFlex
+						data-testid="task-item-flex"
 						onClick={() => {
 							onClick(task);
 						}}

@@ -142,7 +142,7 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({ tracking, onClick = 
 		<TrackingItemStyle data-testid="tracking-item">
 			<TrackingHighlight />
 			<div>
-				<DeleteButton onClick={deleteTracking} />
+				<DeleteButton data-testid="delete-tracking-button" onClick={deleteTracking} />
 			</div>
 			<TrackingFlex
 				onClick={() => {
@@ -150,7 +150,7 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({ tracking, onClick = 
 				}}
 			>
 				<div>
-					<TrackingTitle>{description}</TrackingTitle>
+					<TrackingTitle data-testid="tracking-description">{description}</TrackingTitle>
 					<TrackedTime>Start: {timeStartDate.toLocaleString()}</TrackedTime>
 					<TrackedTime>Ende: {timeEndDate.toLocaleString()}</TrackedTime>
 					<TrackedTime>Dauer: {actualTrackingTime()}</TrackedTime>
@@ -158,6 +158,7 @@ export const TrackingItem: React.FC<TrackingItemProps> = ({ tracking, onClick = 
 			</TrackingFlex>
 			<div>
 				<Button8rem
+					data-testid="edit-tracking-button"
 					onClick={() => {
 						setEditTracking(!editTracking);
 					}}
