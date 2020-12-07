@@ -13,7 +13,7 @@ describe('TaskOverviewPage', () => {
 	beforeEach(() => {
 		(fetch as FetchMock).resetMocks();
 	});
-	it('adds an Item after Create', async () => {
+	it('create a Task', async () => {
 		const taskInitialFetchResponse = {
 			data: [],
 			status: 'ok',
@@ -34,8 +34,8 @@ describe('TaskOverviewPage', () => {
 		const taskResponse = {
 			data: [
 				{
-					name: 'Task Test 2 Test',
-					description: 'Beschreibung Test 2 Test',
+					name: 'Task Test 1 Test',
+					description: 'Beschreibung Test 1 Test',
 					created: new Date('2019-01-01'),
 					updated: new Date('2019-01-01'),
 					labels: [],

@@ -37,7 +37,7 @@ export const FilterForm: React.FC<{
 	};
 	return (
 		<>
-			<form onSubmit={onSubmitForm}>
+			<form onSubmit={onSubmitForm} data-testid="filter-task-form">
 				<Input name="taskName" label="Task Name" type="text" onChange={fieldDidChange} />
 				<Input name="taskDescription" label="Task Beschreibung" type="text" onChange={fieldDidChange} />
 				<Input name="taskLabel" label="Label Name" type="text" onChange={fieldDidChange} />
