@@ -5,7 +5,7 @@
 - Es muss Cypress auf dem ausführendem Medium installiert sein. Die Installation kann mit folgendem Befehl ausfgeführt werden:
 
 		npx cypress install
-- Danach müssen im Ordner alle notwendigen Module aus der  [package.json](packages/cypress/package.json) installiert werden. Hierführ muss man sich im Ordner der [package](packages/cypress) befinden. Um alle Module zu installieren kann folgender Befehl ausgeführt werden:
+- Danach müssen im Ordner alle notwendigen Module aus der  [package.json](packages/cypress/package.json) installiert werden. Hierführ muss man sich im Ordner der [package](packages/cypress) befinden. Um dort alle notwendigen Module zu installieren kann folgender Befehl ausgeführt werden:
 
 		npm install
 		
