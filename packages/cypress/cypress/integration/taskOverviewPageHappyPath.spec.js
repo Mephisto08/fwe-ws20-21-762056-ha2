@@ -30,7 +30,7 @@ describe("TaskOverviewPage", () => {
     cy.findByTestId(/create-label-button/i).click();
     cy.findByLabelText(/name/i).type("Label 1");
     cy.findByText("Erstelle ein Label!").click();
-    cy.findByTestId(/show-label-button/i).click();
+    cy.findByTestId(/show-label-button-O/i).click();
     cy.findByTestId("label-list").find("li").should("have.length", 1);
     cy.screenshot();
   });

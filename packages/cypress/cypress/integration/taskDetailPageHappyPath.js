@@ -2,6 +2,18 @@ import { taskBuilder } from "../builder/task";
 
 describe("TaskDetailPage", () => {
   const task = taskBuilder({})();
+
+  it("create label", () => {
+    cy.visit("/");
+    cy.screenshot();
+    cy.findByTestId(/create-label-button/i).click();
+    cy.findByLabelText(/name/i).type("Label 1");
+    cy.findByText("Erstelle ein Label!").click();
+    cy.findByTestId(/show-label-button-O/i).click();
+    cy.findByTestId("label-list").find("li").should("have.length", 1);
+    cy.screenshot();
+  });
+
   it("create task go to DetailPage", () => { 
       cy.visit("/");
       cy.screenshot();
@@ -46,6 +58,13 @@ describe("TaskDetailPage", () => {
     cy.findByText("Bestätige die Änderungen").click();
     cy.screenshot();
     cy.findByTestId(/tracking-description/i).should('have.text', 'Erstes Tracking Update');
+    cy.screenshot();
+  });
+
+  it("show Labels", () => { 
+    cy.screenshot();
+    cy.findByTestId(/show-label-button-D/i).click();
+    cy.findByTestId("label-list").find("li").should("have.length", 1);
     cy.screenshot();
   });
 

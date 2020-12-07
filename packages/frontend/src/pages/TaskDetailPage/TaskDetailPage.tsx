@@ -106,6 +106,7 @@ export const TaskDetailPage = () => {
 				}}
 			></AddLabelButton>
 			<ShowLabelButton
+				data-testid="show-label-button-D"
 				onClick={() => {
 					setDeleteLabelToTask(false);
 					setAddLabelToTask(false);

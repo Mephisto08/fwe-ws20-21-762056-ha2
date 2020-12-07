@@ -93,7 +93,7 @@ export const TaskOverviewPage = () => {
 						}}
 					/>
 					<ShowLabelButton
-						data-testid="show-label-button"
+						data-testid="show-label-button-O"
 						onClick={() => {
 							setShowLabel(!showLabel);
 						}}
