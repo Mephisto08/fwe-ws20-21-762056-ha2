@@ -68,6 +68,8 @@ Um die Tests für das Frontend auszuführen, wird folgender Befehl in die Komman
 
 	docker-compose exec frontend npm run test   
 
+** Hinweis: Da das Frontend durch die nachfolgenden Cypress-Tests auch getestet werden und die Integrations-Tests im Vergleich sehr viel aufwendiger und komplizierter sind, wurde auf die Implementierung weiterer Tests verzichtet. Es wurde ein Intgerationtest zur Erstellung implementiert als Beispiel-Test.
+
 ### Cypress
 Um die Tests von [Cypress](packages/cypress) auszuführen, lesen Sie sich bitte die dort beschriebene Dokumentation durch.
 
