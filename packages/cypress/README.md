@@ -33,6 +33,6 @@ In dieser Datei sind alle Tests implementiert um die korrekte Funktion der Über
 
 ### 3.  scaryPath Übersichts Seite
 
-<img  src="/packages/cypress/README_pictures/happyPath.png"  alt="Alt-Text"  title="Übersichts Seite"  />
+<img  src="/packages/cypress/README_pictures/happy_path.png"  alt="Alt-Text"  title="Übersichts Seite"  />
 
 In dieser Datei sind alle Tests implementiert um mögliche falsche Eingaben der Übersichtsseite zu testen.
