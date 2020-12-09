@@ -31,8 +31,8 @@ Dies ist das Backend für die erste Hausaufgabe in dem Fach Fortgeschrittene Web
 **Hinweis:**  Es kann kann mehrere Minuten dauern, bis alle notwendigen Dateien heruntergeladen sind.
 
 ## Routen
-- Alle Routen sind als POSTMAN-Collection auch unter dem Ordner [packages/backend/postmanCollection](packages/backend/postmanCollection) als JSON-File abgelegt. In diesen müssen lediglich die Route angepasst werden, wenn eine Id selektiert werden soll etc.
-
+- Alle Routen sind als POSTMAN-Collection auch unter dem Ordner [packages/backend/postmanCollection](packages/backend/postmanCollection) als JSON-File abgelegt. 
+In diesen müssen lediglich die Route angepasst werden, wenn eine Id selektiert werden soll etc.
 **Bsp.** http://localhost:3000/api/task/label/:taskId zu http://localhost:3000/api/task/label/1
 
 - Unter **localhost:3000/api** ist die Anwendung erreichbar.
