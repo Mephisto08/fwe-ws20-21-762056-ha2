@@ -12,6 +12,10 @@
  * Labels zu einem Task hinzufügen,
  * löschen von Labels eines Tasks und ein Tracking erstellen.
  */
+
+
+
+ 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
@@ -31,6 +35,18 @@ import { CreateTrackingForm } from './components/createTracking';
 import { AddLabelToTaskForm } from './components/addLabelToTask';
 import { DeleteLabelFromTaskForm as DeleteLabelFromTaskForm } from './components/deleteLabelFromTask';
 import { ShowAllLabelForm } from './components/showAllLabel';
+import styled from 'styled-components';
+
+export const TaskTitle = styled.div`
+font-size: 1rem;
+margin: 0;
+margin-top: 1.6rem;
+max-width: 100%;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+`;
+
 
 export const TaskDetailPage = () => {
 	const { taskId }: any = useParams();
@@ -132,9 +148,9 @@ export const TaskDetailPage = () => {
 					width: 100%;
 				`}
 			>
-				<div>
+				<TaskTitle >
 					<h1 data-testid="task-name">{task?.name}</h1>
-				</div>
+				</TaskTitle>
 				<TaskDescription data-testid="task-description">{task?.description}</TaskDescription>
 				<div>
 					<LabelItem>
