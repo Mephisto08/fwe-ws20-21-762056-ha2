@@ -499,7 +499,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/label/:labelId",
+					"raw": "localhost:3000/api/label/task/:labelId",
 					"host": [
 						"localhost"
 					],
