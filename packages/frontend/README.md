@@ -15,8 +15,9 @@ Dies ist das Frontend für die zweite Hausaufgabe in dem Fach Fortgeschrittene W
 ## Anwendung
 ### <ins>Allgemein</ins>
 - Unter **localhost:2000** ist das Frontend erreichbar.
-- Die Dokumentation ist in deutsch verfasst. Die Benennung der Funktionen, Variablen etc. ist wie im backend auch mit englsichen Bezeichnern benannt.
--  Alle Modal Fenster können durch ein Klick auf das sich in der oberen rechten Ecke befindenden Kreuzes geschlossen werden.
+- Die Dokumentation ist in deutsch verfasst. Die Benennung der Funktionen, Variablen etc. ist wie im backend auch mit englischen Bezeichnern benannt.
+- Alle Modal Fenster können durch ein Klick auf das sich in der oberen rechten Ecke befindenden Kreuzes geschlossen werden.
+- Auf der Dashboardseite wurden Modals verwendet um Eingabefelder zu realisieren. Auf der Detailseite wurde kein Modalfenster genutzt, sondern einfach Inputs, die oben erstellt werdne, um verschiede Möglichkeiten auszuprobieren und zuzeigen
 - Alle Zeitangaben sind im Format **"Stunde:Minute:Sekunde"** angeben. 
 
 ###  <ins>Task Übersichts Seite</ins>
