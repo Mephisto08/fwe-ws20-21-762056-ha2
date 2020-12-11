@@ -20,11 +20,11 @@ export const CreateTrackingForm: React.FC<{
 		description: '',
 		task: `${values.id}`,
 	});
-	
+
 	const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 	const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if(format.test(e.target.value)){
-			alert("Sonderzeichen sind im Namen nicht erlaubt. Bitte entferne das letzt eingegebene Zeichen!");
+			alert("Sonderzeichen sind im Namen nicht erlaubt!");
 			e.target.value = "";
 		}else{
 		setTracking({ ...tracking, [e.target.name]: e.target.value });

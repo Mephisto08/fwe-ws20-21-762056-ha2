@@ -25,7 +25,7 @@ export const EditTrackingForm: React.FC<{
 	const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 	const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if(format.test(e.target.value)){
-			alert("Sonderzeichen sind im Namen nicht erlaubt. Bitte entferne das letzt eingegebene Zeichen!");
+			alert("Sonderzeichen sind im Namen nicht erlaubt.!");
 			e.target.value = "";
 		}else{
 			setValues({ ...values, [e.target.name]: e.target.value });
