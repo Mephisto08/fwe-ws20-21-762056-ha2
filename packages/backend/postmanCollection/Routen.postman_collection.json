@@ -499,7 +499,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/label",
+					"raw": "localhost:3000/api/label/:labelId",
 					"host": [
 						"localhost"
 					],
@@ -530,7 +530,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/label",
+					"raw": "localhost:3000/api/label/:labelId",
 					"host": [
 						"localhost"
 					],
@@ -558,7 +558,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/label",
+					"raw": "localhost:3000/api/label/:labelId",
 					"host": [
 						"localhost"
 					],
