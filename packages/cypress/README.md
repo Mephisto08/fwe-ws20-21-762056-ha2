@@ -13,7 +13,7 @@
   
 - Um die Tests ausführen zu können, muss man im Ordner [packages/cypress](packages/cypress) folgendem Befehl ausführen.
 
-		npm run test
+		npm run cypress
 
 ## Test Dateien
 
