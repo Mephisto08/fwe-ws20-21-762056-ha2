@@ -654,7 +654,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/tracking/",
+					"raw": "localhost:3000/api/tracking",
 					"host": [
 						"localhost"
 					],
@@ -686,7 +686,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/tracking/",
+					"raw": "localhost:3000/api/tracking/:trackingId",
 					"host": [
 						"localhost"
 					],
@@ -715,7 +715,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/tracking/",
+					"raw": "localhost:3000/api/tracking/:trackingId",
 					"host": [
 						"localhost"
 					],
