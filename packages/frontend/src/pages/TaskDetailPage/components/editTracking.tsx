@@ -22,14 +22,8 @@ export const EditTrackingForm: React.FC<{
 }> = ({ afterSubmit, trackingObject, fetchTask }) => {
 	const [values, setValues] = useState<EditTrackingFormState>(trackingObject);
 
-	const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
 	const fieldDidChange = (e: ChangeEvent<HTMLInputElement>) => {
-		if(format.test(e.target.value)){
-			alert("Sonderzeichen sind im Namen nicht erlaubt.!");
-			e.target.value = "";
-		}else{
-			setValues({ ...values, [e.target.name]: e.target.value });
-		}
+		setValues({ ...values, [e.target.name]: e.target.value });
 	};
 
 	const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
