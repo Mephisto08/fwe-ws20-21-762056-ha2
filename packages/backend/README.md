@@ -258,7 +258,7 @@ Jedoch ist dies eher unkomfortable. Ich empfehle daher die Benutzung von einem V
 Die Richtlinien die bei ES-Lint eingestellt wurden, sind die aktuellen Google-Richtlinien die zur Verfügung gestellt werden. 
 
 ## Zusatzaufgabe
-Die Zusatzfunktion nutzt die API von Slack. Man kann entweder einen Task anhand seiner Id an einen Channel senden oder kann alle seine Tasks an einen Slack Channel senden. Die Routen, die hier zur Verfügung stehen kann man in dem Unterpunkt **Routen** **Task** einsehen.
+Die Zusatzfunktion nutzt die API von Slack. Man kann entweder einen Task anhand seiner Id an einen Channel senden oder kann alle seine Tasks an einen Slack Channel senden. Die Routen, die hier zur Verfügung stehen kann man in dem Unterpunkt [Routen Task](#task) einsehen.
 
 Dies funktioniert über die "Eingehende Webhooks". Diese müssen aktiviert werden für den Channel für den das senden von Tasks gewollt ist. 
 
