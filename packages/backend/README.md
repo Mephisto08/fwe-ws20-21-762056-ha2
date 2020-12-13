@@ -16,9 +16,6 @@ Dies ist das Backend für die erste Hausaufgabe in dem Fach Fortgeschrittene Web
 
 ## Setup
 - Docker muss auf der Hardware die genutzt wird installiert sein.
-- In den Docker Einstellungen **muss**  unter FILE-SHARING  der Projektpfad angeben werden. 
-
-**Hinweis:** Es wird unter Windows eine Pro-Lizenz benötigt. Da sonst das **FILE-SHARING nicht** aktiviert werden kann.
 	
 - Es muss eine .env - Datei erstellt werden. In dieser kann das Passwort, der Benutzername, sowie der Namen der Datenbank festgelegt werden.
 
